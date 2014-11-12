@@ -1,0 +1,19 @@
+var game_file_list = [
+    "core/views/BasePanel.js",
+    "core/utils/UtilsClass/LEvent.js",
+    "core/component/AlertPanel.js",
+    "core/utils/UtilsClass/LListener.js",
+    "core/views/GameScene.js",
+    "view/GameOverPanel.js",
+    "view/GamePanel.js",
+    "view/SharePanel.js",
+    "view/StartPanel.js",
+    "core/notification/MainNotify.js",
+    "core/config/GameConfig.js",
+    "core/utils/Global.js",
+    "core/views/PopUpManager.js",
+    "core/component/LoadingUI.js",
+    "core/data/GlobalData.js",
+    "core/views/PanelManager.js",
+    "GameApp.js"
+];
