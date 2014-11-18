@@ -1,7 +1,7 @@
   /**
     * 面板管理类
     * by dily
-    * (c) copyright 2014 - 2035
+    * (c) copyright false,0,0,2014 - 2035
     * All Rights Reserved. 
     * 面板的管理类
     */
@@ -33,13 +33,13 @@ module PanelManager {
 	export function openStartPanel():void{ 
 		if(this.startPanel == null){
 			this.startPanel = new StartPanel();
-			PopUpManager.addPopUp(this.startPanel);
+			PopUpManager.addPopUp(this.startPanel,false,0,0,0);
 		}
 	} 
 	// 关闭开始界面
 	export function closeStartPanel():void{ 
 		if(this.startPanel != null){
-			PopUpManager.removePopUp(this.startPanel);
+			PopUpManager.removePopUp(this.startPanel,3);
 			this.startPanel = null;
 		}
 	} 
@@ -48,13 +48,13 @@ module PanelManager {
 	export function openGamePanel():void{ 
 		if(this.gamePanel == null){
 			this.gamePanel = new GamePanel();
-			PopUpManager.addPopUp(this.gamePanel);
+			PopUpManager.addPopUp(this.gamePanel,false,0,0,3);
 		}
 	} 
-	// 打开游戏界面
+	// 关闭游戏界面
 	export function closeGamePanel():void{ 
 		if(this.gamePanel != null){
-			PopUpManager.removePopUp(this.gamePanel);
+			PopUpManager.removePopUp(this.gamePanel,3);
 			this.gamePanel = null;
 		}
 	} 
@@ -62,13 +62,13 @@ module PanelManager {
 	export function openGameOverPanel():void{ 
 		if(this.gameOverPanel == null){
 			this.gameOverPanel = new GameOverPanel();
-			PopUpManager.addPopUp(this.gameOverPanel);
+			PopUpManager.addPopUp(this.gameOverPanel,false,0,0,3);
 		}
 	} 
-	// 打开结束界面
+	// 关闭结束界面
 	export function closeGameOverPanel():void{ 
 		if(this.gameOverPanel != null){
-			PopUpManager.removePopUp(this.gameOverPanel);
+			PopUpManager.removePopUp(this.gameOverPanel,3);
 			this.gameOverPanel = null;
 		}
 	} 
@@ -76,13 +76,13 @@ module PanelManager {
 	export function openSharePanel():void{ 
 		if(this.sharePanel == null){
 			this.sharePanel = new SharePanel();
-			PopUpManager.addPopUp(this.sharePanel);
+			PopUpManager.addPopUp(this.sharePanel,false,0,0,3);
 		}
 	} 
-	// 打开分享界面
+	// 关闭分享界面
 	export function closeSharePanel():void{ 
 		if(this.sharePanel != null){
-			PopUpManager.removePopUp(this.sharePanel);
+			PopUpManager.removePopUp(this.sharePanel,3);
 			this.sharePanel = null;
 		}
 	} 

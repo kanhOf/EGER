@@ -1,7 +1,7 @@
 
 class Notice extends egret.Sprite{
 
-    private imgs:egret.SpriteSheet = RES.getRes("asserts");
+    private imgs:egret.SpriteSheet = RES.getRes("asserts1");
     private w:number = 0;
     private h:number = 0;
     public constructor(stageW,stageH){
@@ -22,7 +22,9 @@ class Notice extends egret.Sprite{
         this.addChild( this.bg2 );
         this.touchEnabled = true;
 
-        this.notice.texture = this.imgs.getTexture("desc");
+        this.notice.texture = this.imgs.getTexture("notice");
+        this.notice.x = this.w/2 - this.notice.width/2;
+        this.notice.y = this.h/2 - this.notice.height/2;
         this.addChild(this.notice);  
         this.notice.touchEnabled =  true;
 

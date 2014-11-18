@@ -33,7 +33,6 @@ var Global;
         if (obj === void 0) { obj = null; }
         if (bubbles === void 0) { bubbles = false; }
         if (cancelable === void 0) { cancelable = false; }
-        console.log(type);
         var event = new lcp.LEvent(type, obj, bubbles, cancelable);
         lcp.LListener.getInstance().dispatchEvent(event);
     }
@@ -106,4 +105,40 @@ var Global;
     function getScreen() {
     }
     Global.getScreen = getScreen;
+    var _alert;
+    //提示框
+    function alert(titleStr, descStr, acceptFun, effectType) {
+        if (titleStr === void 0) { titleStr = ""; }
+        if (descStr === void 0) { descStr = ""; }
+        if (acceptFun === void 0) { acceptFun = null; }
+        if (effectType === void 0) { effectType = 1; }
+        if (this._alert == null) {
+            this._alert = new AlertPanel(titleStr, descStr, null, acceptFun);
+            PopUpManager.addPopUp(this._alert, true, this._alert.getWidth(), this._alert.getHeight(), effectType, true);
+            Global.addEventListener(MainNotify.closeAlertNotify, this.closeAlertPanel, this);
+        }
+    }
+    Global.alert = alert;
+    //确认框
+    function confirm(titleStr, descStr, cancelFun, acceptFun, effectType) {
+        if (titleStr === void 0) { titleStr = ""; }
+        if (descStr === void 0) { descStr = ""; }
+        if (cancelFun === void 0) { cancelFun = null; }
+        if (acceptFun === void 0) { acceptFun = null; }
+        if (effectType === void 0) { effectType = 1; }
+        if (this._alert == null) {
+            this._alert = new AlertPanel(titleStr, descStr, cancelFun, acceptFun, 2);
+            PopUpManager.addPopUp(this._alert, true, this._alert.getWidth(), this._alert.getHeight(), effectType, true);
+            Global.addEventListener(MainNotify.closeAlertNotify, this.closeAlertPanel, this);
+        }
+    }
+    Global.confirm = confirm;
+    //关闭alert方法
+    function closeAlertPanel() {
+        if (this._alert != null) {
+            PopUpManager.removePopUp(this._alert, 1);
+            this._alert = null;
+        }
+    }
+    Global.closeAlertPanel = closeAlertPanel;
 })(Global || (Global = {}));

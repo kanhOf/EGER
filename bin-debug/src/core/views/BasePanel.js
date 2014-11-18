@@ -14,12 +14,12 @@ var __extends = this.__extends || function (d, b) {
 var BasePanel = (function (_super) {
     __extends(BasePanel, _super);
     // 构造函数
-    function BasePanel(assertsName) {
-        if (assertsName === void 0) { assertsName = "asserts"; }
+    function BasePanel(assetsName) {
+        if (assetsName === void 0) { assetsName = "assets"; }
         _super.call(this);
         this.w = 0;
         this.h = 0;
-        this.asserts = RES.getRes(assertsName);
+        this.assets = RES.getRes(assetsName);
         this.w = GameConfig.curWidth();
         this.h = GameConfig.curHeight();
         this.initPanel();
@@ -31,54 +31,22 @@ var BasePanel = (function (_super) {
     BasePanel.prototype.initData = function () {
     };
     // 进入面板
-    // effectType 特效类型 0：无特效 1：2：3：4：5：6：7：
-    BasePanel.prototype.onEnter = function (effectType) {
-        if (effectType === void 0) { effectType = 0; }
-        switch (effectType) {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            default:
-                break;
-        }
+    BasePanel.prototype.onEnter = function () {
     };
     // 退出面板
-    // effectType 特效类型 0：无特效 1：2：3：4：5：6：7：
-    BasePanel.prototype.onExit = function (effectType) {
-        if (effectType === void 0) { effectType = 0; }
-        switch (effectType) {
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            default:
-                break;
-        }
+    BasePanel.prototype.onExit = function () {
     };
     // 关闭面板
     BasePanel.prototype.closePanel = function () {
         PopUpManager.removePopUp(this);
+    };
+    // 获取面板宽度
+    BasePanel.prototype.getWidth = function () {
+        return this.width;
+    };
+    // 获取面板高度
+    BasePanel.prototype.getHeight = function () {
+        return this.height;
     };
     return BasePanel;
 })(egret.DisplayObjectContainer);

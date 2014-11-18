@@ -43,10 +43,10 @@ var LoadingUI = (function (_super) {
         this.textField.width = 480;
         this.textField.height = 100;
         this.textField.textAlign = "center";
-        this.textField.text = "女神打扮中...";
+        this.textField.text = "框架构建中...";
     };
     LoadingUI.prototype.setProgress = function (current, total) {
-        this.textField.text = "女神打扮中..." + current + "/" + total;
+        this.textField.text = "框架构建中..." + current + "/" + total;
         // console.log(this.textField.text);
     };
     return LoadingUI;

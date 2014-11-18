@@ -12,11 +12,11 @@ var SharePanel = (function (_super) {
     // 初始化面板
     SharePanel.prototype.initPanel = function () {
         this.bg = new egret.Bitmap();
-        this.bg.texture = this.asserts.getTexture("bg");
+        this.bg.texture = this.assets.getTexture("bg");
         this.addChild(this.bg);
         this.bg.touchEnabled = true;
         this.startBtn = new egret.Bitmap();
-        this.startBtn.texture = this.asserts.getTexture("startBtn");
+        this.startBtn.texture = this.assets.getTexture("startBtn");
         this.startBtn.x = this.w / 2 - this.startBtn.width / 2;
         this.startBtn.y = this.h / 2 - this.startBtn.height / 2;
         this.addChild(this.startBtn);

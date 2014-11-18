@@ -7,14 +7,14 @@
     */
 class BasePanel extends egret.DisplayObjectContainer{
 
-    public asserts:egret.SpriteSheet;
+    public assets:egret.SpriteSheet;
     public w:number = 0;
     public h:number = 0;
 
     // 构造函数
-    public constructor(assertsName = "asserts"){
+    public constructor(assetsName = "assets"){
         super();
-        this.asserts = RES.getRes(assertsName);
+        this.assets = RES.getRes(assetsName);
         this.w = GameConfig.curWidth();
         this.h = GameConfig.curHeight();
         this.initPanel();
@@ -31,49 +31,13 @@ class BasePanel extends egret.DisplayObjectContainer{
     }
 
     // 进入面板
-    // effectType 特效类型 0：无特效 1：2：3：4：5：6：7：
-    public onEnter(effectType:number = 0):void{
-        switch(effectType){
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            default:
-                break;
-        }
+    public onEnter():void{
+        
     }
 
     // 退出面板
-    // effectType 特效类型 0：无特效 1：2：3：4：5：6：7：
-    public onExit(effectType:number = 0):void{
-        switch(effectType){
-            case 0:
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-            default:
-                break;
-        }
+    public onExit():void{
+        
     }
 
     // 关闭面板
@@ -81,15 +45,15 @@ class BasePanel extends egret.DisplayObjectContainer{
         PopUpManager.removePopUp(this);
     }    
 
-    // // 获取面板宽度
-    // public getWidth():void{
-        
-    // }    
+    // 获取面板宽度
+    public getWidth():number{
+        return this.width;
+    }    
 
-    // // 获取面板高度
-    // public getHeight():void{
-        
-    // }    
+    // 获取面板高度
+    public getHeight():number{
+        return this.height;
+    }    
 
 }
 

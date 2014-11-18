@@ -14,6 +14,8 @@ module MainNotify {
 	export var onDeviceOrientation:string = "onDeviceOrientation";
 	//摇一摇监听
 	export var onDeviceMotion:string = "onDeviceMotion";
+	//关闭提示
+	export var closeAlertNotify:string = "closeAlertNotify";
 
 	/**面板开关事件*/
 	//打开开始界面

@@ -14,6 +14,8 @@ var MainNotify;
     MainNotify.onDeviceOrientation = "onDeviceOrientation";
     //摇一摇监听
     MainNotify.onDeviceMotion = "onDeviceMotion";
+    //关闭提示
+    MainNotify.closeAlertNotify = "closeAlertNotify";
     /**面板开关事件*/
     //打开开始界面
     MainNotify.openStartPanelNotify = "openStartPanelNotify";

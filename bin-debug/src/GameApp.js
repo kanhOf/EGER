@@ -8,8 +8,6 @@ var GameApp = (function (_super) {
     __extends(GameApp, _super);
     function GameApp() {
         _super.call(this);
-        this.stageW = 0;
-        this.stageH = 0;
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
     GameApp.prototype.onAddToStage = function (event) {
@@ -56,31 +54,9 @@ var GameApp = (function (_super) {
         if (GameConfig.isDebug) {
             egret.Profiler.getInstance().run();
         }
-        this.stageW = this.stage.stageWidth;
-        this.stageH = this.stage.stageHeight;
         PanelManager.initPanel();
         Global.dispatchEvent(MainNotify.openStartPanelNotify, null, false);
-        // this.startPanel = new StartPanel();
-        // this.addChild(this.startPanel);
-        // this.gamePanel = new GamePanel(this.stageW,this.stageH);
-        // this.addChild(this.gamePanel);
-        // this.gamePanel.visible = false;
-        // this.gameOverPanel = new GameOverPanel(this.stageW,this.stageH);
-        // this.addChild(this.gameOverPanel);
-        // this.gameOverPanel.visible = false;
-        // this.sharePanel = new SharePanel(this.stageW,this.stageH);
-        // this.addChild(this.sharePanel);
-        // this.sharePanel.visible = false;
-        // this.notice = new Notice(this.stageW,this.stageH);
-        // this.addChild(this.notice);
-        // this.notice.visible = true;
-        // this.startPanel.addEventListener("onStartBtnEvent" , this.onStartBtn ,this);
-        // this.gamePanel.addEventListener("gameOver" , this.gameOver ,this);
-        // this.gameOverPanel.addEventListener("retryBtn" , this.retryBtn2 ,this);
-        // this.gameOverPanel.addEventListener("shareBtn" , this.shareBtn ,this);
-        // this.notice.addEventListener("readOver" , this.readOver ,this);
-        // Global.shareToWeiXin("战斗吧！女神之姓名大作战",document.title,"http://wx.9ria.com/games/nvshen/","http://wx.9ria.com/public/images/nvShenIcon.png");
-        // lcp.LListener.getInstance().addEventListener(MainNotify.onDeviceOrientation,this.test,this);
+        Global.shareToWeiXin("EGER极速开发框架", "EGER在手天下我有！快来获取演示案例吧！", "http://wx.9ria.com/games/eger", "http://wx.9ria.com/games/eger/resource/assets/icon.png");
     };
     return GameApp;
 })(egret.DisplayObjectContainer);

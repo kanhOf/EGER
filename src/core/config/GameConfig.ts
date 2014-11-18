@@ -13,24 +13,24 @@ module GameConfig {
     // if(GameConfig.isDebug){
     //     egret.Profiler.getInstance().run();
     // }
-	export var isDebug:boolean = true;
+	export var isDebug:boolean = false;
 
 	//全局字体颜色表--可以扩展
 	export var TextColors = {
-		white:"#FFFFFF",//白色
-		milkWhite:"#fbf1af",//乳白色 
-		grayWhite:"#ceb6a2",//灰白色
-		yellow:"#ffff00",//金黄色 
-		lightYellow:"#ffd375",//淡黄色
-		orangeYellow:"#ff9900",//橘黄色//道具名称 //玩家姓名
-		red:"#f11300",//红色
-		green:"#00e500",//绿色 
-		blue:"#1a94d7",//蓝色 
-		grayBlue:"#2f5177",//墨蓝色 
-		purple:"#e938f2",//紫色 
-		pink:"#FF3030",//粉色 
-		black:"#2e2d2d",//黑色
-		golden:"#FFD700" //金色
+		white:0xFFFFFF,//白色
+		milkWhite:0xfbf1af,//乳白色 
+		grayWhite:0xceb6a2,//灰白色
+		yellow:0xffff00,//金黄色 
+		lightYellow:0xffd375,//淡黄色
+		orangeYellow:0xff9900,//橘黄色//道具名称 //玩家姓名
+		red:0xf11300,//红色
+		green:0x00e500,//绿色 
+		blue:0x1a94d7,//蓝色 
+		grayBlue:0x2f5177,//墨蓝色 
+		purple:0xe938f2,//紫色 
+		pink:0xFF3030,//粉色 
+		black:0x2e2d2d,//黑色
+		golden:0xFFD700 //金色
 	}
 
 	//全局字体大小表--可以扩展
@@ -88,6 +88,9 @@ module GameConfig {
 	export function curStage():egret.Stage{ 
 		return egret.MainContext.instance.stage;
 	}
+
+	//当前面板
+	export var curPanel:egret.DisplayObjectContainer;
 
 	//当前游戏宽度
 	export function curWidth():number{ 

@@ -13,23 +13,23 @@ var GameConfig;
     // if(GameConfig.isDebug){
     //     egret.Profiler.getInstance().run();
     // }
-    GameConfig.isDebug = true;
+    GameConfig.isDebug = false;
     //全局字体颜色表--可以扩展
     GameConfig.TextColors = {
-        white: "#FFFFFF",
-        milkWhite: "#fbf1af",
-        grayWhite: "#ceb6a2",
-        yellow: "#ffff00",
-        lightYellow: "#ffd375",
-        orangeYellow: "#ff9900",
-        red: "#f11300",
-        green: "#00e500",
-        blue: "#1a94d7",
-        grayBlue: "#2f5177",
-        purple: "#e938f2",
-        pink: "#FF3030",
-        black: "#2e2d2d",
-        golden: "#FFD700" //金色
+        white: 0xFFFFFF,
+        milkWhite: 0xfbf1af,
+        grayWhite: 0xceb6a2,
+        yellow: 0xffff00,
+        lightYellow: 0xffd375,
+        orangeYellow: 0xff9900,
+        red: 0xf11300,
+        green: 0x00e500,
+        blue: 0x1a94d7,
+        grayBlue: 0x2f5177,
+        purple: 0xe938f2,
+        pink: 0xFF3030,
+        black: 0x2e2d2d,
+        golden: 0xFFD700 //金色
     };
     //全局字体大小表--可以扩展
     GameConfig.LabelFontSize = {
@@ -94,6 +94,8 @@ var GameConfig;
         return egret.MainContext.instance.stage;
     }
     GameConfig.curStage = curStage;
+    //当前面板
+    GameConfig.curPanel;
     //当前游戏宽度
     function curWidth() {
         return egret.MainContext.instance.stage.stageWidth;

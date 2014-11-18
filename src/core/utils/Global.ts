@@ -35,7 +35,6 @@ module Global {
 	//派发事件
 	export function dispatchEvent(type:string, obj:Object = null, bubbles:boolean = false, cancelable:boolean = false):void
 	{ 	
-		console.log(type);
 		var event = new lcp.LEvent(type,obj,bubbles,cancelable);
 		lcp.LListener.getInstance().dispatchEvent(event);
 	}
@@ -45,7 +44,6 @@ module Global {
 	{ 
 		lcp.LListener.getInstance().addEventListener(type,listener,thisObject,useCapture,priority);
 	}
-
 
 	//存储cookies 存储临时数据如最高分最低分之类的
 	export function setCookie(name,value):void
@@ -119,4 +117,30 @@ module Global {
       
     } 	
 
+    var _alert:AlertPanel;
+ 	//提示框
+	export function alert(titleStr:string = "",descStr:string = "",acceptFun:Function = null,effectType:number = 1):void {
+		if(this._alert == null){
+			this._alert = new AlertPanel(titleStr,descStr,null,acceptFun);
+			PopUpManager.addPopUp(this._alert,true,this._alert.getWidth(),this._alert.getHeight(),effectType,true);
+			Global.addEventListener(MainNotify.closeAlertNotify,this.closeAlertPanel,this);
+		}	
+    } 
+
+ 	//确认框
+	export function confirm(titleStr:string = "",descStr:string = "",cancelFun:Function = null,acceptFun:Function = null,effectType:number = 1):void {
+		if(this._alert == null){
+			this._alert = new AlertPanel(titleStr,descStr,cancelFun,acceptFun,2);
+			PopUpManager.addPopUp(this._alert,true,this._alert.getWidth(),this._alert.getHeight(),effectType,true);
+			Global.addEventListener(MainNotify.closeAlertNotify,this.closeAlertPanel,this);
+		}	
+    } 	
+
+	//关闭alert方法
+	export function closeAlertPanel():void {
+		if(this._alert != null){
+			PopUpManager.removePopUp(this._alert,1);
+			this._alert = null;
+		}	    	
+	}
 }

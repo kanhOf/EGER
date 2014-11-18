@@ -1,7 +1,9 @@
 var game_file_list = [
     "core/views/BasePanel.js",
     "core/utils/UtilsClass/LEvent.js",
+    "componentExt/Notice.js",
     "core/component/AlertPanel.js",
+    "core/component/TipsPanel.js",
     "core/utils/UtilsClass/LListener.js",
     "core/views/GameScene.js",
     "view/GameOverPanel.js",
@@ -10,10 +12,16 @@ var game_file_list = [
     "view/StartPanel.js",
     "core/notification/MainNotify.js",
     "core/config/GameConfig.js",
-    "core/utils/Global.js",
     "core/views/PopUpManager.js",
+    "core/utils/Global.js",
     "core/component/LoadingUI.js",
-    "core/data/GlobalData.js",
+    "core/utils/UtilsClass/BitmapBlink.js",
+    "core/utils/UtilsClass/Cloud.js",
+    "core/utils/UtilsClass/TipsUtils.js",
     "core/views/PanelManager.js",
-    "GameApp.js"
+    "GameApp.js",
+    "core/component/HtmlText.js",
+    "core/component/ImgButton.js",
+    "core/component/TipsManager.js",
+    "core/utils/EffectUtils.js"
 ];

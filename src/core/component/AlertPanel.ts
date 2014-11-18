@@ -1,37 +1,105 @@
+  /**
+    * 警告提示类
+    * by dily
+    * (c) copyright 2014 - 2035
+    * All Rights Reserved. 
+    * 提示相关信息，或则选择判断
+    * todo:九宫格、多动画、图字等
+    */
+class AlertPanel extends BasePanel{
 
-class Notice extends egret.Sprite{
+    private titleStr:string = "";
+    private descStr:string = "";
+    private cancelFun:Function;
+    private acceptFun:Function;
+    private type:number = 1;
 
-    // private imgs:egret.SpriteSheet = RES.getRes("asserts");
-    // private w:number = 0;
-    // private h:number = 0;
-    // public constructor(stageW,stageH){
-    //     super();
-    //     this.w = stageW;
-    //     this.h = stageH;
-    //     this.createView();
-    // }
-    // private bg2:egret.Sprite = new egret.Sprite();
-    // private notice:egret.Bitmap = new egret.Bitmap();
-    // public createView():void {
-    //     //绘制一个透明度为1的绿色矩形，宽高为100*80
-    //     this.bg2.graphics.beginFill(0x000000, 0.5);
-    //     this.bg2.graphics.drawRect(0, 0, this.w, this.h);
-    //     this.bg2.graphics.endFill();
-    //     this.bg2.width = this.w;
-    //     this.bg2.height = this.h;
-    //     this.addChild( this.bg2 );
-    //     this.touchEnabled = true;
+    /**
+    * titleStr       标题
+    * descStr        描述
+    * cancelFun      取消方法
+    * acceptFun      确认方法
+    * type           1：提示  2：选择是否
+    */
+    public constructor(titleStr:string = "",descStr:string = "",cancelFun:Function = null,acceptFun:Function = null,type:number = 1){
+        super();
+        this.titleStr = titleStr;
+        this.descStr = descStr;
+        this.cancelFun = cancelFun;
+        this.acceptFun = acceptFun;
+        this.type = type;
+        this.initUI();
+    }
 
-    //     this.notice.texture = this.imgs.getTexture("desc");
-    //     this.addChild(this.notice);  
-    //     this.notice.touchEnabled =  true;
+    private bg:egret.Bitmap;
+    private acceptBtn:ImgButton;
+    private cancelBtn:ImgButton;
+    private titleTF:egret.TextField;
+    private descTF:egret.TextField;
 
-    //     this.notice.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onNoticeClick, this);
+    // 初始化面板
+    public initUI():void{
+        this.bg = new egret.Bitmap();
+        this.bg.texture = this.assets.getTexture("alertBg");
+        this.addChild(this.bg);   
+        this.bg.touchEnabled = true;     
 
-    // }
+        if(this.titleStr != ""){
+            this.titleTF = new egret.TextField();
+            this.addChild(this.titleTF);
+            this.titleTF.textColor = 0x000000;
+            this.titleTF.size = 24;
+            this.titleTF.width = this.bg.width;
+            this.titleTF.height = 24;
+            this.titleTF.y = 5 + 18;
+            this.titleTF.textAlign = "center";
+            this.titleTF.text = this.titleStr;            
+        }
 
-    // private onNoticeClick():void{
-    //     this.dispatchEvent(new egret.Event("readOver")); 
-    // }
+        if(this.descStr != ""){
+            this.descTF = new egret.TextField();
+            this.addChild(this.descTF);
+            this.descTF.textColor = 0x000000;
+            this.descTF.size = 20;
+            this.descTF.width = this.bg.width;
+            this.descTF.height = 24;
+            this.descTF.y = this.bg.height/2 - this.descTF.height/2 + 10;
+            this.descTF.textAlign = "center";
+            this.descTF.text = this.descStr;            
+        }
+
+        this.acceptBtn = new ImgButton("acceptBtn",this.onAcceptBtnTouchTap);
+        this.addChild(this.acceptBtn);  
+        if(this.type == 1){
+            this.acceptBtn.x = this.bg.width/2 - this.acceptBtn.width/2;
+            this.acceptBtn.y = this.bg.height - this.acceptBtn.height/2 - 10;            
+        }else{
+            this.cancelBtn = new ImgButton("cancelBtn",this.onCancelBtnTouchTap);
+            this.cancelBtn.x = 60 + 50;
+            this.cancelBtn.y = this.bg.height - this.cancelBtn.height/2 - 10;
+            this.addChild(this.cancelBtn);     
+
+            this.acceptBtn.x = this.bg.width - this.acceptBtn.width - 60 - 50;
+            this.acceptBtn.y = this.bg.height - this.acceptBtn.height/2 - 10;          
+        }
+
+    }
+
+    public onCancelBtnTouchTap(e:egret.TouchEvent):void{
+        Global.dispatchEvent(MainNotify.closeAlertNotify);
+    }
+
+    public onAcceptBtnTouchTap(e:egret.TouchEvent):void{
+        Global.dispatchEvent(MainNotify.closeAlertNotify);
+    }
+
+    public getWidth():number{
+        return this.bg.width;
+    }
+
+    public getHeight():number{
+        return this.bg.height;
+    }
+
 }
 

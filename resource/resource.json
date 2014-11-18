@@ -1,15 +1,11 @@
 {
 "resources":
 	[
-        {"name":"asserts","type":"sheet","url":"assets/asserts.json"},
-        {"name":"attack1_png","type":"image","url":"assets/attack1.png"},
-		{"name":"attack1_json","type":"json","url":"assets/attack1.json"},
-        {"name":"attack2_png","type":"image","url":"assets/attack2.png"},
-		{"name":"attack2_json","type":"json","url":"assets/attack2.json"}
+        {"name":"assets","type":"sheet","url":"assets/assets.json"}
 	],
 
 "groups":
 	[
-        {"name":"preload","keys":"asserts,attack1_png,attack1_json,attack2_png,attack2_json"}
+        {"name":"preload","keys":"assets"}
 	]
 }
