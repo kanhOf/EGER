@@ -27,6 +27,8 @@
     2、使用EffectUtils，可以调用多种特效，如tips飘字特效，震屏特效等
 
 
+感谢：d8q8、有来有去、shaorui、 errorfun、wader、kuma、yjtx、 张宇、lixin2628、east
+
 ### 链接
 
 [Egret官方网站](egret-labs.org)<br />
