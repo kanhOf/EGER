@@ -35,5 +35,6 @@ http://wx.9ria.com/games/eger/
 
 想要一起交流么，快快加入吧！
 EGER极速开发交流群：70843223
+
 [Egret官方网站](egret-labs.org)<br />
 [我的微博](http://weibo.com/1856526021/profile?topnav=1&wvr=6)<br />
