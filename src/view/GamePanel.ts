@@ -28,18 +28,18 @@ class GamePanel extends BasePanel{
         this.addChild(this.bg);   
         this.bg.touchEnabled = true;     
 
-        this.htmlTF = new HtmlText([["我是",0x000000],["多颜色",0x55ff00],["文本",0x000000],["组件",0x55ff00]],30,false,1,0xFFFFFF);
+        this.htmlTF = new HtmlText([["我是",0xff0000,18],["多颜色",0x55ff00,30],["文本",0xff0000,40],["组件",0x55ff00]],30,false,1,0xFFFFFF);
         this.htmlTF.x = this.w/2 - this.htmlTF.width/2;
         this.htmlTF.y = -350;
         this.addChild(this.htmlTF);
 
-        this.alertTF = new HtmlText([["下面",0x000000],["是",0x55ff00],["alert",0x000000],["组件",0x55ff00]],30,false,1,0xFFFFFF);
+        this.alertTF = new HtmlText([["下面",0xff0000],["是",0x55ff00],["alert",0xff0000],["组件",0x55ff00]],30,false,1,0xFFFFFF);
         this.alertTF.x = this.w/2 - this.alertTF.width/2;
         this.alertTF.y = 120;
         this.addChild(this.alertTF);
         this.alertTF.alpha = 0;
 
-        this.tipsTF = new HtmlText([["下面",0x000000],["是",0x55ff00],["tipsmanager",0x000000],["组件",0x55ff00]],30,false,1,0xFFFFFF);
+        this.tipsTF = new HtmlText([["下面",0xff0000],["是",0x55ff00],["tipsmanager",0xff0000],["组件",0x55ff00]],30,false,1,0xFFFFFF);
         this.tipsTF.x = this.w/2 - this.tipsTF.width/2;
         this.tipsTF.y = this.h - 170;
         this.addChild(this.tipsTF);

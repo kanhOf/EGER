@@ -82,10 +82,16 @@ var AlertPanel = (function (_super) {
         }
     };
     AlertPanel.prototype.onCancelBtnTouchTap = function (e) {
+        if (this.cancelFun != null) {
+            this.cancelFun();
+        }
         Global.dispatchEvent(MainNotify.closeAlertNotify);
     };
     AlertPanel.prototype.onAcceptBtnTouchTap = function (e) {
         Global.dispatchEvent(MainNotify.closeAlertNotify);
+        if (this.acceptFun != null) {
+            this.acceptFun();
+        }
     };
     AlertPanel.prototype.getWidth = function () {
         return this.bg.width;

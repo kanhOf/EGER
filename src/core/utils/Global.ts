@@ -119,6 +119,12 @@ module Global {
 
     var _alert:AlertPanel;
  	//提示框
+    /**
+    * titleStr       标题
+    * descStr        描述
+    * acceptFun      确认方法
+    * effectType        0：没有动画 1:从中间轻微弹出 2：从中间猛烈弹出  3：从左向右 4：从右向左 5、从上到下 6、从下到上
+    */
 	export function alert(titleStr:string = "",descStr:string = "",acceptFun:Function = null,effectType:number = 1):void {
 		if(this._alert == null){
 			this._alert = new AlertPanel(titleStr,descStr,null,acceptFun);
@@ -128,6 +134,13 @@ module Global {
     } 
 
  	//确认框
+    /**
+    * titleStr       标题
+    * descStr        描述
+    * cancelFun      取消方法
+    * acceptFun      确认方法
+    * effectType        0：没有动画 1:从中间轻微弹出 2：从中间猛烈弹出  3：从左向右 4：从右向左 5、从上到下 6、从下到上
+    */
 	export function confirm(titleStr:string = "",descStr:string = "",cancelFun:Function = null,acceptFun:Function = null,effectType:number = 1):void {
 		if(this._alert == null){
 			this._alert = new AlertPanel(titleStr,descStr,cancelFun,acceptFun,2);

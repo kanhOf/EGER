@@ -107,6 +107,12 @@ var Global;
     Global.getScreen = getScreen;
     var _alert;
     //提示框
+    /**
+    * titleStr       标题
+    * descStr        描述
+    * acceptFun      确认方法
+    * effectType        0：没有动画 1:从中间轻微弹出 2：从中间猛烈弹出  3：从左向右 4：从右向左 5、从上到下 6、从下到上
+    */
     function alert(titleStr, descStr, acceptFun, effectType) {
         if (titleStr === void 0) { titleStr = ""; }
         if (descStr === void 0) { descStr = ""; }
@@ -120,6 +126,13 @@ var Global;
     }
     Global.alert = alert;
     //确认框
+    /**
+    * titleStr       标题
+    * descStr        描述
+    * cancelFun      取消方法
+    * acceptFun      确认方法
+    * effectType        0：没有动画 1:从中间轻微弹出 2：从中间猛烈弹出  3：从左向右 4：从右向左 5、从上到下 6、从下到上
+    */
     function confirm(titleStr, descStr, cancelFun, acceptFun, effectType) {
         if (titleStr === void 0) { titleStr = ""; }
         if (descStr === void 0) { descStr = ""; }

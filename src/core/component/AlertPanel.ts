@@ -86,11 +86,17 @@ class AlertPanel extends BasePanel{
     }
 
     public onCancelBtnTouchTap(e:egret.TouchEvent):void{
+        if(this.cancelFun != null){
+            this.cancelFun();
+        }
         Global.dispatchEvent(MainNotify.closeAlertNotify);
     }
 
     public onAcceptBtnTouchTap(e:egret.TouchEvent):void{
         Global.dispatchEvent(MainNotify.closeAlertNotify);
+        if(this.acceptFun != null){
+            this.acceptFun();
+        }
     }
 
     public getWidth():number{
