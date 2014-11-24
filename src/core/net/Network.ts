@@ -10,7 +10,7 @@ module Network {
 
     //发送消息
     //url 网络地址
-    //data exp {name:"dily",sex:"male"}
+    //data exp "name='dily'&age:18"
     export function sendInfo(url,urlData):void{
         var loader:egret.URLLoader = new egret.URLLoader();
         loader.dataFormat = egret.URLLoaderDataFormat.TEXT;
