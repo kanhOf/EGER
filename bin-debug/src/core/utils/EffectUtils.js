@@ -7,43 +7,64 @@
   */
 var EffectUtils;
 (function (EffectUtils) {
-    // //对象旋转特效
-    // export function rotationEffect(obj:egret.DisplayObjectContainer):void{
-    //        var onComplete1:Function = function(){
-    //        	if(obj != null){
-    //         	obj.rotation = 0;
-    //             egret.Tween.get(obj).to({rotation:360},30000).call(onComplete1,this);   
-    //        	}
-    //        };
-    // 	egret.Tween.get(obj).to({rotation:360},30000).call(onComplete1,this);   
-    // }
-    // //对象闪烁特效
-    // export function blinkEffect(obj,interval:number):void{
-    //        new BitmapBlink(obj,interval); 
-    // }
-    // //云层飘动特效
-    // export function cloudEffect(obj):void{
-    //        var cloud:Cloud = new Cloud(); 
-    //        obj.addChild(cloud);
-    // }
-    // //抖动对象特效
-    // export function shakeObj(obj):void{
-    // 	var shakeNum = 80;
-    // 	var oldX:number = obj.x;
-    // 	egret.Tween.get(obj).to({x:obj.x - 10},shakeNum); 
-    //        egret.setTimeout(function () {              
-    // 		egret.Tween.get(obj).to({x:obj.x + 20},shakeNum); 
-    //        }, this, shakeNum*2); 
-    //        egret.setTimeout(function () {              
-    // 		egret.Tween.get(obj).to({x:obj.x - 20},shakeNum); 
-    //        }, this, shakeNum*3); 
-    //        egret.setTimeout(function () {              
-    // 		egret.Tween.get(obj).to({x:obj.x + 20},shakeNum); 
-    //        }, this, shakeNum*4); 
-    //        egret.setTimeout(function () {              
-    // 		egret.Tween.get(obj).to({x:oldX},shakeNum); 
-    //        }, this, shakeNum*5); 			
-    // }
+    // 存储旋转对象
+    var rotationArr = [];
+    //对象旋转特效
+    //obj   旋转对象
+    //time  旋转一周用时，毫秒
+    function rotationEffect(obj, time) {
+        if (time === void 0) { time = 1000; }
+        if (this.rotationArr == null) {
+            this.rotationArr = [];
+        }
+        if (this.rotationArr[obj.hashCode]) {
+            return;
+        }
+        if ((this.rotationArr[obj.hashCode] == null) || !this.rotationArr[obj.hashCode]) {
+            this.rotationArr[obj.hashCode] = true;
+        }
+        var onComplete1 = function () {
+            if (this.rotationArr[obj.hashCode] && (obj != null)) {
+                obj.rotation = 0;
+                egret.Tween.get(obj).to({ rotation: 360 }, time).call(onComplete1, this);
+            }
+        };
+        obj.rotation = 0;
+        egret.Tween.get(obj).to({ rotation: 360 }, time).call(onComplete1, this);
+    }
+    EffectUtils.rotationEffect = rotationEffect;
+    //取消对象旋转
+    //obj    旋转对象
+    function removeRotationEffect(obj) {
+        this.rotationArr[obj.hashCode] = false;
+    }
+    EffectUtils.removeRotationEffect = removeRotationEffect;
+    //对象闪烁特效
+    //obj         闪烁对象
+    //interval    闪烁总工时间
+    function blinkEffect(obj, interval) {
+        new BitmapBlink(obj, interval);
+    }
+    EffectUtils.blinkEffect = blinkEffect;
+    //抖动对象特效
+    function shakeObj(obj) {
+        var shakeNum = 80;
+        var oldX = obj.x;
+        egret.Tween.get(obj).to({ x: obj.x - 10 }, shakeNum);
+        egret.setTimeout(function () {
+            egret.Tween.get(obj).to({ x: obj.x + 20 }, shakeNum);
+        }, this, shakeNum * 2);
+        egret.setTimeout(function () {
+            egret.Tween.get(obj).to({ x: obj.x - 20 }, shakeNum);
+        }, this, shakeNum * 3);
+        egret.setTimeout(function () {
+            egret.Tween.get(obj).to({ x: obj.x + 20 }, shakeNum);
+        }, this, shakeNum * 4);
+        egret.setTimeout(function () {
+            egret.Tween.get(obj).to({ x: oldX }, shakeNum);
+        }, this, shakeNum * 5);
+    }
+    EffectUtils.shakeObj = shakeObj;
     //抖动对象特效
     // 1：抖动  2：震动
     function shakeScreen(effectType) {

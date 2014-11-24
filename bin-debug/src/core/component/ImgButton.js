@@ -16,7 +16,7 @@ var ImgButton = (function (_super) {
     __extends(ImgButton, _super);
     /**
     * imgName       图片
-    * backFun       点击方法
+    * backFun       点击方法 如果需要在backFun中使用this的，小心使用这个
     * descStr       按钮描述
     * fontSize      字体大小
     * cartoonType   动画类型 1:【可爱】按下变小，放开弹大 2:按下变小，放开轻微弹大 3：按下变小，放开变大

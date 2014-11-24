@@ -16,7 +16,6 @@ var game_file_list = [
     "core/utils/Global.js",
     "core/component/LoadingUI.js",
     "core/utils/UtilsClass/BitmapBlink.js",
-    "core/utils/UtilsClass/Cloud.js",
     "core/utils/UtilsClass/TipsUtils.js",
     "core/views/PanelManager.js",
     "GameApp.js",

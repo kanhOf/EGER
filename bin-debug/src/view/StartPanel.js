@@ -31,21 +31,25 @@ var StartPanel = (function (_super) {
         this.helpBtn.y = this.h - this.helpBtn.height - 20;
         this.addChild(this.helpBtn);
         this.helpBtn.visible = false;
+        this.helpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onHelpTouchTap, this);
         this.shopBtn = new ImgButton("shopBtn", null, "", 30, 2);
         this.shopBtn.x = 150;
         this.shopBtn.y = this.h - this.shopBtn.height - 20;
         this.addChild(this.shopBtn);
         this.shopBtn.visible = false;
+        this.shopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onShopTouchTap, this);
         this.fbBtn = new ImgButton("fbBtn", null, "", 30, 3);
         this.fbBtn.x = 270;
         this.fbBtn.y = this.h - this.fbBtn.height - 20;
         this.addChild(this.fbBtn);
         this.fbBtn.visible = false;
+        this.fbBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onFbTouchTap, this);
         this.setBtn = new ImgButton("setBtn", null, "设置", 30, 1);
         this.setBtn.x = this.w - this.setBtn.width - 20;
         this.setBtn.y = this.h - this.setBtn.height - 20;
         this.addChild(this.setBtn);
         this.setBtn.visible = false;
+        this.setBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSetTouchTap, this);
         // TipsManager.addTips(this.setBtn,"有tips喽！",2);
         // TipsManager.addTips(this.startBtn,"开始按钮tips！",1);
         // TipsManager.addTips(this.helpBtn,"帮助按钮tips！",3);
@@ -77,13 +81,17 @@ var StartPanel = (function (_super) {
         Global.dispatchEvent(MainNotify.openGamePanelNotify, null, false);
         Global.dispatchEvent(MainNotify.closeStartPanelNotify, null, false);
     };
-    StartPanel.prototype.onSetTouchTap = function (e) {
-        // Global.alert("提示","我是一个提示，哈哈");
-        // this.htmlTF.setData([["绿色",0x55ff00],["黑色",0x000000],["绿色",0x55ff00],["黑色",0x000000]],30,false,1,0xFFFFFF);
-    };
     StartPanel.prototype.onHelpTouchTap = function (e) {
-        // Global.confirm("提示","我是一个提示，哈哈");
-        // Global.confirm("选择","我是一个提示，哈哈");
+        EffectUtils.rotationEffect(this.helpBtn, 1000);
+    };
+    StartPanel.prototype.onShopTouchTap = function (e) {
+        EffectUtils.removeRotationEffect(this.helpBtn);
+    };
+    StartPanel.prototype.onFbTouchTap = function (e) {
+        EffectUtils.blinkEffect(this.helpBtn, 1000);
+    };
+    StartPanel.prototype.onSetTouchTap = function (e) {
+        EffectUtils.shakeObj(this.fbBtn);
     };
     return StartPanel;
 })(BasePanel);

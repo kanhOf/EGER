@@ -15,7 +15,7 @@ var __extends = this.__extends || function (d, b) {
 var HtmlText = (function (_super) {
     __extends(HtmlText, _super);
     /**
-    * contentArr       多文本数组 [描述，颜色，字体大小，是否加粗，描边宽度，秒变颜色]
+    * contentArr       多文本数组 [描述，颜色，字体大小，是否加粗，描边宽度，描边颜色，是否有下划线[颜色和字体颜色一致][todo]，回调方法[todo]]
     * fontSize         文本字体大小
     * isBold           是否加粗
     * stroke           描边宽度
