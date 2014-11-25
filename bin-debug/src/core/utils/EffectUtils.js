@@ -47,6 +47,7 @@ var EffectUtils;
     }
     EffectUtils.blinkEffect = blinkEffect;
     //抖动对象特效
+    //类似ios密码输入错误的特效
     function shakeObj(obj) {
         var shakeNum = 80;
         var oldX = obj.x;

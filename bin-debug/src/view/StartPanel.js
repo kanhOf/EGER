@@ -44,7 +44,8 @@ var StartPanel = (function (_super) {
         this.addChild(this.fbBtn);
         this.fbBtn.visible = false;
         this.fbBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onFbTouchTap, this);
-        this.setBtn = new ImgButton("setBtn", null, "设置", 30, 1);
+        // okButton.label = RES.getRes("ui_text.ok");
+        this.setBtn = new ImgButton("setBtn", null, RES.getRes("ui_text.ok"), 30, 1);
         this.setBtn.x = this.w - this.setBtn.width - 20;
         this.setBtn.y = this.h - this.setBtn.height - 20;
         this.addChild(this.setBtn);

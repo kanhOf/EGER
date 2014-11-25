@@ -10,6 +10,8 @@ class GameApp extends egret.DisplayObjectContainer{
     }
 
     private onAddToStage(event:egret.Event){
+        egret.Injector.mapClass(RES.AnalyzerBase,RES.PropertiesAnalyzer,RES.PropertiesAnalyzer.TYPE);
+        
         this.stage.addChild(GameConfig.gameScene());
         //设置加载进度界面
         this.loadingView  = new LoadingUI();

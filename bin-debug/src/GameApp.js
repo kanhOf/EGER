@@ -11,6 +11,7 @@ var GameApp = (function (_super) {
         this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
     GameApp.prototype.onAddToStage = function (event) {
+        egret.Injector.mapClass(RES.AnalyzerBase, RES.PropertiesAnalyzer, RES.PropertiesAnalyzer.TYPE);
         this.stage.addChild(GameConfig.gameScene());
         //设置加载进度界面
         this.loadingView = new LoadingUI();
