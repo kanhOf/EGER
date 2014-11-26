@@ -1,10 +1,10 @@
   /**
-	* 网络公共类
-	* by dily
-	* (c) copyright 2014 - 2035
-	* All Rights Reserved. 
-	* 存放网络公共方法
-	* 比如：
+    * 网络公共类
+    * by dily
+    * (c) copyright 2014 - 2035
+    * All Rights Reserved. 
+    * 存放网络公共方法
+    * 比如：
     */
 module Network {
 
@@ -31,7 +31,7 @@ module Network {
         var data:egret.URLVariables = loader.data;
         var data2 = eval("("+data+")")
 
-        var notify:string = loader._eventTarget._request.url;
+        var notify:string = loader["_eventTarget"]._request.url;
         lcp.LListener.getInstance().dispatchEvent(new lcp.LEvent(notify,data2,false));
      }
 }
