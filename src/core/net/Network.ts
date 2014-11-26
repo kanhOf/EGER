@@ -24,7 +24,7 @@ module Network {
 
     //GET请求完成
     //发送消息 消息为 网址名称
-    private onGetComplete(event:egret.Event):void
+    export function onGetComplete(event:egret.Event):void
     {
         var loader:egret.URLLoader = <egret.URLLoader> event.target;
         loader.dataFormat = egret.URLLoaderDataFormat.TEXT;
