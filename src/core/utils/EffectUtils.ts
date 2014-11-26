@@ -148,4 +148,54 @@ module EffectUtils {
     }    
 
     //========================== a lot of effect will coming! ============================
+   
+    var isPlayEffectPlay:Boolean = false; 
+    /**
+    * 给显示对象增加特效
+    * obj           对象
+    * cartoonType   动画类型 1:【可爱】按下变小，放开弹大 2:按下变小，放开轻微弹大 3：按下变小，放开变大
+    */
+    export function playEffect(obj,cartoonType:number = 1):void{
+        if(this.isPlayEffectPlay){
+            return;
+        }
+        this.isPlayEffectPlay = true;
+        var onComplete2:Function = function(){
+            this.isPlayEffectPlay = false;
+        }; 
+        var onComplete1:Function = function(){
+            if(cartoonType == 1){
+                egret.Tween.get(obj).to({scaleX:1,scaleY:1,x:obj.x - obj.width/4,y:obj.y - obj.height/4},500,egret.Ease.elasticOut).call(onComplete2,this); 
+            }else if(cartoonType == 2){
+                egret.Tween.get(obj).to({scaleX:1,scaleY:1,x:obj.x - obj.width/4,y:obj.y - obj.height/4},500,egret.Ease.backOut).call(onComplete2,this); 
+            }else if(cartoonType == 3){
+                egret.Tween.get(obj).to({scaleX:1,scaleY:1,x:obj.x - obj.width/4,y:obj.y - obj.height/4},100).call(onComplete2,this); 
+            }
+        };   
+        egret.Tween.get(obj).to({scaleX:0.5,scaleY:0.5,x:obj.x + obj.width/4,y:obj.y + obj.height/4},100,egret.Ease.sineIn).call(onComplete1,this);                    
+    }    
+
+
+    /**
+    * 给显示对象增加持续放大特效
+    * obj           对象
+    */
+    export function playScaleEffect(obj):void{
+        var onComplete1:Function = function(){
+            if(obj != null){
+                var onComplete2:Function = function(){
+                    obj.scaleX = 1;
+                    obj.scaleY = 1;
+                    egret.Tween.get(obj).to({ alpha:1}, 1000).call(onComplete1,self)  
+                };  
+                obj.alpha = 1;
+                egret.Tween.get(obj).to({ scaleX:1.5,scaleY:1.5,alpha:0}, 1000).call(onComplete2,self)   
+            }
+        };  
+
+        onComplete1();
+
+    }  
+
+
 }
