@@ -197,5 +197,24 @@ module EffectUtils {
 
     }  
 
+    /**
+    * 显示对象上线浮动特效
+    * obj           对象
+    * time          浮动时间 毫秒
+    * space         浮动高度
+    * todo          多个对象跳动
+    */    
+    export function flyObj(obj,time,space:number = 50):void{
+        var onComplete1:Function = function(){
+            if(obj != null){
+                var onComplete2:Function = function(){
+                    egret.Tween.get(obj).to({y:obj.y - space},time).call(onComplete1,this);
+                };  
+                egret.Tween.get(obj).to({y:obj.y + space},time).call(onComplete2,this);
+            }
+        };  
+        onComplete1();
+    }
+    
 
 }

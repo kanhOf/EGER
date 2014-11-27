@@ -1,11 +1,12 @@
 {
 "resources":
 	[
-        {"name":"assets","type":"sheet","url":"assets/assets.json"}
+        {"name":"assets","type":"sheet","url":"assets/assets.json"},
+        {"name":"ui_text","type":"prop","url":"assets/ui.properties"}
 	],
 
 "groups":
 	[
-        {"name":"preload","keys":"assets"}
+        {"name":"preload","keys":"assets,ui_text"}
 	]
 }

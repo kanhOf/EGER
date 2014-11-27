@@ -43,6 +43,7 @@ var EffectUtils;
     //obj         闪烁对象
     //interval    闪烁总工时间
     function blinkEffect(obj, interval) {
+        if (interval === void 0) { interval = 1000; }
         new BitmapBlink(obj, interval);
     }
     EffectUtils.blinkEffect = blinkEffect;
@@ -111,7 +112,7 @@ var EffectUtils;
     EffectUtils.shakeScreen = shakeScreen;
     /**
     * str             提示内容
-    * effectType      动画类型 0：从下到上弹出 1：从左至右弹出 2：从右至左弹出 3：从中间弹出渐渐消失 4：从大变小 5：从小变大 等等
+    * effectType      动画类型 1：从下到上弹出 2：从左至右弹出 3：从右至左弹出 4：从中间弹出渐渐消失 5：从大变小 等等
     * isWarning       是否是警告，警告是红色
     */
     function showTips(str, effectType, isWarning) {
@@ -150,4 +151,73 @@ var EffectUtils;
         }
     }
     EffectUtils.showTips = showTips;
+    //========================== a lot of effect will coming! ============================
+    var isPlayEffectPlay = false;
+    /**
+    * 给显示对象增加特效
+    * obj           对象
+    * cartoonType   动画类型 1:【可爱】按下变小，放开弹大 2:按下变小，放开轻微弹大 3：按下变小，放开变大
+    */
+    function playEffect(obj, cartoonType) {
+        if (cartoonType === void 0) { cartoonType = 1; }
+        if (this.isPlayEffectPlay) {
+            return;
+        }
+        this.isPlayEffectPlay = true;
+        var onComplete2 = function () {
+            this.isPlayEffectPlay = false;
+        };
+        var onComplete1 = function () {
+            if (cartoonType == 1) {
+                egret.Tween.get(obj).to({ scaleX: 1, scaleY: 1, x: obj.x - obj.width / 4, y: obj.y - obj.height / 4 }, 500, egret.Ease.elasticOut).call(onComplete2, this);
+            }
+            else if (cartoonType == 2) {
+                egret.Tween.get(obj).to({ scaleX: 1, scaleY: 1, x: obj.x - obj.width / 4, y: obj.y - obj.height / 4 }, 500, egret.Ease.backOut).call(onComplete2, this);
+            }
+            else if (cartoonType == 3) {
+                egret.Tween.get(obj).to({ scaleX: 1, scaleY: 1, x: obj.x - obj.width / 4, y: obj.y - obj.height / 4 }, 100).call(onComplete2, this);
+            }
+        };
+        egret.Tween.get(obj).to({ scaleX: 0.5, scaleY: 0.5, x: obj.x + obj.width / 4, y: obj.y + obj.height / 4 }, 100, egret.Ease.sineIn).call(onComplete1, this);
+    }
+    EffectUtils.playEffect = playEffect;
+    /**
+    * 给显示对象增加持续放大特效
+    * obj           对象
+    */
+    function playScaleEffect(obj) {
+        var onComplete1 = function () {
+            if (obj != null) {
+                var onComplete2 = function () {
+                    obj.scaleX = 1;
+                    obj.scaleY = 1;
+                    egret.Tween.get(obj).to({ alpha: 1 }, 1000).call(onComplete1, self);
+                };
+                obj.alpha = 1;
+                egret.Tween.get(obj).to({ scaleX: 1.5, scaleY: 1.5, alpha: 0 }, 1000).call(onComplete2, self);
+            }
+        };
+        onComplete1();
+    }
+    EffectUtils.playScaleEffect = playScaleEffect;
+    /**
+    * 显示对象上线浮动特效
+    * obj           对象
+    * time          浮动时间 毫秒
+    * space         浮动高度
+    * todo          多个对象跳动
+    */
+    function flyObj(obj, time, space) {
+        if (space === void 0) { space = 50; }
+        var onComplete1 = function () {
+            if (obj != null) {
+                var onComplete2 = function () {
+                    egret.Tween.get(obj).to({ y: obj.y - space }, time).call(onComplete1, this);
+                };
+                egret.Tween.get(obj).to({ y: obj.y + space }, time).call(onComplete2, this);
+            }
+        };
+        onComplete1();
+    }
+    EffectUtils.flyObj = flyObj;
 })(EffectUtils || (EffectUtils = {}));

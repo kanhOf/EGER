@@ -102,6 +102,7 @@ class StartPanel extends BasePanel{
 
     public onHelpTouchTap(e:egret.TouchEvent):void{
         EffectUtils.rotationEffect(this.helpBtn,1000);
+        EffectUtils.flyObj(this.logoImg,1000,30);
     }
 
     public onShopTouchTap(e:egret.TouchEvent):void{

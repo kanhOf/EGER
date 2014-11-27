@@ -109,7 +109,7 @@ var PopUpManager;
                 }
                 else {
                     panel.y = popUpHeight;
-                    egret.Tween.get(panel).to({ y: -popUpHeight }, 500, egret.Ease.cubicOut);
+                    egret.Tween.get(panel).to({ y: 0 }, 500, egret.Ease.cubicOut);
                 }
                 break;
             default:
