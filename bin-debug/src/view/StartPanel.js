@@ -17,8 +17,10 @@ var StartPanel = (function (_super) {
         this.bg.touchEnabled = true;
         this.logoImg = new egret.Bitmap();
         this.logoImg.texture = this.assets.getTexture("logoImg");
-        this.logoImg.x = this.w / 2 - this.logoImg.width / 2;
-        this.logoImg.y = 60;
+        this.logoImg.anchorX = 0.5;
+        this.logoImg.anchorY = 1;
+        this.logoImg.x = this.w / 2;
+        this.logoImg.y = 60 + this.logoImg.height;
         this.addChild(this.logoImg);
         this.logoImg.visible = false;
         this.startBtn = new ImgButton("startBtn", this.onStartBtnTouchTap);
@@ -76,7 +78,7 @@ var StartPanel = (function (_super) {
         this.shopBtn.visible = true;
         this.fbBtn.visible = true;
         this.setBtn.visible = true;
-        egret.Tween.get(this.logoImg).to({ y: 60 }, 600, egret.Ease.backOut).call(onComplete, this);
+        egret.Tween.get(this.logoImg).to({ y: 60 + this.logoImg.height }, 600, egret.Ease.backOut).call(onComplete, this);
     };
     StartPanel.prototype.onStartBtnTouchTap = function (e) {
         Global.dispatchEvent(MainNotify.openGamePanelNotify, null, false);
@@ -88,6 +90,7 @@ var StartPanel = (function (_super) {
     };
     StartPanel.prototype.onShopTouchTap = function (e) {
         EffectUtils.removeRotationEffect(this.helpBtn);
+        EffectUtils.rockObj(this.logoImg, 1000, 20);
     };
     StartPanel.prototype.onFbTouchTap = function (e) {
         EffectUtils.blinkEffect(this.helpBtn, 1000);

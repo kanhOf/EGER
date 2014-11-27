@@ -36,7 +36,10 @@ module EffectUtils {
     //取消对象旋转
     //obj    旋转对象
     export function removeRotationEffect(obj):void{
-          this.rotationArr[obj.hashCode] = false;
+        if(this.rotationArr == null){
+            this.rotationArr = [];
+        }
+        this.rotationArr[obj.hashCode] = false;
     }
 
     //对象闪烁特效
@@ -215,6 +218,26 @@ module EffectUtils {
         };  
         onComplete1();
     }
-    
+
+    /**
+    * 显示对象摇头特效
+    * obj           对象
+    * time          浮动时间 毫秒
+    * space         摇头幅度
+    * todo          多个对象摇头
+    * 注意：需要将对象的注册点位置：0.5,1
+    */    
+    export function rockObj(obj,time,space:number = 20):void{
+        var onComplete1:Function = function(){
+            if(obj != null){
+                var onComplete2:Function = function(){
+                    egret.Tween.get(obj).to({rotation:-space},time).call(onComplete1,this);
+                };  
+                egret.Tween.get(obj).to({rotation:space},time).call(onComplete2,this);
+            }
+        };  
+        onComplete1();
+    }
+
 
 }

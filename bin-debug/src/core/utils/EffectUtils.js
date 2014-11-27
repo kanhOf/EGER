@@ -36,6 +36,9 @@ var EffectUtils;
     //取消对象旋转
     //obj    旋转对象
     function removeRotationEffect(obj) {
+        if (this.rotationArr == null) {
+            this.rotationArr = [];
+        }
         this.rotationArr[obj.hashCode] = false;
     }
     EffectUtils.removeRotationEffect = removeRotationEffect;
@@ -220,4 +223,25 @@ var EffectUtils;
         onComplete1();
     }
     EffectUtils.flyObj = flyObj;
+    /**
+    * 显示对象摇头特效
+    * obj           对象
+    * time          浮动时间 毫秒
+    * space         摇头幅度
+    * todo          多个对象摇头
+    * 注意：需要将对象的注册点位置：0.5,1
+    */
+    function rockObj(obj, time, space) {
+        if (space === void 0) { space = 20; }
+        var onComplete1 = function () {
+            if (obj != null) {
+                var onComplete2 = function () {
+                    egret.Tween.get(obj).to({ rotation: -space }, time).call(onComplete1, this);
+                };
+                egret.Tween.get(obj).to({ rotation: space }, time).call(onComplete2, this);
+            }
+        };
+        onComplete1();
+    }
+    EffectUtils.rockObj = rockObj;
 })(EffectUtils || (EffectUtils = {}));

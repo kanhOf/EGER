@@ -23,8 +23,10 @@ class StartPanel extends BasePanel{
 
         this.logoImg = new egret.Bitmap();
         this.logoImg.texture = this.assets.getTexture("logoImg");
-        this.logoImg.x = this.w/2 - this.logoImg.width/2;
-        this.logoImg.y = 60;
+        this.logoImg.anchorX = 0.5;
+        this.logoImg.anchorY = 1;
+        this.logoImg.x = this.w/2;
+        this.logoImg.y = 60 + this.logoImg.height;
         this.addChild(this.logoImg);   
         this.logoImg.visible = false;
 
@@ -92,7 +94,7 @@ class StartPanel extends BasePanel{
         this.shopBtn.visible = true;
         this.fbBtn.visible = true;
         this.setBtn.visible = true;
-        egret.Tween.get(this.logoImg).to({y:60},600,egret.Ease.backOut).call(onComplete,this);   
+        egret.Tween.get(this.logoImg).to({y:60 + this.logoImg.height},600,egret.Ease.backOut).call(onComplete,this);   
     }
 
     public onStartBtnTouchTap(e:egret.TouchEvent):void{
@@ -107,6 +109,7 @@ class StartPanel extends BasePanel{
 
     public onShopTouchTap(e:egret.TouchEvent):void{
         EffectUtils.removeRotationEffect(this.helpBtn);
+        EffectUtils.rockObj(this.logoImg,1000,20);
     }
 
     public onFbTouchTap(e:egret.TouchEvent):void{
