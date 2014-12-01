@@ -58,6 +58,7 @@ class BitmapBlink extends egret.EventDispatcher {
     }
  
     private destroy():void {
+        this._target.alpha = 1;
         this._target.removeEventListener(egret.Event.ENTER_FRAME,this.runDown,this);
         this._target.removeEventListener(egret.Event.ENTER_FRAME,this.runUp,this);
  
