@@ -68,15 +68,16 @@ class AlertPanel extends BasePanel{
             this.descTF.text = this.descStr;            
         }
 
+        var self = this;
         var onCancelBtnTouchTap:Function = function(e:egret.TouchEvent):void{
-            if(this.cancelFun != null){
-                this.cancelFun();
+            if(self.cancelFun != null){
+                self.cancelFun();
             }
             Global.dispatchEvent(MainNotify.closeAlertNotify);
         }
         var onAcceptBtnTouchTap:Function = function(e:egret.TouchEvent):void{
-            if(this.acceptFun != null){
-                this.acceptFun();
+            if(self.acceptFun != null){
+                self.acceptFun();
             }
             Global.dispatchEvent(MainNotify.closeAlertNotify);
         }
