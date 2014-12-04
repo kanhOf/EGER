@@ -85,8 +85,7 @@ module Global {
 	} 
 
 	//通过微信分享api
-	export function shareToWeiXin(title,desc,link,imgUrl):void {//微信分享
-        var self = this;
+	export function shareToWeiXin(title,desc,link,imgUrl,backFun:Function = null):void {//微信分享
         WeixinApi.ready(function(api:WeixinApi){
             var info:WeixinShareInfo = new WeixinShareInfo();
             info.title = title;//分享的标题 长度不能超过512字节
@@ -95,7 +94,9 @@ module Global {
             info.imgUrl = imgUrl; //分享图片的地址 图片大小不能超过32k
 
             var backInfo:WeixinShareCallbackInfo = new WeixinShareCallbackInfo();
-            backInfo.confirm = self.confirmBack;
+            if(backFun != null){
+            	backInfo.confirm = backFun;
+            }
 
             api.shareToFriend(info,backInfo);
             api.shareToTimeline(info,backInfo);
