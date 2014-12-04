@@ -93,10 +93,10 @@ class AlertPanel extends BasePanel{
     }
 
     public onAcceptBtnTouchTap(e:egret.TouchEvent):void{
-        Global.dispatchEvent(MainNotify.closeAlertNotify);
         if(this.acceptFun != null){
             this.acceptFun();
         }
+        Global.dispatchEvent(MainNotify.closeAlertNotify);
     }
 
     public getWidth():number{
