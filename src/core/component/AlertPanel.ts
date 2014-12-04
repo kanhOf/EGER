@@ -68,13 +68,26 @@ class AlertPanel extends BasePanel{
             this.descTF.text = this.descStr;            
         }
 
-        this.acceptBtn = new ImgButton("acceptBtn",this.onAcceptBtnTouchTap);
+        var onCancelBtnTouchTap:Function = function(e:egret.TouchEvent):void{
+            if(this.cancelFun != null){
+                this.cancelFun();
+            }
+            Global.dispatchEvent(MainNotify.closeAlertNotify);
+        }
+        var onAcceptBtnTouchTap:Function = function(e:egret.TouchEvent):void{
+            if(this.acceptFun != null){
+                this.acceptFun();
+            }
+            Global.dispatchEvent(MainNotify.closeAlertNotify);
+        }
+
+        this.acceptBtn = new ImgButton("acceptBtn",onAcceptBtnTouchTap);
         this.addChild(this.acceptBtn);  
         if(this.type == 1){
             this.acceptBtn.x = this.bg.width/2 - this.acceptBtn.width/2;
             this.acceptBtn.y = this.bg.height - this.acceptBtn.height/2 - 10;            
         }else{
-            this.cancelBtn = new ImgButton("cancelBtn",this.onCancelBtnTouchTap);
+            this.cancelBtn = new ImgButton("cancelBtn",onCancelBtnTouchTap);
             this.cancelBtn.x = 60 + 50;
             this.cancelBtn.y = this.bg.height - this.cancelBtn.height/2 - 10;
             this.addChild(this.cancelBtn);     
@@ -83,20 +96,6 @@ class AlertPanel extends BasePanel{
             this.acceptBtn.y = this.bg.height - this.acceptBtn.height/2 - 10;          
         }
 
-    }
-
-    public onCancelBtnTouchTap(e:egret.TouchEvent):void{
-        if(this.cancelFun != null){
-            this.cancelFun();
-        }
-        Global.dispatchEvent(MainNotify.closeAlertNotify);
-    }
-
-    public onAcceptBtnTouchTap(e:egret.TouchEvent):void{
-        if(this.acceptFun != null){
-            this.acceptFun();
-        }
-        Global.dispatchEvent(MainNotify.closeAlertNotify);
     }
 
     public getWidth():number{
