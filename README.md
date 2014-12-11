@@ -8,6 +8,10 @@ http://wx.9ria.com/games/eger2/
 
   HTML5游戏极速开发解决方案
   
+### 零、理念
+    
+    如果有个很酷炫的、容纳了各种动画特效的开源Game工程，用以研究学习，然后可以大家共同构建升级，很不错噢~！
+  
 ### 一、【解耦】方便管理  
 
     1、使用全局派发事件：Global.dispatchEvent(MainNotify.openGamePanelNotify,null,false);
