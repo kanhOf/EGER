@@ -3,6 +3,8 @@
 演示地址：
 http://wx.9ria.com/games/eger/
 ===================================
+EGER特效协作工具：
+http://wx.9ria.com/games/eger2/
 
   HTML5游戏极速开发解决方案
   
