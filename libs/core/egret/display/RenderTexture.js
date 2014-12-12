@@ -55,6 +55,10 @@ var egret;
             var bounds = displayObject.getBounds(egret.Rectangle.identity);
             cacheCanvas.width = bounds.width;
             cacheCanvas.height = bounds.height;
+            if (this.renderContext._cacheCanvas) {
+                this.renderContext._cacheCanvas.width = bounds.width;
+                this.renderContext._cacheCanvas.height = bounds.height;
+            }
             displayObject._worldTransform.identity();
             displayObject.worldAlpha = 1;
             if (displayObject instanceof egret.DisplayObjectContainer) {
@@ -77,6 +81,7 @@ var egret;
             var drawAreaList = renderFilter._drawAreaList.concat();
             renderFilter._drawAreaList.length = 0;
             this.renderContext.clearScreen();
+            this.renderContext.onRenderStart();
             this.webGLTexture = null; //gl.deleteTexture(this.webGLTexture);
             var mask = displayObject.mask || displayObject._scrollRect;
             if (mask) {
@@ -87,6 +92,7 @@ var egret;
                 this.renderContext.popMask();
             }
             renderFilter._drawAreaList = drawAreaList;
+            this.renderContext.onRenderFinish();
             this._textureWidth = this._bitmapData.width;
             this._textureHeight = this._bitmapData.height;
             this._sourceWidth = this._textureWidth;

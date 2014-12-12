@@ -59,27 +59,56 @@ var Global;
     }
     Global.getCookie = getCookie;
     //一键分享到新浪微博、腾讯微博、qq空间等代码
-    function share(type, title, url, imgUrl) {
-        if (type == 1) {
+    function share(name, title, shareUrl, imgUrl) {
+        if (name == "sinaweibo") {
             //分享到新浪微博
-            var sharesinastring = 'http://v.t.sina.com.cn/share/share.php?title=' + title + '&url=' + url + '&content=utf-8&sourceUrl=' + url + '&pic=' + imgUrl;
-            window.open(sharesinastring, 'newwindow', 'height=400,width=400,top=100,left=100');
+            var url = 'http://v.t.sina.com.cn/share/share.php?title=' + title + '&url=' + shareUrl + '&content=utf-8&sourceUrl=' + shareUrl + '&pic=' + imgUrl;
+            window.open(url);
         }
-        else if (type == 2) {
+        else if (name == "qqweibo") {
             //分享到疼讯微博
-            var shareqqstring = 'http://v.t.qq.com/share/share.php?title=' + title + '&url=' + url + '&pic=' + imgUrl;
-            window.open(shareqqstring, 'newwindow', 'height=100,width=100,top=100,left=100');
+            var url = 'http://v.t.qq.com/share/share.php?title=' + title + '&url=' + shareUrl + '&pic=' + imgUrl;
+            window.open(url);
         }
-        else if (type == 3) {
+        else if (name == "qqzone") {
             //分享到QQ空间
-            var shareqqzonestring = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary=' + title + '&url=' + url + '&pics=' + imgUrl;
-            window.open(shareqqzonestring, 'newwindow', 'height=400,width=400,top=100,left=100');
+            var url = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary=' + title + '&url=' + shareUrl + '&pics=' + imgUrl;
+            window.open(url);
+        }
+        else if (name == "qq") {
+            var url = 'http://connect.qq.com/widget/shareqq/index.html?title=' + title + '&url=' + shareUrl + '&pic=' + imgUrl;
+            window.open(url);
+        }
+        else if (name == "renren") {
+            var url = 'http://share.renren.com/share/buttonshare.do?link=' + shareUrl + '&title=' + title;
+            window.open(url);
+        }
+        else if (name == "momo") {
+        }
+        else if (name == "kaixin") {
+            var url = 'http://www.kaixin001.com/repaste/share.php?rurl=' + shareUrl + '&rcontent=' + title;
+            window.open(url);
+        }
+        else if (name == "douban") {
+            var url = 'http://www.douban.com/recommend/?url=' + shareUrl + '&title=' + title;
+            window.open(url);
+        }
+        else if (name == "tieba") {
         }
     }
     Global.share = share;
-    //通过微信分享api
-    function shareToWeiXin(title, desc, link, imgUrl) {
-        var self = this;
+    /**
+    * 通过微信分享api
+    * title       		标题
+    * desc        		描述
+    * link      		游戏链接
+    * imgUrl      		分享icon链接
+    * type        		0：设置分享到朋友圈和朋友数据 1:设置分享到朋友数据 2：设置分享到朋友圈数据
+    * backFun        	分享结束的回调
+    */
+    function shareToWeiXin(title, desc, link, imgUrl, type, backFun) {
+        if (type === void 0) { type = 0; }
+        if (backFun === void 0) { backFun = null; }
         WeixinApi.ready(function (api) {
             var info = new WeixinShareInfo();
             info.title = title; //分享的标题 长度不能超过512字节
@@ -87,9 +116,19 @@ var Global;
             info.link = link; //分享的连接
             info.imgUrl = imgUrl; //分享图片的地址 图片大小不能超过32k
             var backInfo = new WeixinShareCallbackInfo();
-            backInfo.confirm = self.confirmBack;
-            api.shareToFriend(info, backInfo);
-            api.shareToTimeline(info, backInfo);
+            if (backFun != null) {
+                backInfo.confirm = backFun;
+            }
+            if (type == 0) {
+                api.shareToFriend(info, backInfo);
+                api.shareToTimeline(info, backInfo);
+            }
+            else if (type == 1) {
+                api.shareToFriend(info, backInfo);
+            }
+            else if (type == 2) {
+                api.shareToTimeline(info, backInfo);
+            }
         });
     }
     Global.shareToWeiXin = shareToWeiXin;
@@ -105,6 +144,21 @@ var Global;
     function getScreen() {
     }
     Global.getScreen = getScreen;
+    //调用打电话功能
+    function callPhone(telNum) {
+        window.open("tel:" + telNum, '_self');
+    }
+    Global.callPhone = callPhone;
+    //调用发短信功能
+    function sendMessage(telNum) {
+        window.open("sms:" + telNum, '_self');
+    }
+    Global.sendMessage = sendMessage;
+    //获取当前地址
+    function getCurUrl() {
+        return window.location.href;
+    }
+    Global.getCurUrl = getCurUrl;
     var _alert;
     //提示框
     /**

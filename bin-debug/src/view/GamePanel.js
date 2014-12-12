@@ -126,3 +126,4 @@ var GamePanel = (function (_super) {
     };
     return GamePanel;
 })(BasePanel);
+GamePanel.prototype.__class__ = "GamePanel";

@@ -41,8 +41,8 @@ var egret;
         __extends(StageText, _super);
         function StageText() {
             _super.call(this);
-            this._multiline = false;
-            this._maxChars = 0;
+            this._scaleX = 1;
+            this._scaleY = 1;
             this._size = 30;
             this._color = "#FFFFFF";
             this._fontFamily = "Arial";
@@ -50,6 +50,8 @@ var egret;
             this._italic = false;
             this._textAlign = "left";
             this._visible = false;
+            this._multiline = false;
+            this._maxChars = 0;
         }
         /**
          * @method egret.StageText#getText
@@ -109,6 +111,10 @@ var egret;
         };
         StageText.prototype._removeListeners = function () {
         };
+        StageText.prototype._setScale = function (x, y) {
+            this._scaleX = x;
+            this._scaleY = y;
+        };
         StageText.prototype.changePosition = function (x, y) {
         };
         StageText.prototype._setSize = function (value) {
@@ -138,6 +144,9 @@ var egret;
         };
         StageText.prototype._setMultiline = function (value) {
             this._multiline = value;
+        };
+        StageText.prototype._setMaxChars = function (value) {
+            this._maxChars = value;
         };
         StageText.prototype._resetStageText = function () {
         };

@@ -64,28 +64,50 @@ module Global {
 	} 
 
 	//一键分享到新浪微博、腾讯微博、qq空间等代码
-	export function share(type,title,url,imgUrl):void
+	export function share(name:string,title:string,shareUrl:string,imgUrl:string):void
 	{ 
-		if(type == 1){
+		if(name == "sinaweibo"){
 		    //分享到新浪微博
-			var sharesinastring:string='http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+url+'&content=utf-8&sourceUrl='+url+'&pic='+imgUrl;
-			window.open(sharesinastring,'newwindow','height=400,width=400,top=100,left=100');
-		}else if(type == 2){
+			var url:string='http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+shareUrl+'&content=utf-8&sourceUrl='+shareUrl+'&pic='+imgUrl;
+			window.open(url);
+		}else if(name == "qqweibo"){
 			//分享到疼讯微博
-			var shareqqstring:string='http://v.t.qq.com/share/share.php?title='+title+'&url='+url+'&pic='+imgUrl;
-			window.open(shareqqstring,'newwindow','height=100,width=100,top=100,left=100');
-		}else if(type == 3){
+			var url:string='http://v.t.qq.com/share/share.php?title='+title+'&url='+shareUrl+'&pic='+imgUrl;
+			window.open(url);
+		}else if(name == "qqzone"){
 			//分享到QQ空间
-			var shareqqzonestring:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary='+title+'&url='+url+'&pics='+imgUrl;
-			window.open(shareqqzonestring,'newwindow','height=400,width=400,top=100,left=100');
-		// }else if(type == 4){
+			var url:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary='+title+'&url='+shareUrl+'&pics='+imgUrl;
+			window.open(url);
+		}else if(name == "qq"){
+			var url:string='http://connect.qq.com/widget/shareqq/index.html?title='+title+'&url='+shareUrl+'&pic='+imgUrl;
+			window.open(url);
+		}else if(name == "renren"){//没有图片
+			var url='http://share.renren.com/share/buttonshare.do?link='+shareUrl+'&title='+title;
+			window.open(url);
+		}else if(name == "momo"){
+
+		}else if(name == "kaixin"){//没有图片  --没有适配移动端
+			var url='http://www.kaixin001.com/repaste/share.php?rurl='+shareUrl+'&rcontent='+title;
+			window.open(url);
+		}else if(name == "douban"){//没有图片
+			var url='http://www.douban.com/recommend/?url='+shareUrl+'&title='+title;
+			window.open(url);
+		}else if(name == "tieba"){
 
 		}
 
 	} 
 
-	//通过微信分享api
-	export function shareToWeiXin(title,desc,link,imgUrl,backFun:Function = null):void {//微信分享
+    /**
+    * 通过微信分享api
+    * title       		标题
+    * desc        		描述
+    * link      		游戏链接
+    * imgUrl      		分享icon链接
+    * type        		0：设置分享到朋友圈和朋友数据 1:设置分享到朋友数据 2：设置分享到朋友圈数据
+    * backFun        	分享结束的回调
+    */
+	export function shareToWeiXin(title,desc,link,imgUrl,type:number = 0,backFun:Function = null):void {//微信分享
         WeixinApi.ready(function(api:WeixinApi){
             var info:WeixinShareInfo = new WeixinShareInfo();
             info.title = title;//分享的标题 长度不能超过512字节
@@ -98,8 +120,15 @@ module Global {
             	backInfo.confirm = backFun;
             }
 
-            api.shareToFriend(info,backInfo);
-            api.shareToTimeline(info,backInfo);
+            if(type == 0){
+	            api.shareToFriend(info,backInfo);
+	            api.shareToTimeline(info,backInfo);            	
+            }else if(type == 1){
+	            api.shareToFriend(info,backInfo);
+            }else if(type == 2){
+            	api.shareToTimeline(info,backInfo);
+            }
+
         })
     } 
 
@@ -116,6 +145,21 @@ module Global {
 	//调用canvas截屏
 	export function getScreen():void {
       
+    } 	
+
+	//调用打电话功能
+	export function callPhone(telNum:number):void {
+    	window.open("tel:"+telNum,'_self') 
+    } 
+
+	//调用发短信功能
+	export function sendMessage(telNum:number):void {
+    	window.open("sms:"+telNum,'_self') 
+    } 	
+
+	//获取当前地址
+	export function getCurUrl():string {
+		return window.location.href;
     } 	
 
     var _alert:AlertPanel;

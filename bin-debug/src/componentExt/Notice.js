@@ -38,3 +38,4 @@ var Notice = (function (_super) {
     };
     return Notice;
 })(egret.Sprite);
+Notice.prototype.__class__ = "Notice";

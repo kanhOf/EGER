@@ -198,4 +198,5 @@ var egret;
         }
         return Command;
     })();
+    Command.prototype.__class__ = "Command";
 })(egret || (egret = {}));

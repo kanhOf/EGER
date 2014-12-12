@@ -76,11 +76,12 @@ class GameOverPanel extends BasePanel{
         this.addChild(this.startBtn);
         this.startBtn.visible = false;
 
-        this.helpBtn = new ImgButton("helpBtn",this.tipsEffect1,"",30,1);
+        this.helpBtn = new ImgButton("helpBtn",null,"",30,1);
         this.helpBtn.x = 20;
         this.helpBtn.y = this.h - this.helpBtn.height - 20;
         this.addChild(this.helpBtn);   
         this.helpBtn.visible = false;
+        this.helpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.tipsEffect1,this); 
 
         this.shopBtn = new ImgButton("shopBtn",this.tipsEffect2,"",30,2);
         this.shopBtn.x = 150;
@@ -121,6 +122,8 @@ class GameOverPanel extends BasePanel{
 
     private tipsEffect1():void{
         EffectUtils.showTips("this.startBtn",1);
+        window["grayscale"](this.helpBtn);
+        this.helpBtn
     }
 
     private tipsEffect2():void{

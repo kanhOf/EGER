@@ -55,6 +55,7 @@ var BitmapBlink = (function (_super) {
         return false;
     };
     BitmapBlink.prototype.destroy = function () {
+        this._target.alpha = 1;
         this._target.removeEventListener(egret.Event.ENTER_FRAME, this.runDown, this);
         this._target.removeEventListener(egret.Event.ENTER_FRAME, this.runUp, this);
         this.dispatchEventWith(egret.Event.COMPLETE, false, this._target);
@@ -62,3 +63,4 @@ var BitmapBlink = (function (_super) {
     };
     return BitmapBlink;
 })(egret.EventDispatcher);
+BitmapBlink.prototype.__class__ = "BitmapBlink";

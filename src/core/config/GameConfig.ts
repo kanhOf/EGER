@@ -15,6 +15,9 @@ module GameConfig {
     // }
 	export var isDebug:boolean = false;
 
+	//是否在线
+	export var isOnLine:boolean = navigator.onLine;
+
 	//全局字体颜色表--可以扩展
 	export var TextColors = {
 		white:0xFFFFFF,//白色
@@ -50,6 +53,11 @@ module GameConfig {
 		}else if(microStr == "micromessenger"){
 			return true;
 		}
+	} 
+
+	//是不是大屏
+	export function isBigScreen():boolean{ 
+		return (document.body.clientHeight/document.body.clientWidth > 1.32);
 	} 
 
 	//获得浏览器类型 pc android ios -- 可扩展为其他 如 微信、qqzone、qq、微博、校内、facebook

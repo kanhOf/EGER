@@ -32,3 +32,4 @@ var GameScene = (function (_super) {
     };
     return GameScene;
 })(egret.DisplayObjectContainer);
+GameScene.prototype.__class__ = "GameScene";

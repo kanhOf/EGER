@@ -185,7 +185,7 @@ var egret;
              */
             this._colorTransform = null;
             this._worldTransform = new egret.Matrix();
-            //            this._worldBounds = new egret.Rectangle(0, 0, 0, 0);
+            this._worldBounds = new egret.Rectangle(0, 0, 0, 0);
             this._cacheBounds = new egret.Rectangle(0, 0, 0, 0);
         }
         DisplayObject.prototype._setDirty = function () {
@@ -326,29 +326,35 @@ var egret;
                 return this._anchorX;
             },
             set: function (value) {
-                if (egret.NumberUtils.isNumber(value) && this._anchorX != value) {
-                    this._anchorX = value;
-                    this._setDirty();
-                    this._setParentSizeDirty();
-                }
+                this._setAnchorX(value);
             },
             enumerable: true,
             configurable: true
         });
+        DisplayObject.prototype._setAnchorX = function (value) {
+            if (egret.NumberUtils.isNumber(value) && this._anchorX != value) {
+                this._anchorX = value;
+                this._setDirty();
+                this._setParentSizeDirty();
+            }
+        };
         Object.defineProperty(DisplayObject.prototype, "anchorY", {
             get: function () {
                 return this._anchorY;
             },
             set: function (value) {
-                if (egret.NumberUtils.isNumber(value) && this._anchorY != value) {
-                    this._anchorY = value;
-                    this._setDirty();
-                    this._setParentSizeDirty();
-                }
+                this._setAnchorY(value);
             },
             enumerable: true,
             configurable: true
         });
+        DisplayObject.prototype._setAnchorY = function (value) {
+            if (egret.NumberUtils.isNumber(value) && this._anchorY != value) {
+                this._anchorY = value;
+                this._setDirty();
+                this._setParentSizeDirty();
+            }
+        };
         Object.defineProperty(DisplayObject.prototype, "visible", {
             get: function () {
                 return this._visible;
@@ -435,12 +441,15 @@ var egret;
                 return this._scrollRect;
             },
             set: function (value) {
-                this._scrollRect = value;
-                this._setSizeDirty();
+                this._setScrollRect(value);
             },
             enumerable: true,
             configurable: true
         });
+        DisplayObject.prototype._setScrollRect = function (value) {
+            this._scrollRect = value;
+            this._setSizeDirty();
+        };
         Object.defineProperty(DisplayObject.prototype, "measuredWidth", {
             /**
              * 测量宽度
@@ -613,10 +622,10 @@ var egret;
             if (scrollRect) {
                 worldTransform.append(1, 0, 0, 1, -scrollRect.x, -scrollRect.y);
             }
-            if (false) {
-                var bounds = DisplayObject.getTransformBounds(o._getSize(egret.Rectangle.identity), o._worldTransform);
-                o._worldBounds.initialize(bounds.x, bounds.y, bounds.width, bounds.height);
-            }
+            //            if (this._texture_to_render){
+            //                var bounds:egret.Rectangle = DisplayObject.getTransformBounds(o._getSize(Rectangle.identity), o._worldTransform);
+            //                o._worldBounds.initialize(bounds.x, bounds.y, bounds.width, bounds.height);
+            //            }
             o.worldAlpha = parent.worldAlpha * o._alpha;
         };
         /**

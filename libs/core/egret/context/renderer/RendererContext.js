@@ -70,7 +70,7 @@ var egret;
          * @param x {number}
          * @param y {number}
          * @param w {number}
-         * @param h {number}
+         * @param h {numbe}
          */
         RendererContext.prototype.clearRect = function (x, y, w, h) {
         };
@@ -94,7 +94,7 @@ var egret;
         /**
          * 变换Context的当前渲染矩阵
          * @method egret.RendererContext#setTransform
-         * @param matrix {egret.Matrix}
+         * @param matrix {egret.Matri}
          */
         RendererContext.prototype.setTransform = function (matrix) {
         };
@@ -102,7 +102,7 @@ var egret;
          * 设置渲染alpha
          * @method egret.RendererContext#setAlpha
          * @param value {number}
-         * @param blendMode {egret.BlendMode}
+         * @param blendMode {egret.BlendMod}
          */
         RendererContext.prototype.setAlpha = function (value, blendMode) {
         };
@@ -130,9 +130,9 @@ var egret;
          * @param text {string}
          * @param x {number}
          * @param y {number}
-         * @param maxWidth {number}
+         * @param maxWidth {numbe}
          */
-        RendererContext.prototype.drawText = function (textField, text, x, y, maxWidth) {
+        RendererContext.prototype.drawText = function (textField, text, x, y, maxWidth, style) {
             this.profiler.onDrawImage();
         };
         RendererContext.prototype.strokeRect = function (x, y, w, h, color) {
@@ -150,6 +150,11 @@ var egret;
         RendererContext.createRendererContext = function (canvas) {
             return null;
         };
+        /**
+         * 是否对图像使用平滑处理
+         * 该特性目前只支持Canvas
+         */
+        RendererContext.imageSmoothingEnabled = true;
         return RendererContext;
     })(egret.HashObject);
     egret.RendererContext = RendererContext;

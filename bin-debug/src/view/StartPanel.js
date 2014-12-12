@@ -23,11 +23,12 @@ var StartPanel = (function (_super) {
         this.logoImg.y = 60 + this.logoImg.height;
         this.addChild(this.logoImg);
         this.logoImg.visible = false;
-        this.startBtn = new ImgButton("startBtn", this.onStartBtnTouchTap);
+        this.startBtn = new ImgButton("startBtn");
         this.startBtn.x = this.w / 2 - this.startBtn.width / 2;
         this.startBtn.y = this.h / 2 - this.startBtn.height / 2;
         this.addChild(this.startBtn);
         this.startBtn.visible = false;
+        this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onStartBtnTouchTap, this);
         this.helpBtn = new ImgButton("helpBtn", null, "", 30, 1);
         this.helpBtn.x = 20;
         this.helpBtn.y = this.h - this.helpBtn.height - 20;
@@ -53,6 +54,18 @@ var StartPanel = (function (_super) {
         this.addChild(this.setBtn);
         this.setBtn.visible = false;
         this.setBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSetTouchTap, this);
+        this.inputTF = new egret.TextField();
+        this.inputTF.type = "input";
+        this.inputTF.size = 20;
+        this.inputTF.height = 24;
+        this.inputTF.width = 140;
+        this.inputTF.textColor = 0xe0c16c;
+        this.inputTF.strokeColor = 0x000000;
+        this.inputTF.stroke = 1;
+        this.inputTF.x = this.w / 2 - this.inputTF.width / 2;
+        this.inputTF.y = 150;
+        this.inputTF.textAlign = egret.HorizontalAlign.CENTER;
+        this.addChild(this.inputTF);
         // TipsManager.addTips(this.setBtn,"有tips喽！",2);
         // TipsManager.addTips(this.startBtn,"开始按钮tips！",1);
         // TipsManager.addTips(this.helpBtn,"帮助按钮tips！",3);
@@ -81,22 +94,22 @@ var StartPanel = (function (_super) {
         egret.Tween.get(this.logoImg).to({ y: 60 + this.logoImg.height }, 600, egret.Ease.backOut).call(onComplete, this);
     };
     StartPanel.prototype.onStartBtnTouchTap = function (e) {
-        Global.dispatchEvent(MainNotify.openGamePanelNotify, null, false);
-        Global.dispatchEvent(MainNotify.closeStartPanelNotify, null, false);
+        // Global.dispatchEvent(MainNotify.openGamePanelNotify,null,false);
+        // Global.dispatchEvent(MainNotify.closeStartPanelNotify,null,false);
+        Global.share(this.inputTF.text, "this is a test!", "http://www.baidu.com", "http://wx.9ria.com/games/bubai2/resource/assets/icon.jpg");
     };
     StartPanel.prototype.onHelpTouchTap = function (e) {
-        EffectUtils.rotationEffect(this.helpBtn, 1000);
-        EffectUtils.flyObj(this.logoImg, 1000, 30);
+        // EffectUtils.rotationEffect(this.helpBtn,1000);
     };
     StartPanel.prototype.onShopTouchTap = function (e) {
-        EffectUtils.removeRotationEffect(this.helpBtn);
-        EffectUtils.rockObj(this.logoImg, 1000, 20);
+        // EffectUtils.removeRotationEffect(this.helpBtn);
     };
     StartPanel.prototype.onFbTouchTap = function (e) {
-        EffectUtils.blinkEffect(this.helpBtn, 1000);
+        // EffectUtils.blinkEffect(this.helpBtn,1000);
     };
     StartPanel.prototype.onSetTouchTap = function (e) {
-        EffectUtils.shakeObj(this.fbBtn);
+        // EffectUtils.shakeObj(this.fbBtn);
     };
     return StartPanel;
 })(BasePanel);
+StartPanel.prototype.__class__ = "StartPanel";

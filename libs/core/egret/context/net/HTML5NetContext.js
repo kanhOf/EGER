@@ -182,7 +182,7 @@ var egret;
         HTML5NetContext.prototype.loadTexture = function (loader) {
             var request = loader._request;
             var image = new Image();
-            image.crossOrigin = "Anonymous";
+            //            image.crossOrigin = "Anonymous";
             image.onload = onImageComplete;
             image.onerror = onLoadError;
             image.src = request.url;

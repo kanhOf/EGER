@@ -14,6 +14,8 @@ var GameConfig;
     //     egret.Profiler.getInstance().run();
     // }
     GameConfig.isDebug = false;
+    //是否在线
+    GameConfig.isOnLine = navigator.onLine;
     //全局字体颜色表--可以扩展
     GameConfig.TextColors = {
         white: 0xFFFFFF,
@@ -50,6 +52,11 @@ var GameConfig;
         }
     }
     GameConfig.isWeiXin = isWeiXin;
+    //是不是大屏
+    function isBigScreen() {
+        return (document.body.clientHeight / document.body.clientWidth > 1.32);
+    }
+    GameConfig.isBigScreen = isBigScreen;
     //获得浏览器类型 pc android ios -- 可扩展为其他 如 微信、qqzone、qq、微博、校内、facebook
     function systemType() {
         var ua = window.navigator.userAgent.toLowerCase();

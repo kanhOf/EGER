@@ -89,7 +89,7 @@ var PopUpManager;
                 }
                 else {
                     panel.x = popUpWidth;
-                    egret.Tween.get(panel).to({ x: -popUpWidth }, 500, egret.Ease.cubicOut);
+                    egret.Tween.get(panel).to({ x: 0 }, 500, egret.Ease.cubicOut);
                 }
                 break;
             case 5:
@@ -104,7 +104,7 @@ var PopUpManager;
                 break;
             case 6:
                 if (isAlert) {
-                    panel.y = popUpHeight;
+                    panel.y = GameConfig.curHeight();
                     egret.Tween.get(panel).to({ y: upY }, 500, egret.Ease.cubicOut);
                 }
                 else {

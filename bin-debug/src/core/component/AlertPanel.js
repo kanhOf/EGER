@@ -66,31 +66,32 @@ var AlertPanel = (function (_super) {
             this.descTF.textAlign = "center";
             this.descTF.text = this.descStr;
         }
-        this.acceptBtn = new ImgButton("acceptBtn", this.onAcceptBtnTouchTap);
+        var self = this;
+        var onCancelBtnTouchTap = function (e) {
+            if (self.cancelFun != null) {
+                self.cancelFun();
+            }
+            Global.dispatchEvent(MainNotify.closeAlertNotify);
+        };
+        var onAcceptBtnTouchTap = function (e) {
+            if (self.acceptFun != null) {
+                self.acceptFun();
+            }
+            Global.dispatchEvent(MainNotify.closeAlertNotify);
+        };
+        this.acceptBtn = new ImgButton("acceptBtn", onAcceptBtnTouchTap);
         this.addChild(this.acceptBtn);
         if (this.type == 1) {
             this.acceptBtn.x = this.bg.width / 2 - this.acceptBtn.width / 2;
             this.acceptBtn.y = this.bg.height - this.acceptBtn.height / 2 - 10;
         }
         else {
-            this.cancelBtn = new ImgButton("cancelBtn", this.onCancelBtnTouchTap);
+            this.cancelBtn = new ImgButton("cancelBtn", onCancelBtnTouchTap);
             this.cancelBtn.x = 60 + 50;
             this.cancelBtn.y = this.bg.height - this.cancelBtn.height / 2 - 10;
             this.addChild(this.cancelBtn);
             this.acceptBtn.x = this.bg.width - this.acceptBtn.width - 60 - 50;
             this.acceptBtn.y = this.bg.height - this.acceptBtn.height / 2 - 10;
-        }
-    };
-    AlertPanel.prototype.onCancelBtnTouchTap = function (e) {
-        if (this.cancelFun != null) {
-            this.cancelFun();
-        }
-        Global.dispatchEvent(MainNotify.closeAlertNotify);
-    };
-    AlertPanel.prototype.onAcceptBtnTouchTap = function (e) {
-        Global.dispatchEvent(MainNotify.closeAlertNotify);
-        if (this.acceptFun != null) {
-            this.acceptFun();
         }
     };
     AlertPanel.prototype.getWidth = function () {
@@ -101,3 +102,4 @@ var AlertPanel = (function (_super) {
     };
     return AlertPanel;
 })(BasePanel);
+AlertPanel.prototype.__class__ = "AlertPanel";

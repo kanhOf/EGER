@@ -48,3 +48,4 @@ var TipsPanel = (function (_super) {
     };
     return TipsPanel;
 })(BasePanel);
+TipsPanel.prototype.__class__ = "TipsPanel";

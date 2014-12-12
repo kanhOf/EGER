@@ -3,7 +3,7 @@ class GameApp extends egret.DisplayObjectContainer{
     /**
      * 加载进度界面
      */
-    private loadingView:LoadingUI;
+    private loadingPanel:LoadingPanel;
     public constructor() {
         super();
         this.addEventListener(egret.Event.ADDED_TO_STAGE,this.onAddToStage,this);
@@ -13,9 +13,6 @@ class GameApp extends egret.DisplayObjectContainer{
         egret.Injector.mapClass(RES.AnalyzerBase,RES.PropertiesAnalyzer,RES.PropertiesAnalyzer.TYPE);
         
         this.stage.addChild(GameConfig.gameScene());
-        //设置加载进度界面
-        this.loadingView  = new LoadingUI();
-        PopUpManager.addPopUp(this.loadingView);
 
         //初始化Resource资源加载库
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComplete,this);
@@ -28,18 +25,21 @@ class GameApp extends egret.DisplayObjectContainer{
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComplete,this);
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onResourceLoadComplete,this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS,this.onResourceProgress,this);
-        RES.loadGroup("preload");
+        RES.loadGroup("loading");
     }
     /**
      * preload资源组加载完成
      */
     private onResourceLoadComplete(event:RES.ResourceEvent):void {
         if(event.groupName=="preload"){
-            PopUpManager.removePopUp(this.loadingView);
-
+            PopUpManager.removePopUp(this.loadingPanel);
             RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onResourceLoadComplete,this);
             RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS,this.onResourceProgress,this);
             this.createGameScene();
+        }else if(event.groupName=="loading"){
+            this.loadingPanel = new LoadingPanel();
+            PopUpManager.addPopUp(this.loadingPanel);
+            RES.loadGroup("preload");
         }
     }
     /**
@@ -47,7 +47,7 @@ class GameApp extends egret.DisplayObjectContainer{
      */
     private onResourceProgress(event:RES.ResourceEvent):void {
         if(event.groupName=="preload"){
-            this.loadingView.setProgress(event.itemsLoaded,event.itemsTotal);
+            this.loadingPanel.setProgress(event.itemsLoaded,event.itemsTotal);
         }
     }
 

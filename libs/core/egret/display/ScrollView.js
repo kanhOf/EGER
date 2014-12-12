@@ -362,10 +362,12 @@ var egret;
             return this._content.explicitHeight || this._content.height;
         };
         ScrollView.prototype.getMaxScrollLeft = function () {
-            return this._getContentWidth() - this.width;
+            var max = this._getContentWidth() - this.width;
+            return Math.max(0, max);
         };
         ScrollView.prototype.getMaxScrollTop = function () {
-            return this._getContentHeight() - this.height;
+            var max = this._getContentHeight() - this.height;
+            return Math.max(0, max);
         };
         ScrollView.prototype._moveAfterTouchEnd = function () {
             if (this._velocitys.length == 0)
