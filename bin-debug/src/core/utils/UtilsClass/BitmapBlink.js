@@ -63,4 +63,4 @@ var BitmapBlink = (function (_super) {
     };
     return BitmapBlink;
 })(egret.EventDispatcher);
-BitmapBlink.prototype.__class__ = "BitmapBlink";
+//# sourceMappingURL=BitmapBlink.js.map

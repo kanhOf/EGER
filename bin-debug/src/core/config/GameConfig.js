@@ -143,3 +143,4 @@ var GameConfig;
     }
     GameConfig.curHeight = curHeight;
 })(GameConfig || (GameConfig = {}));
+//# sourceMappingURL=GameConfig.js.map

@@ -1,22 +1,22 @@
-/**
+﻿/**
  * Created by xiangtao on 2014.11.29.
  */
-class LoadingPanel extends egret.Sprite{
+class LoadingPanel extends egret.Sprite {
 
-    private mySheet:egret.SpriteSheet;
-    private pgBg:egret.Bitmap;
-    private pgBar:egret.Bitmap;
-    private textField:egret.TextField;
-    private bg:egret.Sprite = new egret.Sprite();
-    private w:number = 0;
-    private h:number = 0;
-    constructor(){
+    private mySheet: egret.SpriteSheet;
+    private pgBg: egret.Bitmap;
+    private pgBar: egret.Bitmap;
+    private textField: egret.TextField;
+    private bg: egret.Sprite = new egret.Sprite();
+    private w: number = 0;
+    private h: number = 0;
+    constructor() {
         super();
         this.mySheet = RES.getRes("load");
         this.createView();
     }
 
-    private createView():void{
+    private createView(): void {
         this.w = egret.MainContext.instance.stage.stageWidth;
         this.h = egret.MainContext.instance.stage.stageHeight;
 
@@ -25,23 +25,23 @@ class LoadingPanel extends egret.Sprite{
         this.bg.graphics.endFill();
         this.bg.width = this.w;
         this.bg.height = this.h;
-        this.addChild( this.bg );
+        this.addChild(this.bg);
         this.touchEnabled = true;
 
         this.pgBg = new egret.Bitmap;
         this.pgBg.anchorX = 0.5;
         this.pgBg.anchorY = 0.5;
         this.pgBg.texture = this.mySheet.getTexture("pgBg");
-        this.pgBg.x = this.w/2;
-        this.pgBg.y = this.h/2;
+        this.pgBg.x = this.w / 2;
+        this.pgBg.y = this.h / 2;
         this.addChild(this.pgBg);
 
         this.pgBar = new egret.Bitmap;
         this.pgBar.anchorX = 0.5;
         this.pgBar.anchorY = 0.5;
         this.pgBar.texture = this.mySheet.getTexture("pgBar");
-        this.pgBar.x = this.w/2 - 34;
-        this.pgBar.y = this.h/2;
+        this.pgBar.x = this.w / 2 - 34;
+        this.pgBar.y = this.h / 2;
         this.addChild(this.pgBar);
 
         this.textField = new egret.TextField();
@@ -52,15 +52,15 @@ class LoadingPanel extends egret.Sprite{
         this.textField.strokeColor = 0x000000;
         this.addChild(this.textField);
         this.textField.width = 100;
-        this.textField.x = this.w/2 - this.textField.width/2;
-        this.textField.y = this.h/2 - this.textField.height/2 - 10;
+        this.textField.x = this.w / 2 - this.textField.width / 2;
+        this.textField.y = this.h / 2 - this.textField.height / 2 - 10;
         this.textField.textAlign = "center";
         this.textField.text = "0%";
     }
 
-    public setProgress(current, total):void {
-        var rate:number = Math.round((current/total)*100);
+    public setProgress(current, total): void {
+        var rate: number = Math.round((current / total) * 100);
         this.textField.text = rate + "%";
-        this.pgBar.width = 282 * (current/total);
+        this.pgBar.width = 282 * (current / total);
     }
 }

@@ -34,3 +34,4 @@ var Network;
     }
     Network.onGetComplete = onGetComplete;
 })(Network || (Network = {}));
+//# sourceMappingURL=Network.js.map

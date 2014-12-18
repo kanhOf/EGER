@@ -99,4 +99,4 @@ var StartPanel = (function (_super) {
     };
     return StartPanel;
 })(BasePanel);
-StartPanel.prototype.__class__ = "StartPanel";
+//# sourceMappingURL=StartPanel.js.map

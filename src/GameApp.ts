@@ -1,69 +1,67 @@
 
-class GameApp extends egret.DisplayObjectContainer{
+class GameApp extends egret.DisplayObjectContainer {
     /**
-     * åŠ è½½è¿›åº¦ç•Œé¢
+     * ¼ÓÔØ½ø¶È½çÃæ
      */
     private loadingPanel:LoadingPanel;
     public constructor() {
         super();
-        this.addEventListener(egret.Event.ADDED_TO_STAGE,this.onAddToStage,this);
+        this.addEventListener(egret.Event.ADDED_TO_STAGE, this.onAddToStage, this);
     }
+    
+    private onAddToStage(event: egret.Event) {
+        egret.Injector.mapClass(RES.AnalyzerBase, RES.PropertiesAnalyzer, RES.PropertiesAnalyzer.TYPE);
 
-    private onAddToStage(event:egret.Event){
-        egret.Injector.mapClass(RES.AnalyzerBase,RES.PropertiesAnalyzer,RES.PropertiesAnalyzer.TYPE);
-        
         this.stage.addChild(GameConfig.gameScene());
 
-        //åˆå§‹åŒ–Resourceèµ„æºåŠ è½½åº“
-        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComplete,this);
-        RES.loadConfig("resource/resource.json","resource/");
+        //³õÊ¼»¯Resource×ÊÔ´¼ÓÔØ¿â
+        RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+        RES.loadConfig("resource/resource.json", "resource/");
     }
     /**
-     * é…ç½®æ–‡ä»¶åŠ è½½å®Œæˆ,å¼€å§‹é¢„åŠ è½½preloadèµ„æºç»„ã€‚
+     * ÅäÖÃÎÄ¼ş¼ÓÔØÍê³É,¿ªÊ¼Ô¤¼ÓÔØpreload×ÊÔ´×é¡£
      */
-    private onConfigComplete(event:RES.ResourceEvent):void{
-        RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE,this.onConfigComplete,this);
-        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onResourceLoadComplete,this);
-        RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS,this.onResourceProgress,this);
+    private onConfigComplete(event: RES.ResourceEvent): void {
+        RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
+        RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
+        RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.loadGroup("loading");
     }
     /**
-     * preloadèµ„æºç»„åŠ è½½å®Œæˆ
+     * preload×ÊÔ´×é¼ÓÔØÍê³É
      */
-    private onResourceLoadComplete(event:RES.ResourceEvent):void {
-        if(event.groupName=="preload"){
+    private onResourceLoadComplete(event: RES.ResourceEvent): void {
+        if (event.groupName == "preload") {
             PopUpManager.removePopUp(this.loadingPanel);
-            RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE,this.onResourceLoadComplete,this);
-            RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS,this.onResourceProgress,this);
+            RES.removeEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
+            RES.removeEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
             this.createGameScene();
-        }else if(event.groupName=="loading"){
+        } else if (event.groupName == "loading") {
             this.loadingPanel = new LoadingPanel();
             PopUpManager.addPopUp(this.loadingPanel);
             RES.loadGroup("preload");
         }
+
     }
     /**
-     * preloadèµ„æºç»„åŠ è½½è¿›åº¦
+     * preload×ÊÔ´×é¼ÓÔØ½ø¶È
      */
-    private onResourceProgress(event:RES.ResourceEvent):void {
-        if(event.groupName=="preload"){
-            this.loadingPanel.setProgress(event.itemsLoaded,event.itemsTotal);
+    private onResourceProgress(event: RES.ResourceEvent): void {
+        if (event.groupName == "preload") {
+            this.loadingPanel.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     }
 
     /**
-     * åˆ›å»ºæ¸¸æˆåœºæ™¯
+     * ´´½¨ÓÎÏ·³¡¾°
      */
-    private createGameScene():void{
-
-        if(GameConfig.isDebug){
-            egret.Profiler.getInstance().run();
-        }
+    private createGameScene(): void {
+ 
 
         PanelManager.initPanel();
-        Global.dispatchEvent(MainNotify.openStartPanelNotify,null,false);
+        Global.dispatchEvent(MainNotify.openStartPanelNotify, null, false);
 
-        Global.shareToWeiXin("EGERæé€Ÿå¼€å‘æ¡†æ¶","EGERåœ¨æ‰‹å¤©ä¸‹æˆ‘æœ‰ï¼å¿«æ¥è·å–æ¼”ç¤ºæ¡ˆä¾‹å§ï¼","http://wx.9ria.com/games/eger","http://wx.9ria.com/games/eger/resource/assets/icon.png");
+        Global.shareToWeiXin("EGER¼«ËÙ¿ª·¢¿ò¼Ü", "EGERÔÚÊÖÌìÏÂÎÒÓĞ£¡¿ìÀ´»ñÈ¡ÑİÊ¾°¸Àı°É£¡", "http://wx.9ria.com/games/eger", "http://wx.9ria.com/games/eger/resource/assets/icon.png");
     }
 
 }

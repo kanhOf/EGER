@@ -199,4 +199,4 @@ var ShareIconPanel = (function (_super) {
     };
     return ShareIconPanel;
 })(BasePanel);
-ShareIconPanel.prototype.__class__ = "ShareIconPanel";
+//# sourceMappingURL=ShareIconPanel.js.map

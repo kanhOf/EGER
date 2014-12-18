@@ -1,0 +1,6 @@
+D:\work\EGER\EGER\bin\EGER.dll.config
+D:\work\EGER\EGER\bin\EGER.dll
+D:\work\EGER\EGER\bin\EGER.pdb
+D:\work\EGER\EGER\obj\Debug\EGER.csprojResolveAssemblyReference.cache
+D:\work\EGER\EGER\obj\Debug\EGER.dll
+D:\work\EGER\EGER\obj\Debug\EGER.pdb

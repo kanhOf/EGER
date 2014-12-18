@@ -61,4 +61,4 @@ var LoadingPanel = (function (_super) {
     };
     return LoadingPanel;
 })(egret.Sprite);
-LoadingPanel.prototype.__class__ = "LoadingPanel";
+//# sourceMappingURL=LoadingPanel.js.map

@@ -209,3 +209,4 @@ var Global;
     }
     Global.closeSharePanel = closeSharePanel;
 })(Global || (Global = {}));
+//# sourceMappingURL=Global.js.map

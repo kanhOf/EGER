@@ -29,4 +29,4 @@ var SharePanel = (function (_super) {
     };
     return SharePanel;
 })(BasePanel);
-SharePanel.prototype.__class__ = "SharePanel";
+//# sourceMappingURL=SharePanel.js.map

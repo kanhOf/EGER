@@ -38,7 +38,7 @@ module RegUtils {
 	    }
 	    var re = /^(\d+)\.(\d+)\.(\d+)\.(\d+)$/g //匹配IP地址的正则表达式 
 	    if (re.test(strIP)) {
-	        if ( RegExp.$1 < 256 && RegExp.$2 < 256 && RegExp.$3 < 256 && RegExp.$4 < 256) {
+            if (Number(RegExp.$1) < 256 && Number(RegExp.$2) < 256 && Number(RegExp.$3) < 256 && Number(RegExp.$4) < 256) {
 	            return true;
 	        }
 	    }
@@ -52,7 +52,7 @@ module RegUtils {
 	*/
 	export function checkMobile( strMobile ):boolean
 	{
-	    var regu = /^[1][3][0-9]{9}$/;
+	    var regu:string = "/^[1][3][0-9]{9}$/";
 	    var re = new RegExp(regu);
 	    if (re.test(strMobile)) {
 	        return true;
@@ -71,7 +71,8 @@ module RegUtils {
 	{
 	    var phoneRegWithArea = /^[0][1-9]{2,3}-[0-9]{5,10}$/;
 	    var phoneRegNoArea = /^[1-9]{1}[0-9]{5,8}$/;
-	    var prompt = "您输入的电话号码不正确!" if ( strPhone.length > 9 ) {
+        var prompt = "您输入的电话号码不正确!";
+        if (strPhone.length > 9) {
 	        if ( phoneRegWithArea.test(strPhone) ) {
 	            return true;
 	        }
@@ -149,43 +150,6 @@ module RegUtils {
 	    else {
 	        return false;
 	    }
-	};
-	 
-	/* 
-	用途：判断是否是日期 
-	输入：date：日期；fmt：日期格式 
-	返回：如果通过验证返回true,否则返回false 
-	*/
-	export function isDate( date, fmt ):boolean 
-	{
-	    if (fmt == null) {
-	        fmt = "yyyyMMdd";
-	    }
-	    var yIndex = fmt.indexOf("yyyy");
-	    if (yIndex ==- 1) {
-	        return false;
-	    }
-	    var year = date.substring(yIndex, yIndex + 4);
-	    var mIndex = fmt.indexOf("MM");
-	    if (mIndex ==- 1) {
-	        return false;
-	    }
-	    var month = date.substring(mIndex, mIndex + 2);
-	    var dIndex = fmt.indexOf("dd");
-	    if (dIndex ==- 1) {
-	        return false;
-	    }
-	    var day = date.substring(dIndex, dIndex + 2);
-	    if (!isNumber(year) || year > "2100" || year < "1900") {
-	        return false;
-	    }
-	    if (!isNumber(month) || month > "12" || month < "01") {
-	        return false;
-	    }
-	    if (day > getMaxDay(year, month) || day < "01") {
-	        return false;
-	    }
-	    return true;
 	};
 	 
 	/*

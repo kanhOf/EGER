@@ -70,5 +70,5 @@ var lcp;
         return LListener;
     })();
     lcp.LListener = LListener;
-    LListener.prototype.__class__ = "lcp.LListener";
 })(lcp || (lcp = {}));
+//# sourceMappingURL=LListener.js.map

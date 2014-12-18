@@ -121,3 +121,4 @@ var NativeApi;
     }
     NativeApi.isVertical = isVertical;
 })(NativeApi || (NativeApi = {}));
+//# sourceMappingURL=NativeApi.js.map

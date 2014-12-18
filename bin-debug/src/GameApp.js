@@ -54,13 +54,10 @@ var GameApp = (function (_super) {
      * 创建游戏场景
      */
     GameApp.prototype.createGameScene = function () {
-        if (GameConfig.isDebug) {
-            egret.Profiler.getInstance().run();
-        }
         PanelManager.initPanel();
         Global.dispatchEvent(MainNotify.openStartPanelNotify, null, false);
         Global.shareToWeiXin("EGER极速开发框架", "EGER在手天下我有！快来获取演示案例吧！", "http://wx.9ria.com/games/eger", "http://wx.9ria.com/games/eger/resource/assets/icon.png");
     };
     return GameApp;
 })(egret.DisplayObjectContainer);
-GameApp.prototype.__class__ = "GameApp";
+//# sourceMappingURL=GameApp.js.map

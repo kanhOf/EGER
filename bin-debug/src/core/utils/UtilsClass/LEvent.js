@@ -47,5 +47,5 @@ var lcp;
         return LEvent;
     })(egret.Event);
     lcp.LEvent = LEvent;
-    LEvent.prototype.__class__ = "lcp.LEvent";
 })(lcp || (lcp = {}));
+//# sourceMappingURL=LEvent.js.map

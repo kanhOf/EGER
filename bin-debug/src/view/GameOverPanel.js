@@ -140,4 +140,4 @@ var GameOverPanel = (function (_super) {
     };
     return GameOverPanel;
 })(BasePanel);
-GameOverPanel.prototype.__class__ = "GameOverPanel";
+//# sourceMappingURL=GameOverPanel.js.map

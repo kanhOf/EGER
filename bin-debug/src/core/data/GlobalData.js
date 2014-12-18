@@ -69,3 +69,4 @@ var GlobalData;
     GlobalData.aiAttackNum = 0;
     GlobalData.winerNum = 0;
 })(GlobalData || (GlobalData = {}));
+//# sourceMappingURL=GlobalData.js.map

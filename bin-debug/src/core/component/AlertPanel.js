@@ -102,4 +102,4 @@ var AlertPanel = (function (_super) {
     };
     return AlertPanel;
 })(BasePanel);
-AlertPanel.prototype.__class__ = "AlertPanel";
+//# sourceMappingURL=AlertPanel.js.map

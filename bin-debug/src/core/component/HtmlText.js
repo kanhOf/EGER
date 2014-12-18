@@ -90,4 +90,4 @@ var HtmlText = (function (_super) {
     };
     return HtmlText;
 })(egret.DisplayObjectContainer);
-HtmlText.prototype.__class__ = "HtmlText";
+//# sourceMappingURL=HtmlText.js.map

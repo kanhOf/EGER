@@ -159,4 +159,4 @@ var ShareIconRender = (function (_super) {
     };
     return ShareIconRender;
 })(egret.DisplayObjectContainer);
-ShareIconRender.prototype.__class__ = "ShareIconRender";
+//# sourceMappingURL=ShareIconRender.js.map

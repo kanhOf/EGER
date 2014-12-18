@@ -94,4 +94,4 @@ var ImgButton = (function (_super) {
     };
     return ImgButton;
 })(egret.DisplayObjectContainer);
-ImgButton.prototype.__class__ = "ImgButton";
+//# sourceMappingURL=ImgButton.js.map
