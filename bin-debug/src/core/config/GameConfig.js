@@ -87,6 +87,35 @@ var GameConfig;
         }
     }
     GameConfig.systemType = systemType;
+    //获得平台类型 如 微信、qqzone、qq、微博、校内、facebook
+    function platformType() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (("" + ua.match(/micromessenger/i)) == "micromessenger") {
+            return "micromessenger";
+        }
+        else if (("" + ua.match(/qzone/i)) == "qzone") {
+            return "qzone";
+        }
+        else if (("" + ua.match(/weibo/i)) == "weibo") {
+            return "weibo";
+        }
+        else if (("" + ua.match(/qq/i)) == "qq") {
+            return "qq";
+        }
+        else if (("" + ua.match(/renren/i)) == "renren") {
+            return "renren";
+        }
+        else if (("" + ua.match(/txmicroblog/i)) == "txmicroblog") {
+            return "txmicroblog";
+        }
+        else if (("" + ua.match(/douban/i)) == "douban") {
+            return "douban";
+        }
+        else {
+            return "other";
+        }
+    }
+    GameConfig.platformType = platformType;
     var curScene;
     //当前游戏场景类
     function gameScene() {
@@ -113,46 +142,4 @@ var GameConfig;
         return egret.MainContext.instance.stage.stageHeight;
     }
     GameConfig.curHeight = curHeight;
-    //当前游戏角度
-    GameConfig.curAngle = window["orientation"];
-    //获得手机是横屏还是竖屏
-    //角度为0说明是竖屏，+-90是横屏
-    function isVertical() {
-        var angle = window["orientation"];
-        if (angle == 90) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-    GameConfig.isVertical = isVertical;
-    //手机旋转适配
-    //注意：
-    //在egret_loader.js中，rootContainer要放startGame在外定义
-    //具体旋转数值自己修改
-    //貌似不完善
-    function rotationResize(isRotation) {
-        if (isRotation === void 0) { isRotation = false; }
-        if (isRotation) {
-            egret.StageDelegate.getInstance().setDesignSize(800, 480);
-            window["rootContainer"].rotation = 90;
-            window["rootContainer"].x = egret.MainContext.instance.stage.stageWidth;
-        }
-        else {
-            egret.StageDelegate.getInstance().setDesignSize(480, 800);
-            window["rootContainer"].rotation = 0;
-            window["rootContainer"].x = 0;
-        }
-    }
-    GameConfig.rotationResize = rotationResize;
-    //监听MainNotify.onOrientationChange事件可以获得屏幕竖屏横屏变化和角度
-    // var orientationFun:Function = function(e){
-    //     // document.title = "" + GameConfig.curAngle;
-    //     document.title = "11--" + e.param;
-    // };  
-    // lcp.LListener.getInstance().addEventListener(MainNotify.onOrientationChange,orientationFun,this);
-    window["onorientationchange"] = function () {
-        lcp.LListener.getInstance().dispatchEvent(new lcp.LEvent(MainNotify.onOrientationChange, window["orientation"], false));
-    };
 })(GameConfig || (GameConfig = {}));

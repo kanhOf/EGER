@@ -54,6 +54,16 @@ module GlobalData {
 	//排行榜数据存储
 	export var rankArr:Array<any> = [];	
 
+	/*********************分享全局变量**********************/
+	//title
+	export var title:string = "";
+	//desc
+	export var desc:string = "";
+	//link
+	export var link:string = "";
+	//imgUrl
+	export var imgUrl:string = "";
+
 	//-------------------自己的----------------------------------------
 	//自己名字
 	export var myName:string = "";

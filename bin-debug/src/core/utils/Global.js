@@ -7,17 +7,6 @@
   */
 var Global;
 (function (Global) {
-    // 储存数据需要key和value，都必须是字符串
-    // var key:string = "bestscore";
-    // var value:string = "95";
-    // egret.localStorage.setItem(key,value);
-    // 这样就把数据存在本地了.
-    // 读取数据
-    // var score:string = egret.localStorage.getItem(key);
-    // 删除数据
-    // egret.localStorage.removeItem(key);
-    // 将所有数据清空
-    // egret.localStorage.clear();
     // 在游戏初始化的地方增加如下代码
     // this.stage.addChild(GameConfig.gameScene());
     //新建事件
@@ -44,33 +33,24 @@ var Global;
         lcp.LListener.getInstance().addEventListener(type, listener, thisObject, useCapture, priority);
     }
     Global.addEventListener = addEventListener;
-    //存储cookies 存储临时数据如最高分最低分之类的
-    function setCookie(name, value) {
-        document.cookie = name + "=" + value;
-    }
-    Global.setCookie = setCookie;
-    //读取cookies 读取临时数据如最高分最低分之类的
-    function getCookie(name) {
-        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
-        if (arr = document.cookie.match(reg))
-            return arr[2];
-        else
-            return null;
-    }
-    Global.getCookie = getCookie;
+    //多平台分享组件主要针对 微信、微博、qqzone、qq
     //一键分享到新浪微博、腾讯微博、qq空间等代码
-    function share(name, title, shareUrl, imgUrl) {
-        if (name == "sinaweibo") {
+    function shareUtils(name) {
+        var title = GlobalData.desc;
+        var shareUrl = GlobalData.link;
+        var imgUrl = GlobalData.imgUrl;
+        var desc = GlobalData.title;
+        if (name == "weibo") {
             //分享到新浪微博
             var url = 'http://v.t.sina.com.cn/share/share.php?title=' + title + '&url=' + shareUrl + '&content=utf-8&sourceUrl=' + shareUrl + '&pic=' + imgUrl;
             window.open(url);
         }
-        else if (name == "qqweibo") {
-            //分享到疼讯微博
+        else if (name == "txmicroblog") {
+            //分享到腾讯微博
             var url = 'http://v.t.qq.com/share/share.php?title=' + title + '&url=' + shareUrl + '&pic=' + imgUrl;
             window.open(url);
         }
-        else if (name == "qqzone") {
+        else if (name == "qzone") {
             //分享到QQ空间
             var url = 'http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary=' + title + '&url=' + shareUrl + '&pics=' + imgUrl;
             window.open(url);
@@ -83,8 +63,6 @@ var Global;
             var url = 'http://share.renren.com/share/buttonshare.do?link=' + shareUrl + '&title=' + title;
             window.open(url);
         }
-        else if (name == "momo") {
-        }
         else if (name == "kaixin") {
             var url = 'http://www.kaixin001.com/repaste/share.php?rurl=' + shareUrl + '&rcontent=' + title;
             window.open(url);
@@ -94,9 +72,11 @@ var Global;
             window.open(url);
         }
         else if (name == "tieba") {
+            var url = 'http://tieba.baidu.com/f/commit/share/openShareApi?url=' + shareUrl + '&title=' + title;
+            window.open(url);
         }
     }
-    Global.share = share;
+    Global.shareUtils = shareUtils;
     /**
     * 通过微信分享api
     * title       		标题
@@ -109,6 +89,10 @@ var Global;
     function shareToWeiXin(title, desc, link, imgUrl, type, backFun) {
         if (type === void 0) { type = 0; }
         if (backFun === void 0) { backFun = null; }
+        GlobalData.title = title;
+        GlobalData.desc = desc;
+        GlobalData.link = link;
+        GlobalData.imgUrl = imgUrl;
         WeixinApi.ready(function (api) {
             var info = new WeixinShareInfo();
             info.title = title; //分享的标题 长度不能超过512字节
@@ -132,33 +116,25 @@ var Global;
         });
     }
     Global.shareToWeiXin = shareToWeiXin;
-    //调用摄像头
-    function getCamera() {
+    //手机旋转适配
+    //注意：
+    //在egret_loader.js中，rootContainer要放startGame在外定义
+    //具体旋转数值自己修改
+    //貌似不完善
+    function rotationResize(isRotation) {
+        if (isRotation === void 0) { isRotation = false; }
+        if (isRotation) {
+            egret.StageDelegate.getInstance().setDesignSize(800, 480);
+            window["rootContainer"].rotation = 90;
+            window["rootContainer"].x = egret.MainContext.instance.stage.stageWidth;
+        }
+        else {
+            egret.StageDelegate.getInstance().setDesignSize(480, 800);
+            window["rootContainer"].rotation = 0;
+            window["rootContainer"].x = 0;
+        }
     }
-    Global.getCamera = getCamera;
-    //调用麦克风
-    function getMic() {
-    }
-    Global.getMic = getMic;
-    //调用canvas截屏
-    function getScreen() {
-    }
-    Global.getScreen = getScreen;
-    //调用打电话功能
-    function callPhone(telNum) {
-        window.open("tel:" + telNum, '_self');
-    }
-    Global.callPhone = callPhone;
-    //调用发短信功能
-    function sendMessage(telNum) {
-        window.open("sms:" + telNum, '_self');
-    }
-    Global.sendMessage = sendMessage;
-    //获取当前地址
-    function getCurUrl() {
-        return window.location.href;
-    }
-    Global.getCurUrl = getCurUrl;
+    Global.rotationResize = rotationResize;
     var _alert;
     //提示框
     /**
@@ -208,4 +184,28 @@ var Global;
         }
     }
     Global.closeAlertPanel = closeAlertPanel;
+    var _share;
+    //提示框
+    /**
+    * titleStr       标题
+    * descStr        描述
+    * acceptFun      确认方法
+    * effectType        0：没有动画 1:从中间轻微弹出 2：从中间猛烈弹出  3：从左向右 4：从右向左 5、从上到下 6、从下到上
+    */
+    function share() {
+        if (this._share == null) {
+            this._share = new ShareIconPanel();
+            PopUpManager.addPopUp(this._share, false, GameConfig.curWidth(), GameConfig.curHeight());
+            Global.addEventListener(MainNotify.closeShareNotify, this.closeSharePanel, this);
+        }
+    }
+    Global.share = share;
+    //关闭share方法
+    function closeSharePanel() {
+        if (this._share != null) {
+            PopUpManager.removePopUp(this._share, 0);
+            this._share = null;
+        }
+    }
+    Global.closeSharePanel = closeSharePanel;
 })(Global || (Global = {}));

@@ -16,6 +16,10 @@ var MainNotify;
     MainNotify.onDeviceMotion = "onDeviceMotion";
     //关闭提示
     MainNotify.closeAlertNotify = "closeAlertNotify";
+    //关闭分享
+    MainNotify.closeShareNotify = "closeAlertNotify";
+    //更新分享信息
+    MainNotify.updateShareNotify = "updateShareNotify";
     /**面板开关事件*/
     //打开开始界面
     MainNotify.openStartPanelNotify = "openStartPanelNotify";

@@ -23,15 +23,18 @@ class ImgButton extends egret.DisplayObjectContainer{
     * cartoonType   动画类型 1:【可爱】按下变小，放开弹大 2:按下变小，放开轻微弹大 3：按下变小，放开变大
     * 注意：如果有动画的话，只有动画结束才会触发click事件
     */
-    public constructor(imgName:string,backFun:Function = null,descStr:string = "",fontSize:number = 30,cartoonType:number = 1){
+    public constructor(imgName:string,backFun:Function = null,descStr:string = "",fontSize:number = 30,cartoonType:number = 1,assetsName:string = "assets"){
         super();
-        this.init(imgName,backFun,descStr,fontSize,cartoonType);
+        this.init(imgName,backFun,descStr,fontSize,cartoonType,assetsName);
     }
 
-    private init(imgName:string,backFun:Function = null,descStr:string = "",fontSize:number = 30,cartoonType:number = 1):void {
+    private init(imgName:string,backFun:Function = null,descStr:string = "",fontSize:number = 30,cartoonType:number = 1,assetsName:string = "assets"):void {
         this.cartoonType = cartoonType;
         this.backFun = backFun;
         this.btnImg = new egret.Bitmap();
+        if(assetsName != "assets"){
+            this.assets = RES.getRes(assetsName);
+        }
         this.btnImg.texture = this.assets.getTexture(imgName);
         this.addChild(this.btnImg);   
 

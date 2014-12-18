@@ -9,6 +9,7 @@ var StartPanel = (function (_super) {
     function StartPanel() {
         _super.call(this);
     }
+    // private inputTF:egret.TextField;
     // 初始化面板
     StartPanel.prototype.initPanel = function () {
         this.bg = new egret.Bitmap();
@@ -29,13 +30,13 @@ var StartPanel = (function (_super) {
         this.addChild(this.startBtn);
         this.startBtn.visible = false;
         this.startBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onStartBtnTouchTap, this);
-        this.helpBtn = new ImgButton("helpBtn", null, "", 30, 1);
+        this.helpBtn = new ImgButton("helpBtn", null, "相机", 30, 1);
         this.helpBtn.x = 20;
         this.helpBtn.y = this.h - this.helpBtn.height - 20;
         this.addChild(this.helpBtn);
         this.helpBtn.visible = false;
         this.helpBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onHelpTouchTap, this);
-        this.shopBtn = new ImgButton("shopBtn", null, "", 30, 2);
+        this.shopBtn = new ImgButton("shopBtn", null, "分享", 30, 2);
         this.shopBtn.x = 150;
         this.shopBtn.y = this.h - this.shopBtn.height - 20;
         this.addChild(this.shopBtn);
@@ -54,21 +55,6 @@ var StartPanel = (function (_super) {
         this.addChild(this.setBtn);
         this.setBtn.visible = false;
         this.setBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onSetTouchTap, this);
-        this.inputTF = new egret.TextField();
-        this.inputTF.type = "input";
-        this.inputTF.size = 20;
-        this.inputTF.height = 24;
-        this.inputTF.width = 140;
-        this.inputTF.textColor = 0xe0c16c;
-        this.inputTF.strokeColor = 0x000000;
-        this.inputTF.stroke = 1;
-        this.inputTF.x = this.w / 2 - this.inputTF.width / 2;
-        this.inputTF.y = 150;
-        this.inputTF.textAlign = egret.HorizontalAlign.CENTER;
-        this.addChild(this.inputTF);
-        // TipsManager.addTips(this.setBtn,"有tips喽！",2);
-        // TipsManager.addTips(this.startBtn,"开始按钮tips！",1);
-        // TipsManager.addTips(this.helpBtn,"帮助按钮tips！",3);
         this.initEffect();
     };
     StartPanel.prototype.initEffect = function () {
@@ -94,15 +80,16 @@ var StartPanel = (function (_super) {
         egret.Tween.get(this.logoImg).to({ y: 60 + this.logoImg.height }, 600, egret.Ease.backOut).call(onComplete, this);
     };
     StartPanel.prototype.onStartBtnTouchTap = function (e) {
-        // Global.dispatchEvent(MainNotify.openGamePanelNotify,null,false);
-        // Global.dispatchEvent(MainNotify.closeStartPanelNotify,null,false);
-        Global.share(this.inputTF.text, "this is a test!", "http://www.baidu.com", "http://wx.9ria.com/games/bubai2/resource/assets/icon.jpg");
+        Global.dispatchEvent(MainNotify.openGamePanelNotify, null, false);
+        Global.dispatchEvent(MainNotify.closeStartPanelNotify, null, false);
     };
     StartPanel.prototype.onHelpTouchTap = function (e) {
         // EffectUtils.rotationEffect(this.helpBtn,1000);
+        NativeApi.fileUpload(this.bg);
     };
     StartPanel.prototype.onShopTouchTap = function (e) {
         // EffectUtils.removeRotationEffect(this.helpBtn);
+        Global.share();
     };
     StartPanel.prototype.onFbTouchTap = function (e) {
         // EffectUtils.blinkEffect(this.helpBtn,1000);

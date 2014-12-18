@@ -40,6 +40,15 @@ var GlobalData;
     /*********************其他全局变量**********************/
     //排行榜数据存储
     GlobalData.rankArr = [];
+    /*********************分享全局变量**********************/
+    //title
+    GlobalData.title = "";
+    //desc
+    GlobalData.desc = "";
+    //link
+    GlobalData.link = "";
+    //imgUrl
+    GlobalData.imgUrl = "";
     //-------------------自己的----------------------------------------
     //自己名字
     GlobalData.myName = "";

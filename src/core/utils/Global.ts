@@ -8,21 +8,6 @@
 
 module Global {
 
-	// 储存数据需要key和value，都必须是字符串
-	// var key:string = "bestscore";
-	// var value:string = "95";
-	// egret.localStorage.setItem(key,value);
-	// 这样就把数据存在本地了.
-
-	// 读取数据
-	// var score:string = egret.localStorage.getItem(key);
-
-	// 删除数据
-	// egret.localStorage.removeItem(key);
-
-	// 将所有数据清空
-	// egret.localStorage.clear();
-
 	// 在游戏初始化的地方增加如下代码
 	// this.stage.addChild(GameConfig.gameScene());
 
@@ -45,36 +30,23 @@ module Global {
 		lcp.LListener.getInstance().addEventListener(type,listener,thisObject,useCapture,priority);
 	}
 
-	//存储cookies 存储临时数据如最高分最低分之类的
-	export function setCookie(name,value):void
-	{ 
-		document.cookie = name + "="+ value; 
-	} 
-
-	//读取cookies 读取临时数据如最高分最低分之类的
-	export function getCookie(name):string
-	{ 
-	    var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-	 
-	    if(arr=document.cookie.match(reg))
-	 
-	        return arr[2]; 
-	    else 
-	        return null; 
-	} 
-
+	//多平台分享组件主要针对 微信、微博、qqzone、qq
 	//一键分享到新浪微博、腾讯微博、qq空间等代码
-	export function share(name:string,title:string,shareUrl:string,imgUrl:string):void
+	export function shareUtils(name:string):void
 	{ 
-		if(name == "sinaweibo"){
+		var title = GlobalData.desc;
+		var shareUrl = GlobalData.link;
+		var imgUrl = GlobalData.imgUrl;
+		var desc = GlobalData.title;
+		if(name == "weibo"){
 		    //分享到新浪微博
 			var url:string='http://v.t.sina.com.cn/share/share.php?title='+title+'&url='+shareUrl+'&content=utf-8&sourceUrl='+shareUrl+'&pic='+imgUrl;
 			window.open(url);
-		}else if(name == "qqweibo"){
-			//分享到疼讯微博
+		}else if(name == "txmicroblog"){
+			//分享到腾讯微博
 			var url:string='http://v.t.qq.com/share/share.php?title='+title+'&url='+shareUrl+'&pic='+imgUrl;
 			window.open(url);
-		}else if(name == "qqzone"){
+		}else if(name == "qzone"){
 			//分享到QQ空间
 			var url:string='http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?summary='+title+'&url='+shareUrl+'&pics='+imgUrl;
 			window.open(url);
@@ -84,18 +56,16 @@ module Global {
 		}else if(name == "renren"){//没有图片
 			var url='http://share.renren.com/share/buttonshare.do?link='+shareUrl+'&title='+title;
 			window.open(url);
-		}else if(name == "momo"){
-
-		}else if(name == "kaixin"){//没有图片  --没有适配移动端
+		}else if(name == "kaixin"){//没有图片   ---暂时不支持 用户量太低
 			var url='http://www.kaixin001.com/repaste/share.php?rurl='+shareUrl+'&rcontent='+title;
 			window.open(url);
 		}else if(name == "douban"){//没有图片
 			var url='http://www.douban.com/recommend/?url='+shareUrl+'&title='+title;
 			window.open(url);
 		}else if(name == "tieba"){
-
+			var url='http://tieba.baidu.com/f/commit/share/openShareApi?url='+shareUrl+'&title='+title;
+			window.open(url);
 		}
-
 	} 
 
     /**
@@ -108,6 +78,10 @@ module Global {
     * backFun        	分享结束的回调
     */
 	export function shareToWeiXin(title,desc,link,imgUrl,type:number = 0,backFun:Function = null):void {//微信分享
+		GlobalData.title = title;
+		GlobalData.desc = desc;
+		GlobalData.link = link;
+		GlobalData.imgUrl = imgUrl;
         WeixinApi.ready(function(api:WeixinApi){
             var info:WeixinShareInfo = new WeixinShareInfo();
             info.title = title;//分享的标题 长度不能超过512字节
@@ -132,35 +106,22 @@ module Global {
         })
     } 
 
-	//调用摄像头
-	export function getCamera():void {
-      
-    } 
-
-	//调用麦克风
-	export function getMic():void {
-      
-    } 
-
-	//调用canvas截屏
-	export function getScreen():void {
-      
-    } 	
-
-	//调用打电话功能
-	export function callPhone(telNum:number):void {
-    	window.open("tel:"+telNum,'_self') 
-    } 
-
-	//调用发短信功能
-	export function sendMessage(telNum:number):void {
-    	window.open("sms:"+telNum,'_self') 
-    } 	
-
-	//获取当前地址
-	export function getCurUrl():string {
-		return window.location.href;
-    } 	
+	//手机旋转适配
+	//注意：
+	//在egret_loader.js中，rootContainer要放startGame在外定义
+	//具体旋转数值自己修改
+	//貌似不完善
+	export function rotationResize(isRotation:boolean = false):void{ 
+		if(isRotation){
+			egret.StageDelegate.getInstance().setDesignSize(800, 480);
+			window["rootContainer"].rotation = 90;
+			window["rootContainer"].x = egret.MainContext.instance.stage.stageWidth;
+		}else{
+			egret.StageDelegate.getInstance().setDesignSize(480, 800);
+			window["rootContainer"].rotation = 0;
+			window["rootContainer"].x = 0;
+		}
+	} 
 
     var _alert:AlertPanel;
  	//提示框
@@ -199,6 +160,31 @@ module Global {
 		if(this._alert != null){
 			PopUpManager.removePopUp(this._alert,1);
 			this._alert = null;
+		}	    	
+	}
+
+    var _share:ShareIconPanel;
+ 	//提示框
+    /**
+    * titleStr       标题
+    * descStr        描述
+    * acceptFun      确认方法
+    * effectType        0：没有动画 1:从中间轻微弹出 2：从中间猛烈弹出  3：从左向右 4：从右向左 5、从上到下 6、从下到上
+    */
+	export function share():void {
+		if(this._share == null){
+			this._share = new ShareIconPanel();
+			PopUpManager.addPopUp(this._share,false,GameConfig.curWidth(),GameConfig.curHeight());
+			Global.addEventListener(MainNotify.closeShareNotify,this.closeSharePanel,this);
+		}	
+    } 
+
+
+	//关闭share方法
+	export function closeSharePanel():void {
+		if(this._share != null){
+			PopUpManager.removePopUp(this._share,0);
+			this._share = null;
 		}	    	
 	}
 }

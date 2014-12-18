@@ -11,7 +11,6 @@ module PanelManager {
     var gamePanel:GamePanel;
     var gameOverPanel:GameOverPanel;
     var sharePanel:SharePanel;
-    var notice:Notice;	
 	// 初始化所有面板
 	export function initPanel():void{ 
 

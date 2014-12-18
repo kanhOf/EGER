@@ -15,7 +15,11 @@ module MainNotify {
 	//摇一摇监听
 	export var onDeviceMotion:string = "onDeviceMotion";
 	//关闭提示
-	export var closeAlertNotify:string = "closeAlertNotify";
+	export var closeAlertNotify:string = "closeAlertNotify";	
+	//关闭分享
+	export var closeShareNotify:string = "closeAlertNotify";
+	//更新分享信息
+	export var updateShareNotify:string = "updateShareNotify";
 
 	/**面板开关事件*/
 	//打开开始界面

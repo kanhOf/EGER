@@ -81,6 +81,28 @@ module GameConfig {
 		}else{
 			console.log("未知系统类型");
 		}
+	}  
+
+	//获得平台类型 如 微信、qqzone、qq、微博、校内、facebook
+	export function platformType():string{ 
+		var ua = window.navigator.userAgent.toLowerCase(); 
+		if(("" + ua.match(/micromessenger/i)) == "micromessenger"){
+			return "micromessenger";
+		}else if(("" + ua.match(/qzone/i)) == "qzone"){
+			return "qzone";
+		}else if(("" + ua.match(/weibo/i)) == "weibo"){
+			return "weibo";
+		}else if(("" + ua.match(/qq/i)) == "qq"){
+			return "qq";
+		}else if(("" + ua.match(/renren/i)) == "renren"){
+			return "renren";
+		}else if(("" + ua.match(/txmicroblog/i)) == "txmicroblog"){
+			return "txmicroblog";
+		}else if(("" + ua.match(/douban/i)) == "douban"){
+			return "douban";
+		}else{
+			return "other";
+		}
 	} 
 
 	var curScene:GameScene;
@@ -109,102 +131,6 @@ module GameConfig {
 	export function curHeight():number{ 
 		return egret.MainContext.instance.stage.stageHeight;
 	}
-
-	//当前游戏角度
-	export var curAngle:number = window["orientation"];	
-
-	//获得手机是横屏还是竖屏
-	//角度为0说明是竖屏，+-90是横屏
-	export function isVertical():boolean{ 
-		var angle = window["orientation"]; 
-		if(angle == 90){
-			return false;
-		}else{
-			return true;
-		}
-	} 
-
-	//手机旋转适配
-	//注意：
-	//在egret_loader.js中，rootContainer要放startGame在外定义
-	//具体旋转数值自己修改
-	//貌似不完善
-	export function rotationResize(isRotation:boolean = false):void{ 
-		if(isRotation){
-			egret.StageDelegate.getInstance().setDesignSize(800, 480);
-			window["rootContainer"].rotation = 90;
-			window["rootContainer"].x = egret.MainContext.instance.stage.stageWidth;
-		}else{
-			egret.StageDelegate.getInstance().setDesignSize(480, 800);
-			window["rootContainer"].rotation = 0;
-			window["rootContainer"].x = 0;
-		}
-	} 
-
-	//监听MainNotify.onOrientationChange事件可以获得屏幕竖屏横屏变化和角度
-    // var orientationFun:Function = function(e){
-    //     // document.title = "" + GameConfig.curAngle;
-    //     document.title = "11--" + e.param;
-    // };  
-    // lcp.LListener.getInstance().addEventListener(MainNotify.onOrientationChange,orientationFun,this);
-    window["onorientationchange"] = function(){
-        lcp.LListener.getInstance().dispatchEvent(new lcp.LEvent(MainNotify.onOrientationChange,window["orientation"],false));
-    };  
-
-	//监听MainNotify.onDeviceMotion事件可以获得摇一摇事件
-    //需要在index中增加如下代码
-	// <script type="text/javascript">
-	//     if (window.DeviceMotionEvent) {
-	//         window.addEventListener('devicemotion', deviceMotionHandler, false);
-	//     } else {
-	//         alert('本设备不支持devicemotion事件');
-	//     }
-	//     function deviceMotionHandler(eventData) {
-	//         window["rootContainer"].deviceMotionHandler(eventData);
-	//     }
-	// </script>
-	//需要在gameMain中增加如下代码
-    // private SHAKE_THRESHOLD = 3000;
-    // private last_update = 0;
-    // private temp_x = 0;
-    // private temp_y = 0;
-    // private temp_z = 0;
-    // private last_x = 0;
-    // private last_y = 0;
-    // private last_z = 0;
-    // public deviceMotionHandler(eventData):void{
-    //     var acceleration = eventData.accelerationIncludingGravity;
-    //     var curTime = new Date().getTime();
-    //     if ((curTime - this.last_update) > 100) {
-    //         var diffTime = curTime - this.last_update;
-    //         this.last_update = curTime;
-    //         this.temp_x = acceleration.x;
-    //         this.temp_y = acceleration.y;
-    //         this.temp_z = acceleration.z;
-    //         var speed = Math.abs(this.temp_x + this.temp_y + this.temp_z - this.last_x - this.last_y - this.last_z) / diffTime * 10000;
-
-    //         if (speed > this.SHAKE_THRESHOLD) {
-    //             // alert("摇动了");
-    //             lcp.LListener.getInstance().dispatchEvent(new lcp.LEvent(MainNotify.onDeviceMotion,eventData,false));
-    //         }
-    //         this.last_x = this.temp_x;
-    //         this.last_y = this.temp_y;
-    //         this.last_z = this.temp_z;
-    //     }
-    // }	
-
-    //监听MainNotify.onDeviceOrientation事件可以获得陀螺仪数据
-    // var orientationFun:Function = function(e){
-    //     var angleX:number = e.param.beta;
-	//     var angleY:number = e.param.gamma;
-	//     var angleZ:number = e.param.alpha;
-    // };  
-    // lcp.LListener.getInstance().addEventListener(MainNotify.onDeviceOrientation,orientationFun,this);
-    //需要就打开
-    // window["ondeviceorientation"] = function(e){
-    //     lcp.LListener.getInstance().dispatchEvent(new lcp.LEvent(MainNotify.onDeviceOrientation,{beta:Math.floor(e.beta), gamma:Math.floor(e.gamma), alpha:Math.floor(e.alpha)},false));
-    // };  
-
 
     /**----------------------------------FAQ:-----------------------------*/
 

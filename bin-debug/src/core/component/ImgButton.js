@@ -22,25 +22,30 @@ var ImgButton = (function (_super) {
     * cartoonType   动画类型 1:【可爱】按下变小，放开弹大 2:按下变小，放开轻微弹大 3：按下变小，放开变大
     * 注意：如果有动画的话，只有动画结束才会触发click事件
     */
-    function ImgButton(imgName, backFun, descStr, fontSize, cartoonType) {
+    function ImgButton(imgName, backFun, descStr, fontSize, cartoonType, assetsName) {
         if (backFun === void 0) { backFun = null; }
         if (descStr === void 0) { descStr = ""; }
         if (fontSize === void 0) { fontSize = 30; }
         if (cartoonType === void 0) { cartoonType = 1; }
+        if (assetsName === void 0) { assetsName = "assets"; }
         _super.call(this);
         this.assets = RES.getRes("assets"); //名称不一样的话需要修改
         this.isPlayCartoon = false;
         this.cartoonType = 1;
-        this.init(imgName, backFun, descStr, fontSize, cartoonType);
+        this.init(imgName, backFun, descStr, fontSize, cartoonType, assetsName);
     }
-    ImgButton.prototype.init = function (imgName, backFun, descStr, fontSize, cartoonType) {
+    ImgButton.prototype.init = function (imgName, backFun, descStr, fontSize, cartoonType, assetsName) {
         if (backFun === void 0) { backFun = null; }
         if (descStr === void 0) { descStr = ""; }
         if (fontSize === void 0) { fontSize = 30; }
         if (cartoonType === void 0) { cartoonType = 1; }
+        if (assetsName === void 0) { assetsName = "assets"; }
         this.cartoonType = cartoonType;
         this.backFun = backFun;
         this.btnImg = new egret.Bitmap();
+        if (assetsName != "assets") {
+            this.assets = RES.getRes(assetsName);
+        }
         this.btnImg.texture = this.assets.getTexture(imgName);
         this.addChild(this.btnImg);
         if (descStr != "") {

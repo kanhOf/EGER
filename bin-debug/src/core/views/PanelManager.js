@@ -11,7 +11,6 @@ var PanelManager;
     var gamePanel;
     var gameOverPanel;
     var sharePanel;
-    var notice;
     // 初始化所有面板
     function initPanel() {
         Global.addEventListener(MainNotify.openStartPanelNotify, this.openStartPanel, this);
