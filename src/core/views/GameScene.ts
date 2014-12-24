@@ -13,6 +13,10 @@ class GameScene extends egret.DisplayObjectContainer{
     public topLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
     // 特效层 如 飘字之类的
     public effectLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
+    // 主UI层 如 底部功能栏
+    public mainUILayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
+    // 通讯遮罩层 
+    public maskLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
 
     //构造方法
     public constructor(){
@@ -25,6 +29,8 @@ class GameScene extends egret.DisplayObjectContainer{
         this.addChild(this.uiLayer);
         this.addChild(this.topLayer);
         this.addChild(this.effectLayer);
+        this.addChild(this.mainUILayer);
+        this.addChild(this.maskLayer);
     }
 
 }

@@ -88,4 +88,3 @@ var PanelManager;
     }
     PanelManager.closeSharePanel = closeSharePanel;
 })(PanelManager || (PanelManager = {}));
-//# sourceMappingURL=PanelManager.js.map

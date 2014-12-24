@@ -1,5 +1,6 @@
 var game_file_list = [
     "core/views/BasePanel.js",
+    "componentExt/WaitPanel.js",
     "core/component/AlertPanel.js",
     "core/component/ShareIconPanel.js",
     "core/component/TipsPanel.js",
@@ -16,15 +17,20 @@ var game_file_list = [
     "core/views/PopUpManager.js",
     "core/utils/Global.js",
     "componentExt/LoadingPanel.js",
-    "core/component/ImgButton.js",
+    "core/component/EButton.js",
+    "core/component/EToggleButton.js",
     "core/data/PropertiesAnalyzer.js",
     "core/utils/UtilsClass/BitmapBlink.js",
     "core/utils/UtilsClass/TipsUtils.js",
     "core/views/PanelManager.js",
     "GameApp.js",
+    "core/component/ETabBar.js",
+    "core/component/ETextField.js",
+    "core/component/EToggleSwitch.js",
     "core/component/HtmlText.js",
     "core/component/TipsManager.js",
     "core/component/componentClass/ShareIconRender.js",
+    "core/net/SocketManager.js",
     "core/utils/EffectUtils.js",
     "core/utils/NativeApi.js"
 ];

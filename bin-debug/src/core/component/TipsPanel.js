@@ -48,4 +48,4 @@ var TipsPanel = (function (_super) {
     };
     return TipsPanel;
 })(BasePanel);
-//# sourceMappingURL=TipsPanel.js.map
+TipsPanel.prototype.__class__ = "TipsPanel";

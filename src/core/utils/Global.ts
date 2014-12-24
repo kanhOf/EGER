@@ -30,6 +30,9 @@ module Global {
 		lcp.LListener.getInstance().addEventListener(type,listener,thisObject,useCapture,priority);
 	}
 
+	//等待界面，主要用在通讯等待展示
+	export var waitPanel:WaitPanel;
+
 	//多平台分享组件主要针对 微信、微博、qqzone、qq
 	//一键分享到新浪微博、腾讯微博、qq空间等代码
 	export function shareUtils(name:string):void

@@ -17,13 +17,13 @@ class ShareIconRender extends egret.DisplayObjectContainer{
     private doubanTF:egret.TextField = new egret.TextField();
     private assets:egret.SpriteSheet = RES.getRes("socialIcon");//名称不一样的话需要修改
     private bg:egret.Sprite = new egret.Sprite();
-    private weixinBtn:ImgButton;
-    private qqzoneBtn:ImgButton;
-    private sinaweiboBtn:ImgButton;
-    private qqBtn:ImgButton;
-    private renrenBtn:ImgButton;
-    private qqweiboBtn:ImgButton;
-    private doubanBtn:ImgButton;
+    private weixinBtn:EButton;
+    private qqzoneBtn:EButton;
+    private sinaweiboBtn:EButton;
+    private qqBtn:EButton;
+    private renrenBtn:EButton;
+    private qqweiboBtn:EButton;
+    private doubanBtn:EButton;
     private w:number = 0;
     private h:number = 0;    
     public constructor(){
@@ -54,43 +54,43 @@ class ShareIconRender extends egret.DisplayObjectContainer{
 
         var btnY1:number = 40;
         var btnY2:number = 130;
-        this.weixinBtn = new ImgButton("weixin",null,"",30,1,"socialIcon");
+        this.weixinBtn = new EButton(this,"weixin",null,"",30,1,"socialIcon");
         this.weixinBtn.x = 20;
         this.weixinBtn.y = btnY1;        
         this.addChild(this.weixinBtn);
         this.weixinBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onWeixinBtnTouchTap,this);   
 
-        this.qqzoneBtn = new ImgButton("qqzone",null,"",30,1,"socialIcon");
+        this.qqzoneBtn = new EButton(this,"qqzone",null,"",30,1,"socialIcon");
         this.qqzoneBtn.x = this.weixinBtn.x + this.qqzoneBtn.width + 20;
         this.qqzoneBtn.y = btnY1;        
         this.addChild(this.qqzoneBtn);
         this.qqzoneBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onQQzoneBtnTouchTap,this);   
 
-        this.sinaweiboBtn = new ImgButton("sinaweibo",null,"",30,1,"socialIcon");
+        this.sinaweiboBtn = new EButton(this,"sinaweibo",null,"",30,1,"socialIcon");
         this.sinaweiboBtn.x = this.qqzoneBtn.x + this.sinaweiboBtn.width + 20;
         this.sinaweiboBtn.y = btnY1;        
         this.addChild(this.sinaweiboBtn);
         this.sinaweiboBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onSinaweiboBtnTouchTap,this);   
 
-        this.qqBtn = new ImgButton("qq",null,"",30,1,"socialIcon");
+        this.qqBtn = new EButton(this,"qq",null,"",30,1,"socialIcon");
         this.qqBtn.x = this.sinaweiboBtn.x + this.qqBtn.width + 20;
         this.qqBtn.y = btnY1;        
         this.addChild(this.qqBtn);
         this.qqBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onQQBtnTouchTap,this);   
 
-        this.renrenBtn = new ImgButton("renren",null,"",30,1,"socialIcon");
+        this.renrenBtn = new EButton(this,"renren",null,"",30,1,"socialIcon");
         this.renrenBtn.x = this.qqBtn.x + this.renrenBtn.width + 20;
         this.renrenBtn.y = btnY1;        
         this.addChild(this.renrenBtn);
         this.renrenBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onRenrenBtnTouchTap,this);   
 
-        this.qqweiboBtn = new ImgButton("qqweibo",null,"",30,1,"socialIcon");
+        this.qqweiboBtn = new EButton(this,"qqweibo",null,"",30,1,"socialIcon");
         this.qqweiboBtn.x = 20;
         this.qqweiboBtn.y = btnY2;        
         this.addChild(this.qqweiboBtn);
         this.qqweiboBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onQQweiboBtnTouchTap,this);   
 
-        this.doubanBtn = new ImgButton("douban",null,"",30,1,"socialIcon");
+        this.doubanBtn = new EButton(this,"douban",null,"",30,1,"socialIcon");
         this.doubanBtn.x = this.qqweiboBtn.x + this.doubanBtn.width + 20;
         this.doubanBtn.y = btnY2;        
         this.addChild(this.doubanBtn);

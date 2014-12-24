@@ -67,5 +67,5 @@ var RES;
         return PropertiesAnalyzer;
     })(RES.BinAnalyzer);
     RES.PropertiesAnalyzer = PropertiesAnalyzer;
+    PropertiesAnalyzer.prototype.__class__ = "RES.PropertiesAnalyzer";
 })(RES || (RES = {}));
-//# sourceMappingURL=PropertiesAnalyzer.js.map

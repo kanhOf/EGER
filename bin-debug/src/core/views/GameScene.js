@@ -22,6 +22,10 @@ var GameScene = (function (_super) {
         this.topLayer = new egret.DisplayObjectContainer();
         // 特效层 如 飘字之类的
         this.effectLayer = new egret.DisplayObjectContainer();
+        // 主UI层 如 底部功能栏
+        this.mainUILayer = new egret.DisplayObjectContainer();
+        // 通讯遮罩层 
+        this.maskLayer = new egret.DisplayObjectContainer();
         this.init();
     }
     //初始化场景类
@@ -29,7 +33,9 @@ var GameScene = (function (_super) {
         this.addChild(this.uiLayer);
         this.addChild(this.topLayer);
         this.addChild(this.effectLayer);
+        this.addChild(this.mainUILayer);
+        this.addChild(this.maskLayer);
     };
     return GameScene;
 })(egret.DisplayObjectContainer);
-//# sourceMappingURL=GameScene.js.map
+GameScene.prototype.__class__ = "GameScene";

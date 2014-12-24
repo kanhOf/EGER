@@ -46,4 +46,3 @@ var MainNotify;
     //关闭提示界面
     MainNotify.closeAlertPanelNotify = "closeAlertPanelNotify";
 })(MainNotify || (MainNotify = {}));
-//# sourceMappingURL=MainNotify.js.map

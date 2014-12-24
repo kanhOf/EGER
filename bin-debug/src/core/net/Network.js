@@ -4,7 +4,7 @@
   * (c) copyright 2014 - 2035
   * All Rights Reserved.
   * 存放网络公共方法
-  * 比如：
+  * 注意：是异步请求
   */
 var Network;
 (function (Network) {
@@ -12,6 +12,11 @@ var Network;
     //url 网络地址
     //data exp "name='dily'&age:18"
     function sendInfo(url, urlData) {
+        if (url === void 0) { url = ""; }
+        if (urlData === void 0) { urlData = ""; }
+        Global.waitPanel = new WaitPanel(1);
+        GameConfig.gameScene().maskLayer.removeChildren();
+        GameConfig.gameScene().maskLayer.addChild(Global.waitPanel);
         var loader = new egret.URLLoader();
         loader.dataFormat = egret.URLLoaderDataFormat.TEXT;
         loader.addEventListener(egret.Event.COMPLETE, this.onGetComplete, this);
@@ -25,6 +30,8 @@ var Network;
     //GET请求完成
     //发送消息 消息为 网址名称
     function onGetComplete(event) {
+        GameConfig.gameScene().maskLayer.removeChild(Global.waitPanel);
+        Global.waitPanel = null;
         var loader = event.target;
         loader.dataFormat = egret.URLLoaderDataFormat.TEXT;
         var data = loader.data;
@@ -34,4 +41,3 @@ var Network;
     }
     Network.onGetComplete = onGetComplete;
 })(Network || (Network = {}));
-//# sourceMappingURL=Network.js.map

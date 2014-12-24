@@ -7,7 +7,7 @@
     * todo:九宫格、多动画、图字等
     */
 
-class ImgButton extends egret.DisplayObjectContainer{
+class EButton extends egret.DisplayObjectContainer{
 
     private textField:egret.TextField;
     private assets:egret.SpriteSheet = RES.getRes("assets");//名称不一样的话需要修改
@@ -15,6 +15,7 @@ class ImgButton extends egret.DisplayObjectContainer{
     private backFun:Function;
     private isPlayCartoon:Boolean = false;
     private cartoonType:number = 1;
+    private param = {context:null,data:null};//回调参数
     /**
     * imgName       图片
     * backFun       点击方法 如果需要在backFun中使用this的，小心使用这个
@@ -23,8 +24,9 @@ class ImgButton extends egret.DisplayObjectContainer{
     * cartoonType   动画类型 1:【可爱】按下变小，放开弹大 2:按下变小，放开轻微弹大 3：按下变小，放开变大
     * 注意：如果有动画的话，只有动画结束才会触发click事件
     */
-    public constructor(imgName:string,backFun:Function = null,descStr:string = "",fontSize:number = 30,cartoonType:number = 1,assetsName:string = "assets"){
+    public constructor(context:any,imgName:string,backFun:Function = null,descStr:string = "",fontSize:number = 30,cartoonType:number = 1,assetsName:string = "assets"){
         super();
+        this.param.context = context;
         this.init(imgName,backFun,descStr,fontSize,cartoonType,assetsName);
     }
 
@@ -76,11 +78,21 @@ class ImgButton extends egret.DisplayObjectContainer{
 
         egret.setTimeout(function () {
             if(this.backFun != null){
-                this.backFun();
+                this.backFun(this.param);
             } 
         }, this, 300); 
     }
 
+    //设置绑定数据
+    public setBindData(data):void{
+        this.param.data = data;
+    }
+
+    //获取绑定数据
+    public getBindData():any{
+        return this.param.data;
+    }
+    
     public getBitmap():egret.Bitmap{
         return this.btnImg;
     }

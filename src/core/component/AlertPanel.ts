@@ -32,8 +32,8 @@ class AlertPanel extends BasePanel{
     }
 
     private bg:egret.Bitmap;
-    private acceptBtn:ImgButton;
-    private cancelBtn:ImgButton;
+    private acceptBtn:EButton;
+    private cancelBtn:EButton;
     private titleTF:egret.TextField;
     private descTF:egret.TextField;
 
@@ -82,13 +82,13 @@ class AlertPanel extends BasePanel{
             Global.dispatchEvent(MainNotify.closeAlertNotify);
         }
 
-        this.acceptBtn = new ImgButton("acceptBtn",onAcceptBtnTouchTap);
+        this.acceptBtn = new EButton(this,"acceptBtn",onAcceptBtnTouchTap);
         this.addChild(this.acceptBtn);  
         if(this.type == 1){
             this.acceptBtn.x = this.bg.width/2 - this.acceptBtn.width/2;
             this.acceptBtn.y = this.bg.height - this.acceptBtn.height/2 - 10;            
         }else{
-            this.cancelBtn = new ImgButton("cancelBtn",onCancelBtnTouchTap);
+            this.cancelBtn = new EButton(this,"cancelBtn",onCancelBtnTouchTap);
             this.cancelBtn.x = 60 + 50;
             this.cancelBtn.y = this.bg.height - this.cancelBtn.height/2 - 10;
             this.addChild(this.cancelBtn);     

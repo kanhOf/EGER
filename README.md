@@ -5,7 +5,9 @@ http://wx.9ria.com/games/eger/
 ===================================
 
   HTML5游戏极速开发解决方案
-  
+
+###近期版本更新内容，请查看发布文档
+
 ### 一、【解耦】方便管理  
 
     1、使用全局派发事件：Global.dispatchEvent(MainNotify.openGamePanelNotify,null,false);

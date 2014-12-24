@@ -13,12 +13,12 @@ var GameApp = (function (_super) {
     GameApp.prototype.onAddToStage = function (event) {
         egret.Injector.mapClass(RES.AnalyzerBase, RES.PropertiesAnalyzer, RES.PropertiesAnalyzer.TYPE);
         this.stage.addChild(GameConfig.gameScene());
-        //初始化Resource资源加载库
+        //��ʼ��Resource��Դ���ؿ�
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/resource.json", "resource/");
     };
     /**
-     * 配置文件加载完成,开始预加载preload资源组。
+     * �����ļ���������,��ʼԤ����preload��Դ�顣
      */
     GameApp.prototype.onConfigComplete = function (event) {
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
@@ -27,7 +27,7 @@ var GameApp = (function (_super) {
         RES.loadGroup("loading");
     };
     /**
-     * preload资源组加载完成
+     * preload��Դ����������
      */
     GameApp.prototype.onResourceLoadComplete = function (event) {
         if (event.groupName == "preload") {
@@ -43,7 +43,7 @@ var GameApp = (function (_super) {
         }
     };
     /**
-     * preload资源组加载进度
+     * preload��Դ�����ؽ���
      */
     GameApp.prototype.onResourceProgress = function (event) {
         if (event.groupName == "preload") {
@@ -51,13 +51,13 @@ var GameApp = (function (_super) {
         }
     };
     /**
-     * 创建游戏场景
+     * ������Ϸ����
      */
     GameApp.prototype.createGameScene = function () {
         PanelManager.initPanel();
         Global.dispatchEvent(MainNotify.openStartPanelNotify, null, false);
-        Global.shareToWeiXin("EGER极速开发框架", "EGER在手天下我有！快来获取演示案例吧！", "http://wx.9ria.com/games/eger", "http://wx.9ria.com/games/eger/resource/assets/icon.png");
+        Global.shareToWeiXin("EGER���ٿ�������", "EGER�����������У�������ȡ��ʾ�����ɣ�", "http://wx.9ria.com/games/eger", "http://wx.9ria.com/games/eger/resource/assets/icon.png");
     };
     return GameApp;
 })(egret.DisplayObjectContainer);
-//# sourceMappingURL=GameApp.js.map
+GameApp.prototype.__class__ = "GameApp";

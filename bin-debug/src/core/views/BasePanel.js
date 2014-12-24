@@ -50,4 +50,4 @@ var BasePanel = (function (_super) {
     };
     return BasePanel;
 })(egret.DisplayObjectContainer);
-//# sourceMappingURL=BasePanel.js.map
+BasePanel.prototype.__class__ = "BasePanel";
