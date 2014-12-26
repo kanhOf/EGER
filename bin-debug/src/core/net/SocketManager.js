@@ -1,11 +1,11 @@
 /**
-  * 网络公共类
-  * by dily
-  * (c) copyright 2014 - 2035
-  * All Rights Reserved.
-  * 存放网络公共方法
-  * 注意：是同步请求，不是异步
-  */
+ * 网络公共类
+ * by dily
+ * (c) copyright 2014 - 2035
+ * All Rights Reserved.
+ * 存放网络公共方法
+ * 注意：是同步请求，不是异步
+ */
 var SocketManager;
 (function (SocketManager) {
     var sock = new egret.WebSocket();

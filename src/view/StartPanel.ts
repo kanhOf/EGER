@@ -93,7 +93,7 @@ class StartPanel extends BasePanel{
 
         SocketManager.connectServer("echo.websocket.org",80);
         var socketFun:Function = function(e){
-            Global.alert("提示","数据收到了："+JSON.stringify(e.param));
+           Global.alert("提示","数据收到了："+JSON.stringify(e.param));
         }
         Global.addEventListener("uzwan_login",socketFun,this)
     }
