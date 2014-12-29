@@ -1,11 +1,20 @@
 #EGER
 
-演示地址：
-http://wx.9ria.com/games/eger/
 ===================================
 
   HTML5游戏极速开发解决方案
 
+演示地址1：
+http://wx.9ria.com/games/eger/
+微信扫码查看演示
+
+<img src="http://wx.9tech.cn/public/images/eger1.png" alt="qq" title="Egret极速开发框架EGER"/>
+
+演示地址2：
+http://wx.9ria.com/games/eger2/
+微信扫码查看演示
+
+<img src="http://wx.9tech.cn/public/images/eger2.png" alt="qq" title="Egret极速开发框架EGER"/>
 ###近期版本更新内容，请查看发布文档
 
 ### 一、【解耦】方便管理  
@@ -37,6 +46,10 @@ http://wx.9ria.com/games/eger/
 
 想要一起交流么，快快加入吧！
 EGER极速开发交流群：70843223
+或者微信扫码加入：
+
+<img src="http://wx.9tech.cn/public/images/eger.png" alt="qq" title="Egret极速开发框架EGER"/>
+
 
 [Egret官方网站](egret-labs.org)<br />
 [我的微博](http://weibo.com/1856526021/profile?topnav=1&wvr=6)<br />
