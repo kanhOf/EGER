@@ -69,5 +69,8 @@ var GlobalData;
     GlobalData.aiAttackNum = 0;
     GlobalData.winerNum = 0;
     GlobalData.initIsVertical = false;
-    GlobalData.isVerticalGame = true;
+    //如果横屏游戏置为true，反之false
+    //修改egret_loader.js
+    //egret.StageDelegate.getInstance().setDesignSize(800, 480);
+    GlobalData.isVerticalGame = false;
 })(GlobalData || (GlobalData = {}));

@@ -122,21 +122,13 @@ class StartPanel extends BasePanel{
     }
 
     public onStartBtnTouchTap(e:egret.TouchEvent):void{
-        // Global.dispatchEvent(MainNotify.openGamePanelNotify,null,false);
-        // Global.dispatchEvent(MainNotify.closeStartPanelNotify,null,false);
-        // GameConfig.gameScene().rotation += 10;
-        alert(""+NativeApi.isVertical());
-
-        window["rootContainer"].rotation = -90;
-            window["rootContainer"].x =  window["rootContainer"].width/2 - window["rootContainer"].height/2;
-            window["rootContainer"].y = window["rootContainer"].width;
+        Global.dispatchEvent(MainNotify.openGamePanelNotify,null,false);
+        Global.dispatchEvent(MainNotify.closeStartPanelNotify,null,false);
     }
 
     public onHelpTouchTap(e:egret.TouchEvent):void{
         // EffectUtils.rotationEffect(this.helpBtn,1000);
-        // NativeApi.fileUpload(this.bg);
-        // GameConfig.gameScene().rotation -= 10;
-        alert(""+NativeApi.isVertical());
+        NativeApi.fileUpload(this.bg);
     }
 
     public onShopTouchTap(e:egret.TouchEvent):void{
@@ -151,7 +143,6 @@ class StartPanel extends BasePanel{
     public onSetTouchTap(e:egret.TouchEvent):void{
         SocketManager.sendMessage('{"cmd":"uzwan_login","gameId":"0","from":"guzwan","userId":"3565526"}')
 
-        GameConfig.gameScene().rotation -= 10;
     }
 
 
