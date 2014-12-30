@@ -142,4 +142,11 @@ var GameConfig;
         return egret.MainContext.instance.stage.stageHeight;
     }
     GameConfig.curHeight = curHeight;
+    //是横屏还是竖屏
+    function isVertical() {
+        var _width = document.documentElement.clientWidth;
+        var _height = document.documentElement.clientHeight;
+        return _width < _height;
+    }
+    GameConfig.isVertical = isVertical;
 })(GameConfig || (GameConfig = {}));

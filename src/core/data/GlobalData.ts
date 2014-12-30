@@ -97,4 +97,11 @@ module GlobalData {
 	export var aiAttackNum:number = 0;		
 
 	export var winerNum:number = 0;		
+
+	export var initIsVertical:boolean = false;	
+
+	//如果横屏游戏置为true，反之false
+	//修改egret_loader.js
+	//egret.StageDelegate.getInstance().setDesignSize(800, 480);
+	export var isVerticalGame:boolean = false;		
 }

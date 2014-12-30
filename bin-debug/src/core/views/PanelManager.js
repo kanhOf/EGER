@@ -13,6 +13,11 @@ var PanelManager;
     var sharePanel;
     // 初始化所有面板
     function initPanel() {
+        var _width = document.documentElement.clientWidth;
+        var _height = document.documentElement.clientHeight;
+        if (_width < _height) {
+            GlobalData.initIsVertical = true;
+        }
         Global.addEventListener(MainNotify.openStartPanelNotify, this.openStartPanel, this);
         Global.addEventListener(MainNotify.closeStartPanelNotify, this.closeStartPanel, this);
         Global.addEventListener(MainNotify.openGamePanelNotify, this.openGamePanel, this);

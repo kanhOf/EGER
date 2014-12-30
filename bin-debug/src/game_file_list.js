@@ -1,8 +1,9 @@
 var game_file_list = [
     "core/views/BasePanel.js",
+    "componentExt/ShareIconPanel.js",
+    "componentExt/VerticalTipsPanel.js",
     "componentExt/WaitPanel.js",
     "core/component/AlertPanel.js",
-    "core/component/ShareIconPanel.js",
     "core/component/TipsPanel.js",
     "core/views/GameScene.js",
     "view/GameOverPanel.js",

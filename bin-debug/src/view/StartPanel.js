@@ -99,12 +99,19 @@ var StartPanel = (function (_super) {
         egret.Tween.get(this.logoImg).to({ y: 60 + this.logoImg.height }, 600, egret.Ease.backOut).call(onComplete, this);
     };
     StartPanel.prototype.onStartBtnTouchTap = function (e) {
-        Global.dispatchEvent(MainNotify.openGamePanelNotify, null, false);
-        Global.dispatchEvent(MainNotify.closeStartPanelNotify, null, false);
+        // Global.dispatchEvent(MainNotify.openGamePanelNotify,null,false);
+        // Global.dispatchEvent(MainNotify.closeStartPanelNotify,null,false);
+        // GameConfig.gameScene().rotation += 10;
+        alert("" + NativeApi.isVertical());
+        window["rootContainer"].rotation = -90;
+        window["rootContainer"].x = window["rootContainer"].width / 2 - window["rootContainer"].height / 2;
+        window["rootContainer"].y = window["rootContainer"].width;
     };
     StartPanel.prototype.onHelpTouchTap = function (e) {
         // EffectUtils.rotationEffect(this.helpBtn,1000);
-        NativeApi.fileUpload(this.bg);
+        // NativeApi.fileUpload(this.bg);
+        // GameConfig.gameScene().rotation -= 10;
+        alert("" + NativeApi.isVertical());
     };
     StartPanel.prototype.onShopTouchTap = function (e) {
         // EffectUtils.removeRotationEffect(this.helpBtn);
@@ -114,6 +121,7 @@ var StartPanel = (function (_super) {
     };
     StartPanel.prototype.onSetTouchTap = function (e) {
         SocketManager.sendMessage('{"cmd":"uzwan_login","gameId":"0","from":"guzwan","userId":"3565526"}');
+        GameConfig.gameScene().rotation -= 10;
     };
     return StartPanel;
 })(BasePanel);

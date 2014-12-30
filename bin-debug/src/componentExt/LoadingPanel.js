@@ -5,8 +5,12 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 /**
- * Created by xiangtao on 2014.11.29.
- */
+  * 加载类
+  * by dily
+  * (c) copyright 2014 - 2035
+  * All Rights Reserved.
+  * 加载主游戏资源
+  */
 var LoadingPanel = (function (_super) {
     __extends(LoadingPanel, _super);
     function LoadingPanel() {

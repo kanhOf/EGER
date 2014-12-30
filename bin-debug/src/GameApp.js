@@ -12,7 +12,7 @@ var GameApp = (function (_super) {
     }
     GameApp.prototype.onAddToStage = function (event) {
         egret.Injector.mapClass(RES.AnalyzerBase, RES.PropertiesAnalyzer, RES.PropertiesAnalyzer.TYPE);
-        this.stage.addChild(GameConfig.gameScene());
+        this.addChild(GameConfig.gameScene());
         //��ʼ��Resource��Դ���ؿ�
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/resource.json", "resource/");
@@ -55,6 +55,9 @@ var GameApp = (function (_super) {
      */
     GameApp.prototype.createGameScene = function () {
         PanelManager.initPanel();
+        if (GlobalData.isVerticalGame && GameConfig.isVertical()) {
+            NativeApi.showVerticalTips();
+        }
         Global.dispatchEvent(MainNotify.openStartPanelNotify, null, false);
         Global.shareToWeiXin("EGER���ٿ�������", "EGER�����������У�������ȡ��ʾ�����ɣ�", "http://wx.9ria.com/games/eger", "http://wx.9ria.com/games/eger/resource/assets/icon.png");
     };

@@ -68,4 +68,6 @@ var GlobalData;
     GlobalData.myAttackNum = 0;
     GlobalData.aiAttackNum = 0;
     GlobalData.winerNum = 0;
+    GlobalData.initIsVertical = false;
+    GlobalData.isVerticalGame = true;
 })(GlobalData || (GlobalData = {}));

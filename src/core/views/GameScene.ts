@@ -17,6 +17,8 @@ class GameScene extends egret.DisplayObjectContainer{
     public mainUILayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
     // 通讯遮罩层 
     public maskLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
+    // 旋转屏幕提示层 
+    public rotationTipsLayer:egret.DisplayObjectContainer = new egret.DisplayObjectContainer();
 
     //构造方法
     public constructor(){
@@ -31,6 +33,7 @@ class GameScene extends egret.DisplayObjectContainer{
         this.addChild(this.effectLayer);
         this.addChild(this.mainUILayer);
         this.addChild(this.maskLayer);
+        this.addChild(this.rotationTipsLayer);
     }
 
 }

@@ -5,8 +5,12 @@ var __extends = this.__extends || function (d, b) {
     d.prototype = new __();
 };
 /**
- * Created by xiangtao on 2014.11.29.
- */
+  * 通讯等待类
+  * by dily
+  * (c) copyright 2014 - 2035
+  * All Rights Reserved.
+  * 和服务端通讯时的显示效果
+  */
 var WaitPanel = (function (_super) {
     __extends(WaitPanel, _super);
     //type 1:白色等待 2：蓝色等待

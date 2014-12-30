@@ -106,16 +106,6 @@ module NativeApi {
 	//当前游戏角度
 	export var curAngle:number = window["orientation"];	
 
-	//监听MainNotify.onOrientationChange事件可以获得屏幕竖屏横屏变化和角度
-    // var orientationFun:Function = function(e){
-    //     // document.title = "" + GameConfig.curAngle;
-    //     document.title = "11--" + e.param;
-    // };  
-    // lcp.LListener.getInstance().addEventListener(MainNotify.onOrientationChange,orientationFun,this);
-    window["onorientationchange"] = function(){
-        lcp.LListener.getInstance().dispatchEvent(new lcp.LEvent(MainNotify.onOrientationChange,window["orientation"],false));
-    };  
-
 	//获得手机是横屏还是竖屏
 	//角度为0说明是竖屏，+-90是横屏
 	export function isVertical():boolean{ 
@@ -126,6 +116,47 @@ module NativeApi {
 			return true;
 		}
 	} 
+
+	//监听MainNotify.onOrientationChange事件可以获得屏幕竖屏横屏变化和角度
+    // var orientationFun:Function = function(e){
+    //     // document.title = "" + GameConfig.curAngle;
+    //     document.title = "11--" + e.param;
+    // };  
+    // lcp.LListener.getInstance().addEventListener(MainNotify.onOrientationChange,orientationFun,this);
+    window["onorientationchange"] = function(){
+        lcp.LListener.getInstance().dispatchEvent(new lcp.LEvent(MainNotify.onOrientationChange,window["orientation"],false));
+		if(GlobalData.isVerticalGame && GlobalData.initIsVertical && (window["orientation"] != 0)){
+			window.open(window.location.href);
+		}
+        if(GlobalData.isVerticalGame&&GameConfig.isVertical()){
+            NativeApi.showVerticalTips(true);
+        }else if(GlobalData.isVerticalGame&&!GameConfig.isVertical()){
+        	NativeApi.removeVerticalTips();
+        }
+    };  
+
+	//显示竖屏提示
+	export function showVerticalTips(bool:boolean = false):void{ 
+		GameConfig.gameScene().uiLayer.visible = false;
+		GameConfig.gameScene().topLayer.visible = false;
+		GameConfig.gameScene().effectLayer.visible = false;
+		GameConfig.gameScene().mainUILayer.visible = false;
+        Global.verticalTipsPanel = new VerticalTipsPanel(bool);
+        GameConfig.gameScene().rotationTipsLayer.removeChildren();
+        GameConfig.gameScene().rotationTipsLayer.addChild( Global.verticalTipsPanel );
+	} 
+
+	//移除竖屏提示
+	export function removeVerticalTips():void{ 
+		GameConfig.gameScene().uiLayer.visible = true;
+		GameConfig.gameScene().topLayer.visible = true;
+		GameConfig.gameScene().effectLayer.visible = true;
+		GameConfig.gameScene().mainUILayer.visible = true;
+        GameConfig.gameScene().rotationTipsLayer.removeChild( Global.verticalTipsPanel );
+        Global.verticalTipsPanel = null;
+	} 
+
+
 
 	//监听MainNotify.onDeviceMotion事件可以获得摇一摇事件
     //需要在index中增加如下代码

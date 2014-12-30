@@ -12,7 +12,7 @@ class GameApp extends egret.DisplayObjectContainer {
     private onAddToStage(event: egret.Event) {
         egret.Injector.mapClass(RES.AnalyzerBase, RES.PropertiesAnalyzer, RES.PropertiesAnalyzer.TYPE);
 
-        this.stage.addChild(GameConfig.gameScene());
+        this.addChild(GameConfig.gameScene());
 
         //初始化Resource资源加载库
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
@@ -56,9 +56,11 @@ class GameApp extends egret.DisplayObjectContainer {
      * 创建游戏场景
      */
     private createGameScene(): void {
- 
-
+         
         PanelManager.initPanel();
+        if(GlobalData.isVerticalGame&&GameConfig.isVertical()){
+            NativeApi.showVerticalTips();
+        }
         Global.dispatchEvent(MainNotify.openStartPanelNotify, null, false);
 
         Global.shareToWeiXin("EGER极速开发框架", "EGER在手天下我有！快来获取演示案例吧！", "http://wx.9ria.com/games/eger", "http://wx.9ria.com/games/eger/resource/assets/icon.png");

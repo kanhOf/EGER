@@ -26,6 +26,8 @@ var GameScene = (function (_super) {
         this.mainUILayer = new egret.DisplayObjectContainer();
         // 通讯遮罩层 
         this.maskLayer = new egret.DisplayObjectContainer();
+        // 旋转屏幕提示层 
+        this.rotationTipsLayer = new egret.DisplayObjectContainer();
         this.init();
     }
     //初始化场景类
@@ -35,6 +37,7 @@ var GameScene = (function (_super) {
         this.addChild(this.effectLayer);
         this.addChild(this.mainUILayer);
         this.addChild(this.maskLayer);
+        this.addChild(this.rotationTipsLayer);
     };
     return GameScene;
 })(egret.DisplayObjectContainer);

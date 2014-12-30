@@ -32,7 +32,9 @@ module Global {
 
 	//等待界面，主要用在通讯等待展示
 	export var waitPanel:WaitPanel;
-
+	//竖屏提示界面，主要用在横屏游戏竖屏展示
+	export var verticalTipsPanel:VerticalTipsPanel;
+	
 	//多平台分享组件主要针对 微信、微博、qqzone、qq
 	//一键分享到新浪微博、腾讯微博、qq空间等代码
 	export function shareUtils(name:string):void

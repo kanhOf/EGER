@@ -13,6 +13,11 @@ module PanelManager {
     var sharePanel:SharePanel;
 	// 初始化所有面板
 	export function initPanel():void{ 
+		var _width=document.documentElement.clientWidth;
+    	var _height=document.documentElement.clientHeight;
+    	if(_width < _height){
+    		GlobalData.initIsVertical = true;
+    	}
 
         Global.addEventListener(MainNotify.openStartPanelNotify,this.openStartPanel,this)
         Global.addEventListener(MainNotify.closeStartPanelNotify,this.closeStartPanel,this)

@@ -132,6 +132,13 @@ module GameConfig {
 		return egret.MainContext.instance.stage.stageHeight;
 	}
 
+	//是横屏还是竖屏
+	export function isVertical():boolean{ 
+		var _width=document.documentElement.clientWidth;
+    	var _height=document.documentElement.clientHeight;
+    	return _width < _height;
+	}
+
     /**----------------------------------FAQ:-----------------------------*/
 
 	// 横屏解决方法 by 张宇

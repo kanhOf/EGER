@@ -35,6 +35,8 @@ var Global;
     Global.addEventListener = addEventListener;
     //等待界面，主要用在通讯等待展示
     Global.waitPanel;
+    //竖屏提示界面，主要用在横屏游戏竖屏展示
+    Global.verticalTipsPanel;
     //多平台分享组件主要针对 微信、微博、qqzone、qq
     //一键分享到新浪微博、腾讯微博、qq空间等代码
     function shareUtils(name) {

@@ -1,6 +1,10 @@
-/**
- * Created by xiangtao on 2014.11.29.
- */
+  /**
+    * 通讯等待类
+    * by dily
+    * (c) copyright 2014 - 2035
+    * All Rights Reserved. 
+    * 和服务端通讯时的显示效果
+    */
 class WaitPanel extends egret.Sprite {
 
     private mySheet: egret.SpriteSheet;

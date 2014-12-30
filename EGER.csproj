@@ -316,6 +316,62 @@
     <Content Include="libs\core\extension\socket\NativeSocket.js" />
     <Content Include="libs\core\extension\socket\WebSocket.js" />
     <Content Include="libs\core\jslib\NumberUtils.js" />
+    <Content Include="obj\Debug\EGER.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\EGER.dll" />
+    <Content Include="obj\Debug\EGER.pdb" />
+    <Content Include="release\html5\index.html" />
+    <Content Include="release\html5\launcher\copy_native_loader.js" />
+    <Content Include="release\html5\launcher\egret_loader.js" />
+    <Content Include="release\html5\launcher\egret_require.js" />
+    <Content Include="release\html5\launcher\game-min.js" />
+    <Content Include="release\html5\launcher\grayscale.js" />
+    <Content Include="release\html5\launcher\native_require.js" />
+    <Content Include="release\html5\launcher\runtime_loader.js" />
+    <Content Include="release\html5\launcher\WeixinAPI.js" />
+    <Content Include="release\html5\resource\assets\assets.png" />
+    <Content Include="release\html5\resource\assets\icon.png" />
+    <Content Include="release\html5\resource\assets\load.png" />
+    <Content Include="release\html5\resource\assets\socialIcon.png" />
+    <Content Include="release\html5\resource\assets\默认素材\acceptBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\alertBg.png" />
+    <Content Include="release\html5\resource\assets\默认素材\bg.png" />
+    <Content Include="release\html5\resource\assets\默认素材\bg2.png" />
+    <Content Include="release\html5\resource\assets\默认素材\cancelBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\continueBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\fbBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\fontImg.png" />
+    <Content Include="release\html5\resource\assets\默认素材\helpBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\loadingCircle1.png" />
+    <Content Include="release\html5\resource\assets\默认素材\loadingCircle2.png" />
+    <Content Include="release\html5\resource\assets\默认素材\logoImg.png" />
+    <Content Include="release\html5\resource\assets\默认素材\menueBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\musicBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\nextBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\panelBg.png" />
+    <Content Include="release\html5\resource\assets\默认素材\pauseBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\pgBar.png" />
+    <Content Include="release\html5\resource\assets\默认素材\pgBg.png" />
+    <Content Include="release\html5\resource\assets\默认素材\rankBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\retryBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\setBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shareBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shareIcon\arrow.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shareIcon\douban.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shareIcon\qq.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shareIcon\qqweibo.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shareIcon\qqzone.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shareIcon\renren.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shareIcon\sinaweibo.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shareIcon\weixin.png" />
+    <Content Include="release\html5\resource\assets\默认素材\shopBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\soundBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\starImg.png" />
+    <Content Include="release\html5\resource\assets\默认素材\startBtn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\switchBar.png" />
+    <Content Include="release\html5\resource\assets\默认素材\switchOff.png" />
+    <Content Include="release\html5\resource\assets\默认素材\switchOn.png" />
+    <Content Include="release\html5\resource\assets\默认素材\tipsBg.png" />
+    <Content Include="release\html5\resource\assets\默认素材\titleBg.png" />
     <Content Include="resource\assets\assets.png" />
     <Content Include="resource\assets\icon.png" />
     <Content Include="resource\assets\load.png" />
@@ -422,6 +478,17 @@
     <Content Include="bin-debug\src\view\GamePanel.js.map" />
     <Content Include="bin-debug\src\view\SharePanel.js.map" />
     <Content Include="bin-debug\src\view\StartPanel.js.map" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="release\html5\base.manifest" />
+    <Content Include="release\html5\resource\assets\assets.json" />
+    <Content Include="release\html5\resource\assets\load.json" />
+    <Content Include="release\html5\resource\assets\socialIcon.json" />
+    <Content Include="release\html5\resource\assets\ui.properties" />
+    <Content Include="release\html5\resource\config\description.json" />
+    <Content Include="release\html5\resource\resource.json" />
+    <Content Include="release\html5\resource\ui.properties" />
+    <Content Include="release\html5\version.manifest" />
+    <Content Include="release\web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -484,7 +551,12 @@
     <TypeScriptCompile Include="src\view\StartPanel.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="release\" />
+    <Folder Include="obj\Debug\TempPE\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">12.0</VisualStudioVersion>
