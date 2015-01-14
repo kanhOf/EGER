@@ -71,7 +71,7 @@ var EToggleSwitch = (function (_super) {
             this.isPlayCartoon = false;
             this.isSelected = !this.isSelected;
             if (this.backFun != null) {
-                this.backFun(this.param);
+                this.backFun.apply(this.param.context, [this.param.data]);
             }
         };
         if (this.isSelected) {

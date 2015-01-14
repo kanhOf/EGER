@@ -8,7 +8,7 @@ var game_file_list = [
     "core/views/GameScene.js",
     "view/GameOverPanel.js",
     "view/GamePanel.js",
-    "view/SharePanel.js",
+    "view/JsSdkPanel.js",
     "view/StartPanel.js",
     "core/config/GameConfig.js",
     "core/utils/UtilsClass/LEvent.js",
@@ -21,6 +21,7 @@ var game_file_list = [
     "core/component/EButton.js",
     "core/component/EToggleButton.js",
     "core/data/PropertiesAnalyzer.js",
+    "core/utils/NativeApi.js",
     "core/utils/UtilsClass/BitmapBlink.js",
     "core/utils/UtilsClass/TipsUtils.js",
     "core/views/PanelManager.js",
@@ -29,9 +30,8 @@ var game_file_list = [
     "core/component/ETextField.js",
     "core/component/EToggleSwitch.js",
     "core/component/HtmlText.js",
+    "core/component/ShareIconRender.js",
     "core/component/TipsManager.js",
-    "core/component/componentClass/ShareIconRender.js",
     "core/net/SocketManager.js",
-    "core/utils/EffectUtils.js",
-    "core/utils/NativeApi.js"
+    "core/utils/EffectUtils.js"
 ];

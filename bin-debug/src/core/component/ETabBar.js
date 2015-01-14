@@ -69,10 +69,10 @@ var ETabBar = (function (_super) {
         }
     };
     ETabBar.prototype.onSelectBack = function (e) {
-        e.context.retset();
-        e.context.param.data = e.data;
-        e.context.setSelectedIndex(e.data);
-        e.context.backFun(e.context.param);
+        this.retset();
+        this.param.data = e.data;
+        this.setSelectedIndex(e.data);
+        this.backFun.apply(this.param.context, [this.param.data]);
     };
     //获得选中的index
     ETabBar.prototype.getSelectedIndex = function () {

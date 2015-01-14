@@ -21,6 +21,7 @@ class GamePanel extends BasePanel{
     private htmlTF:HtmlText;
     private alertTF:HtmlText;
     private tipsTF:HtmlText;
+    private typerTF:ETextField;
     // 初始化面板
     public initPanel():void{
         this.bg = new egret.Bitmap();
@@ -44,6 +45,18 @@ class GamePanel extends BasePanel{
         this.tipsTF.y = this.h - 170;
         this.addChild(this.tipsTF);
         this.tipsTF.alpha = 0;
+
+        this.typerTF = new ETextField();
+        this.typerTF.bold = true;
+        this.typerTF.strokeColor = 0x000000;
+        this.typerTF.stroke = 1;
+        this.typerTF.width = 370;
+        this.typerTF.setText("");
+        this.typerTF.x = this.w/2 -this.typerTF.width/2;
+        this.typerTF.y = this.h/2 + 100;
+        this.addChild(this.typerTF);
+
+        EffectUtils.typerEffect(this.typerTF,"牛逼大了，打字机效果呢！");
 
         this.helpBtn2 = new EButton(this,"helpBtn",this.alert1,"",30,1);
         this.helpBtn2.x = 20;

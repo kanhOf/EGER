@@ -135,7 +135,7 @@ var GameOverPanel = (function (_super) {
         egret.Tween.get(this.htmlTF).to({ y: 60 }, 600, egret.Ease.backOut).call(onComplete, this);
     };
     GameOverPanel.prototype.onStartBtnTouchTap = function (e) {
-        Global.dispatchEvent(MainNotify.openStartPanelNotify, null, false);
+        Global.dispatchEvent(MainNotify.openJsSdkPanelNotify, null, false);
         Global.dispatchEvent(MainNotify.closeGameOverPanelNotify, null, false);
     };
     return GameOverPanel;

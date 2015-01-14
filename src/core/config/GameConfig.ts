@@ -134,10 +134,13 @@ module GameConfig {
 
 	//是横屏还是竖屏
 	export function isVertical():boolean{ 
-		var _width=document.documentElement.clientWidth;
-    	var _height=document.documentElement.clientHeight;
-    	return _width < _height;
-	}
+		var angle = window["orientation"]; 
+		if(angle == 90){
+			return false;
+		}else{
+			return true;
+		}
+	} 
 
     /**----------------------------------FAQ:-----------------------------*/
 

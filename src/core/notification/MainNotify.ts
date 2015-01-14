@@ -34,10 +34,10 @@ module MainNotify {
 	export var openGameOverPanelNotify:string = "openGameOverPanelNotify";
 	//关闭结束界面
 	export var closeGameOverPanelNotify:string = "closeGameOverPanelNotify";
-	//打开分享界面
-	export var openSharePanelNotify:string = "openSharePanelNotify";
-	//关闭分享界面
-	export var closeSharePanelNotify:string = "closeSharePanelNotify";
+	//打开jsSdkPanel界面
+	export var openJsSdkPanelNotify:string = "openJsSdkPanelNotify";
+	//关闭jsSdkPanel界面
+	export var closeJsSdkPanelNotify:string = "closeJsSdkPanelNotify";
 
 	//打开设置界面
 	export var openSetPanelNotify:string = "openSetPanelNotify";

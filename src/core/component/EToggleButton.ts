@@ -94,7 +94,7 @@ class EToggleButton extends egret.DisplayObjectContainer{
 
         egret.setTimeout(function () {
             if(this.backFun != null){
-                this.backFun(this.param);
+                this.backFun.apply(this.param.context, [this.param.data]);
             } 
         }, this, 200); 
     }

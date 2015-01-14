@@ -87,7 +87,7 @@ var EButton = (function (_super) {
         egret.Tween.get(this).to({ scaleX: 0.5, scaleY: 0.5, x: this.x + this.btnImg.width / 4, y: this.y + this.btnImg.height / 4 }, 100, egret.Ease.sineIn).call(onComplete1, this);
         egret.setTimeout(function () {
             if (this.backFun != null) {
-                this.backFun(this.param);
+                this.backFun.apply(this.param.context, [this.param.data]);
             }
         }, this, 300);
     };

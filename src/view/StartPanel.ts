@@ -53,12 +53,11 @@ class StartPanel extends BasePanel{
         this.shopBtn.visible = false;
         this.shopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onShopTouchTap,this); 
 
-        this.fbBtn = new EButton(this,"fbBtn",null,"",30,3);
+        this.fbBtn = new EButton(this,"fbBtn",this.onFbTouchTap,"",30,3);
         this.fbBtn.x = 270;
         this.fbBtn.y = this.h - this.fbBtn.height - 20;
         this.addChild(this.fbBtn);   
         this.fbBtn.visible = false;
-        this.fbBtn.addEventListener(egret.TouchEvent.TOUCH_TAP,this.onFbTouchTap,this); 
 
         
         // okButton.label = RES.getRes("ui_text.ok");
@@ -137,7 +136,7 @@ class StartPanel extends BasePanel{
     }
 
     public onFbTouchTap(e:egret.TouchEvent):void{
-        
+        EffectUtils.shakeObj(this.fbBtn);
     }
 
     public onSetTouchTap(e:egret.TouchEvent):void{

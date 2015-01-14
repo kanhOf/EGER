@@ -10,7 +10,7 @@ module PanelManager {
     var startPanel:StartPanel;
     var gamePanel:GamePanel;
     var gameOverPanel:GameOverPanel;
-    var sharePanel:SharePanel;
+    var jsSdkPanel:JsSdkPanel;
 	// 初始化所有面板
 	export function initPanel():void{ 
 		var _width=document.documentElement.clientWidth;
@@ -28,8 +28,8 @@ module PanelManager {
         Global.addEventListener(MainNotify.openGameOverPanelNotify,this.openGameOverPanel,this)
         Global.addEventListener(MainNotify.closeGameOverPanelNotify,this.closeGameOverPanel,this)
 
-        Global.addEventListener(MainNotify.openSharePanelNotify,this.openSharePanel,this)
-        Global.addEventListener(MainNotify.closeSharePanelNotify,this.closeSharePanel,this)
+        Global.addEventListener(MainNotify.openJsSdkPanelNotify,this.openJsSdkPanel,this)
+        Global.addEventListener(MainNotify.closeJsSdkPanelNotify,this.closeJsSdkPanel,this)
 
 	} 
 
@@ -76,18 +76,18 @@ module PanelManager {
 			this.gameOverPanel = null;
 		}
 	} 
-	// 打开分享界面
-	export function openSharePanel():void{ 
-		if(this.sharePanel == null){
-			this.sharePanel = new SharePanel();
-			PopUpManager.addPopUp(this.sharePanel,false,0,0,3);
+	// 打开jsSdkPanel界面
+	export function openJsSdkPanel():void{ 
+		if(this.jsSdkPanel == null){
+			this.jsSdkPanel = new JsSdkPanel();
+			PopUpManager.addPopUp(this.jsSdkPanel,false,0,0,3);
 		}
 	} 
-	// 关闭分享界面
-	export function closeSharePanel():void{ 
-		if(this.sharePanel != null){
-			PopUpManager.removePopUp(this.sharePanel,3);
-			this.sharePanel = null;
+	// 关闭jsSdkPanel界面
+	export function closeJsSdkPanel():void{ 
+		if(this.jsSdkPanel != null){
+			PopUpManager.removePopUp(this.jsSdkPanel,3);
+			this.jsSdkPanel = null;
 		}
 	} 
 }

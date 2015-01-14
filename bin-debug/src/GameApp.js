@@ -55,6 +55,18 @@ var GameApp = (function (_super) {
      */
     GameApp.prototype.createGameScene = function () {
         PanelManager.initPanel();
+        window["onorientationchange"] = function () {
+            lcp.LListener.getInstance().dispatchEvent(new lcp.LEvent(MainNotify.onOrientationChange, window["orientation"], false));
+            if (GlobalData.isVerticalGame && GlobalData.initIsVertical && (window["orientation"] != 0)) {
+                location.reload();
+            }
+            if (GlobalData.isVerticalGame && GameConfig.isVertical()) {
+                NativeApi.showVerticalTips(true);
+            }
+            else if (GlobalData.isVerticalGame && !GameConfig.isVertical()) {
+                NativeApi.removeVerticalTips();
+            }
+        };
         if (GlobalData.isVerticalGame && GameConfig.isVertical()) {
             NativeApi.showVerticalTips();
         }

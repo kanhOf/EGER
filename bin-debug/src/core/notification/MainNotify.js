@@ -33,10 +33,10 @@ var MainNotify;
     MainNotify.openGameOverPanelNotify = "openGameOverPanelNotify";
     //关闭结束界面
     MainNotify.closeGameOverPanelNotify = "closeGameOverPanelNotify";
-    //打开分享界面
-    MainNotify.openSharePanelNotify = "openSharePanelNotify";
-    //关闭分享界面
-    MainNotify.closeSharePanelNotify = "closeSharePanelNotify";
+    //打开jsSdkPanel界面
+    MainNotify.openJsSdkPanelNotify = "openJsSdkPanelNotify";
+    //关闭jsSdkPanel界面
+    MainNotify.closeJsSdkPanelNotify = "closeJsSdkPanelNotify";
     //打开设置界面
     MainNotify.openSetPanelNotify = "openSetPanelNotify";
     //关闭设置界面

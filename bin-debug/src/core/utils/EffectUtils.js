@@ -244,4 +244,22 @@ var EffectUtils;
         onComplete1();
     }
     EffectUtils.rockObj = rockObj;
+    /**
+    * 文字打字机效果
+    * obj           文本对象
+    * content       文字
+    * interval      打字间隔 毫秒
+    */
+    function typerEffect(obj, content, interval) {
+        if (content === void 0) { content = ""; }
+        if (interval === void 0) { interval = 200; }
+        var strArr = content.split("");
+        var len = strArr.length;
+        for (var i = 0; i < len; i++) {
+            egret.setTimeout(function () {
+                obj.appendText(strArr[Number(this)]);
+            }, i, interval * i);
+        }
+    }
+    EffectUtils.typerEffect = typerEffect;
 })(EffectUtils || (EffectUtils = {}));

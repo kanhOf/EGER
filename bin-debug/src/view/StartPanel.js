@@ -42,12 +42,11 @@ var StartPanel = (function (_super) {
         this.addChild(this.shopBtn);
         this.shopBtn.visible = false;
         this.shopBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onShopTouchTap, this);
-        this.fbBtn = new EButton(this, "fbBtn", null, "", 30, 3);
+        this.fbBtn = new EButton(this, "fbBtn", this.onFbTouchTap, "", 30, 3);
         this.fbBtn.x = 270;
         this.fbBtn.y = this.h - this.fbBtn.height - 20;
         this.addChild(this.fbBtn);
         this.fbBtn.visible = false;
-        this.fbBtn.addEventListener(egret.TouchEvent.TOUCH_TAP, this.onFbTouchTap, this);
         // okButton.label = RES.getRes("ui_text.ok");
         this.setBtn = new EButton(this, "setBtn", null, RES.getRes("ui_text.ok"), 30, 1);
         this.setBtn.x = this.w - this.setBtn.width - 20;
@@ -111,6 +110,7 @@ var StartPanel = (function (_super) {
         Global.share();
     };
     StartPanel.prototype.onFbTouchTap = function (e) {
+        EffectUtils.shakeObj(this.fbBtn);
     };
     StartPanel.prototype.onSetTouchTap = function (e) {
         SocketManager.sendMessage('{"cmd":"uzwan_login","gameId":"0","from":"guzwan","userId":"3565526"}');

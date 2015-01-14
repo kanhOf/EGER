@@ -101,34 +101,20 @@ var NativeApi;
     NativeApi.curAngle = window["orientation"];
     //获得手机是横屏还是竖屏
     //角度为0说明是竖屏，+-90是横屏
-    function isVertical() {
-        var angle = window["orientation"];
-        if (angle == 90) {
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-    NativeApi.isVertical = isVertical;
+    // export function isVertical():boolean{ 
+    // 	var angle = window["orientation"]; 
+    // 	if(angle == 90){
+    // 		return false;
+    // 	}else{
+    // 		return true;
+    // 	}
+    // } 
     //监听MainNotify.onOrientationChange事件可以获得屏幕竖屏横屏变化和角度
     // var orientationFun:Function = function(e){
     //     // document.title = "" + GameConfig.curAngle;
     //     document.title = "11--" + e.param;
     // };  
     // lcp.LListener.getInstance().addEventListener(MainNotify.onOrientationChange,orientationFun,this);
-    window["onorientationchange"] = function () {
-        lcp.LListener.getInstance().dispatchEvent(new lcp.LEvent(MainNotify.onOrientationChange, window["orientation"], false));
-        if (GlobalData.isVerticalGame && GlobalData.initIsVertical && (window["orientation"] != 0)) {
-            window.open(window.location.href);
-        }
-        if (GlobalData.isVerticalGame && GameConfig.isVertical()) {
-            NativeApi.showVerticalTips(true);
-        }
-        else if (GlobalData.isVerticalGame && !GameConfig.isVertical()) {
-            NativeApi.removeVerticalTips();
-        }
-    };
     //显示竖屏提示
     function showVerticalTips(bool) {
         if (bool === void 0) { bool = false; }
@@ -147,7 +133,9 @@ var NativeApi;
         GameConfig.gameScene().topLayer.visible = true;
         GameConfig.gameScene().effectLayer.visible = true;
         GameConfig.gameScene().mainUILayer.visible = true;
-        GameConfig.gameScene().rotationTipsLayer.removeChild(Global.verticalTipsPanel);
+        if (GameConfig.gameScene().rotationTipsLayer.contains(Global.verticalTipsPanel)) {
+            GameConfig.gameScene().rotationTipsLayer.removeChild(Global.verticalTipsPanel);
+        }
         Global.verticalTipsPanel = null;
     }
     NativeApi.removeVerticalTips = removeVerticalTips;
