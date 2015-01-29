@@ -22,8 +22,8 @@ class EImage extends egret.Bitmap
         this.load(s);
     }
 
-    private static $(obj:any):ExImage{
-        var img:ExImage = obj["$"];
+    private static $(obj:any):EImage{
+        var img:EImage = obj["$"];
         delete obj["$"];obj.onload=null;obj.onerror=null;
         return img;
     }
@@ -51,10 +51,10 @@ class EImage extends egret.Bitmap
             var img:HTMLImageElement = new Image();
             img["$"] = this;
             img.onload = function(){
-                ExImage.$(this).onLoadBack(this, this.src);
+                EImage.$(this).onLoadBack(this, this.src);
             };
             img.onerror = function(){
-                ExImage.$(this).onLoadBack(this, this.src);
+                EImage.$(this).onLoadBack(this, this.src);
             }
             img.src = url;
         }else{

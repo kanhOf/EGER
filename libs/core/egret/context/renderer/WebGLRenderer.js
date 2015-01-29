@@ -209,11 +209,14 @@ var egret;
             }
         };
         WebGLRenderer.prototype.drawRepeatImage = function (texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat) {
+            var texture_scale_factor = egret.MainContext.instance.rendererContext.texture_scale_factor;
+            sourceWidth = sourceWidth * texture_scale_factor;
+            sourceHeight = sourceHeight * texture_scale_factor;
             for (var x = destX; x < destWidth; x += sourceWidth) {
                 for (var y = destY; y < destHeight; y += sourceHeight) {
                     var destW = Math.min(sourceWidth, destWidth - x);
                     var destH = Math.min(sourceHeight, destHeight - y);
-                    this.drawImage(texture, sourceX, sourceY, destW, destH, x, y, destW, destH);
+                    this.drawImage(texture, sourceX, sourceY, destW / texture_scale_factor, destH / texture_scale_factor, x, y, destW, destH);
                 }
             }
         };
@@ -226,11 +229,6 @@ var egret;
                 this.drawRepeatImage(texture, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight, repeat);
                 return;
             }
-            var texture_scale_factor = egret.MainContext.instance.rendererContext.texture_scale_factor;
-            sourceX = sourceX / texture_scale_factor;
-            sourceY = sourceY / texture_scale_factor;
-            sourceWidth = sourceWidth / texture_scale_factor;
-            sourceHeight = sourceHeight / texture_scale_factor;
             this.createWebGLTexture(texture);
             if (texture.webGLTexture !== this.currentBaseTexture || this.currentBatchSize >= this.size - 1) {
                 this._draw();

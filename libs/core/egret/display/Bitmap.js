@@ -154,6 +154,7 @@ var egret;
          * 绘制九宫格位图
          */
         Bitmap.drawScale9GridImage = function (renderContext, data, scale9Grid, destWidth, destHeight) {
+            var texture_scale_factor = egret.MainContext.instance.rendererContext.texture_scale_factor;
             var texture = data._texture_to_render;
             if (!texture || !scale9Grid) {
                 return;
@@ -165,8 +166,8 @@ var egret;
             var sourceY = texture._bitmapY;
             var sourceWidth = texture._bitmapWidth || textureWidth;
             var sourceHeight = texture._bitmapHeight || textureHeight;
-            var destX = texture._offsetX;
-            var destY = texture._offsetY;
+            var destX = texture._offsetX / texture_scale_factor;
+            var destY = texture._offsetY / texture_scale_factor;
             var s9g = egret.Rectangle.identity.initialize(scale9Grid.x - Math.round(destX), scale9Grid.y - Math.round(destX), scale9Grid.width, scale9Grid.height);
             var roundedDrawX = Math.round(destX);
             var roundedDrawY = Math.round(destY);
@@ -185,11 +186,11 @@ var egret;
                 else
                     s9g.x--;
             }
-            var sourceX2 = sourceX + s9g.x;
-            var sourceX3 = sourceX + s9g.right;
+            var sourceX2 = sourceX + s9g.x / texture_scale_factor;
+            var sourceX3 = sourceX + s9g.right / texture_scale_factor;
             var sourceRightW = sourceWidth - s9g.right;
-            var sourceY2 = sourceY + s9g.y;
-            var sourceY3 = sourceY + s9g.bottom;
+            var sourceY2 = sourceY + s9g.y / texture_scale_factor;
+            var sourceY3 = sourceY + s9g.bottom / texture_scale_factor;
             var sourceBottomH = sourceHeight - s9g.bottom;
             var destX1 = roundedDrawX + s9g.x;
             var destY1 = roundedDrawY + s9g.y;

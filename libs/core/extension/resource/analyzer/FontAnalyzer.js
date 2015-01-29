@@ -47,18 +47,29 @@ var RES;
             }
             var config;
             if (typeof (data) == "string") {
-                config = data;
-                this.sheetMap[name] = config;
+                try {
+                    var str = data;
+                    config = JSON.parse(str);
+                }
+                catch (e) {
+                }
                 resItem.loaded = false;
-                resItem.url = this.getTexturePath(resItem.url, config);
+                if (config) {
+                    resItem.url = this.getRelativePath(resItem.url, config["file"]);
+                }
+                else {
+                    config = data;
+                    resItem.url = this.getTexturePath(resItem.url, config);
+                }
+                this.sheetMap[name] = config;
             }
             else {
                 var texture = data;
                 config = this.sheetMap[name];
                 delete this.sheetMap[name];
                 if (texture) {
-                    var spriteSheet = new egret.BitmapTextSpriteSheet(texture, config);
-                    this.fileDic[name] = spriteSheet;
+                    var bitmapFont = new egret.BitmapFont(texture, config);
+                    this.fileDic[name] = bitmapFont;
                 }
             }
         };

@@ -59,10 +59,10 @@ class ETabBar extends egret.DisplayObjectContainer{
 
     }
 
-    private onSelectBack(e):void {
+    private onSelectBack(data):void {
         this.retset();
-        this.param.data = e.data;
-        this.setSelectedIndex(e.data);
+        this.param.data = data;
+        this.setSelectedIndex(data);
         this.backFun.apply(this.param.context, [this.param.data]);
     }
 

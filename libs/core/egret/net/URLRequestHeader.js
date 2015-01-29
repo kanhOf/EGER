@@ -24,26 +24,15 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-var __extends = this.__extends || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    __.prototype = b.prototype;
-    d.prototype = new __();
-};
 var egret;
 (function (egret) {
-    /**
-     * @deprecated
-     * 位图字体,此类已废弃，请使用egret.BitmapFont代替。
-     */
-    var BitmapTextSpriteSheet = (function (_super) {
-        __extends(BitmapTextSpriteSheet, _super);
-        function BitmapTextSpriteSheet(texture, fntText) {
-            _super.call(this, texture, fntText);
-            egret.Logger.warning("egret.BitmapTextSpriteSheet已废弃，请使用egret.BitmapFont代替。");
+    var URLRequestHeader = (function () {
+        function URLRequestHeader(name, value) {
+            this.name = name;
+            this.value = value;
         }
-        return BitmapTextSpriteSheet;
-    })(egret.BitmapFont);
-    egret.BitmapTextSpriteSheet = BitmapTextSpriteSheet;
-    BitmapTextSpriteSheet.prototype.__class__ = "egret.BitmapTextSpriteSheet";
+        return URLRequestHeader;
+    })();
+    egret.URLRequestHeader = URLRequestHeader;
+    URLRequestHeader.prototype.__class__ = "egret.URLRequestHeader";
 })(egret || (egret = {}));

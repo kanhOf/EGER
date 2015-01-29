@@ -374,7 +374,7 @@ var egret;
             set: function (value) {
                 if (egret.NumberUtils.isNumber(value) && this._rotation != value) {
                     this._rotation = value;
-                    this._setSizeDirty();
+                    this._setParentSizeDirty();
                 }
             },
             enumerable: true,
@@ -401,7 +401,7 @@ var egret;
             set: function (value) {
                 if (egret.NumberUtils.isNumber(value) && this._skewX != value) {
                     this._skewX = value;
-                    this._setSizeDirty();
+                    this._setParentSizeDirty();
                 }
             },
             enumerable: true,
@@ -414,7 +414,7 @@ var egret;
             set: function (value) {
                 if (egret.NumberUtils.isNumber(value) && this._skewY != value) {
                     this._skewY = value;
-                    this._setSizeDirty();
+                    this._setParentSizeDirty();
                 }
             },
             enumerable: true,
@@ -593,9 +593,8 @@ var egret;
             display._updateTransform();
             renderContext.setAlpha(display.worldAlpha, display.blendMode);
             renderContext.setTransform(display._worldTransform);
-            var scale_factor = egret.MainContext.instance.rendererContext.texture_scale_factor;
             var renderFilter = egret.RenderFilter.getInstance();
-            renderFilter.drawImage(renderContext, display, 0, 0, width * scale_factor, height * scale_factor, offsetX, offsetY, width, height);
+            renderFilter.drawImage(renderContext, display, 0, 0, width, height, offsetX, offsetY, width, height);
             return true;
         };
         /**
@@ -686,6 +685,9 @@ var egret;
                 }
                 else {
                     matrix.prependTransform(o._x, o._y, o._scaleX, o._scaleY, o._rotation, o._skewX, o._skewY, o._anchorOffsetX, o._anchorOffsetY);
+                }
+                if (o._scrollRect) {
+                    matrix.prepend(1, 0, 0, 1, -o._scrollRect.x, -o._scrollRect.y);
                 }
                 o = o._parent;
             }
@@ -809,9 +811,17 @@ var egret;
         };
         DisplayObject.prototype._getSize = function (resultRect) {
             if (this._hasHeightSet && this._hasWidthSet) {
+                this._clearSizeDirty();
                 return resultRect.initialize(0, 0, this._explicitWidth, this._explicitHeight);
             }
-            return this._measureSize(resultRect);
+            this._measureSize(resultRect);
+            if (this._hasWidthSet) {
+                resultRect.width = this._explicitWidth;
+            }
+            if (this._hasHeightSet) {
+                resultRect.height = this._explicitHeight;
+            }
+            return resultRect;
         };
         /**
          * 测量显示对象坐标与大小

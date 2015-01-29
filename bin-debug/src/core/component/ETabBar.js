@@ -68,10 +68,10 @@ var ETabBar = (function (_super) {
             }
         }
     };
-    ETabBar.prototype.onSelectBack = function (e) {
+    ETabBar.prototype.onSelectBack = function (data) {
         this.retset();
-        this.param.data = e.data;
-        this.setSelectedIndex(e.data);
+        this.param.data = data;
+        this.setSelectedIndex(data);
         this.backFun.apply(this.param.context, [this.param.data]);
     };
     //获得选中的index

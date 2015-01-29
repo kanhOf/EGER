@@ -42,6 +42,10 @@ var egret;
             if (width === void 0) { width = 480; }
             if (height === void 0) { height = 800; }
             _super.call(this);
+            /**
+             * 是否会派发 RESIZE 事件
+             */
+            this._changeSizeDispatchFlag = true;
             this.touchEnabled = true;
             this._stage = this;
             this._stageWidth = width;
@@ -72,6 +76,9 @@ var egret;
          * 当屏幕尺寸改变时调用
          */
         Stage.prototype.changeSize = function () {
+            if (!this._changeSizeDispatchFlag) {
+                return;
+            }
             //重新设置屏幕适配策略
             this.setResolutionPolicy();
             //触发Event.RESIZE事件
