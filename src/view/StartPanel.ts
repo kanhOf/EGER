@@ -62,7 +62,7 @@ class StartPanel extends BasePanel{
         
         // okButton.label = RES.getRes("ui_text.ok");
     
-        this.setBtn = new EButton(this,"setBtn",null,RES.getRes("ui_text.ok"),30,1);
+        this.setBtn = new EButton(this,"setBtn",null,"确定",30,1);
         this.setBtn.x = this.w - this.setBtn.width - 20;
         this.setBtn.y = this.h - this.setBtn.height - 20;
         this.addChild(this.setBtn);   
