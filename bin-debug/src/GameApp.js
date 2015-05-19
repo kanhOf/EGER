@@ -13,22 +13,15 @@ var GameApp = (function (_super) {
     GameApp.prototype.onAddToStage = function (event) {
         egret.Injector.mapClass(RES.AnalyzerBase, RES.PropertiesAnalyzer, RES.PropertiesAnalyzer.TYPE);
         this.addChild(GameConfig.gameScene());
-        //��ʼ��Resource��Դ���ؿ�
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/resource.json", "resource/");
     };
-    /**
-     * �����ļ���������,��ʼԤ����preload��Դ�顣
-     */
     GameApp.prototype.onConfigComplete = function (event) {
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.loadGroup("loading");
     };
-    /**
-     * preload��Դ����������
-     */
     GameApp.prototype.onResourceLoadComplete = function (event) {
         if (event.groupName == "preload") {
             PopUpManager.removePopUp(this.loadingPanel);
@@ -42,17 +35,11 @@ var GameApp = (function (_super) {
             RES.loadGroup("preload");
         }
     };
-    /**
-     * preload��Դ�����ؽ���
-     */
     GameApp.prototype.onResourceProgress = function (event) {
         if (event.groupName == "preload") {
             this.loadingPanel.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     };
-    /**
-     * ������Ϸ����
-     */
     GameApp.prototype.createGameScene = function () {
         PanelManager.initPanel();
         window["onorientationchange"] = function () {
@@ -71,7 +58,6 @@ var GameApp = (function (_super) {
             NativeApi.showVerticalTips();
         }
         Global.dispatchEvent(MainNotify.openStartPanelNotify, null, false);
-        Global.shareToWeiXin("EGER���ٿ�������", "EGER�����������У�������ȡ��ʾ�����ɣ�", "http://wx.9ria.com/games/eger", "http://wx.9ria.com/games/eger/resource/assets/icon.png");
     };
     return GameApp;
 })(egret.DisplayObjectContainer);

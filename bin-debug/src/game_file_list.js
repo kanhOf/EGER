@@ -8,7 +8,6 @@ var game_file_list = [
     "core/views/GameScene.js",
     "view/GameOverPanel.js",
     "view/GamePanel.js",
-    "view/JsSdkPanel.js",
     "view/StartPanel.js",
     "core/config/GameConfig.js",
     "core/utils/UtilsClass/LEvent.js",
@@ -29,9 +28,7 @@ var game_file_list = [
     "core/component/ETabBar.js",
     "core/component/ETextField.js",
     "core/component/EToggleSwitch.js",
-    "core/component/HtmlText.js",
     "core/component/ShareIconRender.js",
     "core/component/TipsManager.js",
-    "core/net/SocketManager.js",
     "core/utils/EffectUtils.js"
 ];

@@ -18,9 +18,9 @@ class GamePanel extends BasePanel{
     private fbBtn2:EButton;
 
 
-    private htmlTF:HtmlText;
-    private alertTF:HtmlText;
-    private tipsTF:HtmlText;
+    private htmlTF:ETextField;
+    private alertTF:ETextField;
+    private tipsTF:ETextField;
     private typerTF:ETextField;
     // 初始化面板
     public initPanel():void{
@@ -29,18 +29,21 @@ class GamePanel extends BasePanel{
         this.addChild(this.bg);   
         this.bg.touchEnabled = true;     
 
-        this.htmlTF = new HtmlText([["我是",0xff0000,18],["多颜色",0x55ff00,30],["文本",0xff0000,40],["组件",0x55ff00]],30,false,1,0xFFFFFF);
+        this.htmlTF = new ETextField();
+        this.htmlTF.setText('<font color="0xff0000">我是</font><font color="0x55ff00">多颜色</font><font color="0xff0000">文本</font><font color="0x55ff00">组件</font>');
         this.htmlTF.x = this.w/2 - this.htmlTF.width/2;
         this.htmlTF.y = -350;
         this.addChild(this.htmlTF);
 
-        this.alertTF = new HtmlText([["下面",0xff0000],["是",0x55ff00],["alert",0xff0000],["组件",0x55ff00]],30,false,1,0xFFFFFF);
+        this.alertTF = new ETextField();
+        this.alertTF.setText('<font color="0xff0000">下面</font><font color="0x55ff00">是</font><font color="0xff0000">alert</font><font color="0x55ff00">组件</font>');
         this.alertTF.x = this.w/2 - this.alertTF.width/2;
         this.alertTF.y = 120;
         this.addChild(this.alertTF);
         this.alertTF.alpha = 0;
 
-        this.tipsTF = new HtmlText([["下面",0xff0000],["是",0x55ff00],["tipsmanager",0xff0000],["组件",0x55ff00]],30,false,1,0xFFFFFF);
+        this.tipsTF = new ETextField();
+        this.tipsTF.setText('<font color="0xff0000">下面</font><font color="0x55ff00">是</font><font color="0xff0000">tipsmanager</font><font color="0x55ff00">组件</font>');
         this.tipsTF.x = this.w/2 - this.tipsTF.width/2;
         this.tipsTF.y = this.h - 170;
         this.addChild(this.tipsTF);

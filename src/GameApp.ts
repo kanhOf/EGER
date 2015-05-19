@@ -1,8 +1,5 @@
 
 class GameApp extends egret.DisplayObjectContainer {
-    /**
-     * ���ؽ��Ƚ���
-     */
     private loadingPanel:LoadingPanel;
     public constructor() {
         super();
@@ -14,22 +11,15 @@ class GameApp extends egret.DisplayObjectContainer {
 
         this.addChild(GameConfig.gameScene());
 
-        //��ʼ��Resource��Դ���ؿ�
         RES.addEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.loadConfig("resource/resource.json", "resource/");
     }
-    /**
-     * �����ļ���������,��ʼԤ����preload��Դ�顣
-     */
     private onConfigComplete(event: RES.ResourceEvent): void {
         RES.removeEventListener(RES.ResourceEvent.CONFIG_COMPLETE, this.onConfigComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_COMPLETE, this.onResourceLoadComplete, this);
         RES.addEventListener(RES.ResourceEvent.GROUP_PROGRESS, this.onResourceProgress, this);
         RES.loadGroup("loading");
     }
-    /**
-     * preload��Դ����������
-     */
     private onResourceLoadComplete(event: RES.ResourceEvent): void {
         if (event.groupName == "preload") {
             PopUpManager.removePopUp(this.loadingPanel);
@@ -43,18 +33,12 @@ class GameApp extends egret.DisplayObjectContainer {
         }
 
     }
-    /**
-     * preload��Դ�����ؽ���
-     */
     private onResourceProgress(event: RES.ResourceEvent): void {
         if (event.groupName == "preload") {
             this.loadingPanel.setProgress(event.itemsLoaded, event.itemsTotal);
         }
     }
 
-    /**
-     * ������Ϸ����
-     */
     private createGameScene(): void {
         PanelManager.initPanel();
         window["onorientationchange"] = function(){
@@ -71,9 +55,9 @@ class GameApp extends egret.DisplayObjectContainer {
         if(GlobalData.isVerticalGame&&GameConfig.isVertical()){
             NativeApi.showVerticalTips();
         }
+        
         Global.dispatchEvent(MainNotify.openStartPanelNotify, null, false);
 
-        Global.shareToWeiXin("EGER���ٿ�������", "EGER�����������У�������ȡ��ʾ�����ɣ�", "http://wx.9ria.com/games/eger", "http://wx.9ria.com/games/eger/resource/assets/icon.png");
     }
 
 }

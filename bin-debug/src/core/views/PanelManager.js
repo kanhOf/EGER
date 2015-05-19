@@ -10,7 +10,6 @@ var PanelManager;
     var startPanel;
     var gamePanel;
     var gameOverPanel;
-    var jsSdkPanel;
     // 初始化所有面板
     function initPanel() {
         var _width = document.documentElement.clientWidth;
@@ -24,8 +23,6 @@ var PanelManager;
         Global.addEventListener(MainNotify.closeGamePanelNotify, this.closeGamePanel, this);
         Global.addEventListener(MainNotify.openGameOverPanelNotify, this.openGameOverPanel, this);
         Global.addEventListener(MainNotify.closeGameOverPanelNotify, this.closeGameOverPanel, this);
-        Global.addEventListener(MainNotify.openJsSdkPanelNotify, this.openJsSdkPanel, this);
-        Global.addEventListener(MainNotify.closeJsSdkPanelNotify, this.closeJsSdkPanel, this);
     }
     PanelManager.initPanel = initPanel;
     // 打开开始界面
@@ -76,20 +73,4 @@ var PanelManager;
         }
     }
     PanelManager.closeGameOverPanel = closeGameOverPanel;
-    // 打开jsSdkPanel界面
-    function openJsSdkPanel() {
-        if (this.jsSdkPanel == null) {
-            this.jsSdkPanel = new JsSdkPanel();
-            PopUpManager.addPopUp(this.jsSdkPanel, false, 0, 0, 3);
-        }
-    }
-    PanelManager.openJsSdkPanel = openJsSdkPanel;
-    // 关闭jsSdkPanel界面
-    function closeJsSdkPanel() {
-        if (this.jsSdkPanel != null) {
-            PopUpManager.removePopUp(this.jsSdkPanel, 3);
-            this.jsSdkPanel = null;
-        }
-    }
-    PanelManager.closeJsSdkPanel = closeJsSdkPanel;
 })(PanelManager || (PanelManager = {}));

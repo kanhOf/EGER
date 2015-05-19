@@ -158,7 +158,7 @@ module RegUtils {
 	parameters:iType：1=去掉字符串左边的空格;2=去掉字符串左边的空格;0=去掉字符串左边和右边的空格 
 	return value:去掉空格的字符串 
 	*/
-	export function cTrim(sInputString, iType):boolean 
+	export function cTrim(sInputString, iType):string 
 	{
 	    var sTmpStr = ' ';
 	    var i = - 1;

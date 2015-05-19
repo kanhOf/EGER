@@ -13,7 +13,6 @@ class StartPanel extends BasePanel{
     private fbBtn:EButton;
 
     private startBtn:EButton;
-    private htmlTF:HtmlText;
     private textTF:ETextField;
     // private inputTF:egret.TextField;
     // 初始化面板
@@ -86,15 +85,14 @@ class StartPanel extends BasePanel{
         tabBar.x = this.w/2;
         this.addChild(tabBar);
 
-
-
         this.initEffect();
 
-        SocketManager.connectServer("echo.websocket.org",80);
-        var socketFun:Function = function(e){
-           Global.alert("提示","数据收到了："+JSON.stringify(e.param));
-        }
-        Global.addEventListener("uzwan_login",socketFun,this)
+        //如下代码是测试socket通讯的，需要的打开测试
+        // SocketManager.connectServer("echo.websocket.org",80);
+        // var socketFun:Function = function(e){
+        //    Global.alert("提示","数据收到了："+JSON.stringify(e.param));
+        // }
+        // Global.addEventListener("uzwan_login",socketFun,this)
     }
 
     private initEffect():void{
@@ -139,8 +137,9 @@ class StartPanel extends BasePanel{
         EffectUtils.shakeObj(this.fbBtn);
     }
 
+    //如下代码是测试socket通讯的，需要的打开测试
     public onSetTouchTap(e:egret.TouchEvent):void{
-        SocketManager.sendMessage('{"cmd":"uzwan_login","gameId":"0","from":"guzwan","userId":"3565526"}')
+        // SocketManager.sendMessage('{"cmd":"uzwan_login","gameId":"0","from":"guzwan","userId":"3565526"}')
 
     }
 
