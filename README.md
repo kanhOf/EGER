@@ -7,13 +7,13 @@
 加群点击右侧按钮： <a target="_blank" href="http://shang.qq.com/wpa/qunwpa?idkey=e3bba025902c371f851e6f104bc8100a870b9da0963f98f883c17e0a45f3abbd"><img border="0" src="http://pub.idqqimg.com/wpa/images/group.png" alt="Egret极速开发框架EGER" title="Egret极速开发框架EGER"></a>
 
 演示地址1：
-http://wx.9ria.com/games/eger/
+http://eger.sinaapp.com/code/demo
 微信扫码查看演示
 
 <img src="http://wx.9tech.cn/public/images/eger1.png" alt="qq" title="Egret极速开发框架EGER"/>
 
 演示地址2：
-http://wx.9ria.com/games/eger2/
+http://eger.sinaapp.com/code/effect
 微信扫码查看演示
 
 <img src="http://wx.9tech.cn/public/images/eger2.png" alt="qq" title="Egret极速开发框架EGER"/>
