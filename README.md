@@ -53,5 +53,9 @@ EGER极速开发交流群：70843223
 
 右上角收藏和关注！
 
+### 或者加我好友，互相学习
+
+<img src="http://eger.sinaapp.com/code/public/dily.png" alt="qq" title="Egret极速开发框架EGER"/>
+
 [Egret官方网站](egret-labs.org)<br />
 [我的微博](http://weibo.com/1856526021/profile?topnav=1&wvr=6)<br />
