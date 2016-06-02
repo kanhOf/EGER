@@ -33,19 +33,19 @@ class LoadingPanel extends egret.Sprite {
         this.touchEnabled = true;
 
         this.pgBg = new egret.Bitmap;
-        this.pgBg.anchorX = 0.5;
-        this.pgBg.anchorY = 0.5;
         this.pgBg.texture = this.mySheet.getTexture("pgBg");
+        this.pgBg.anchorOffsetX = this.pgBg.width/2;
+        this.pgBg.anchorOffsetY = this.pgBg.height/2;
         this.pgBg.x = this.w / 2;
         this.pgBg.y = this.h / 2;
         this.addChild(this.pgBg);
 
         this.pgBar = new egret.Bitmap;
-        this.pgBar.anchorX = 0.5;
-        this.pgBar.anchorY = 0.5;
         this.pgBar.texture = this.mySheet.getTexture("pgBar");
-        this.pgBar.x = this.w / 2 - 34;
-        this.pgBar.y = this.h / 2;
+        // this.pgBar.anchorOffsetX = this.pgBg.width/2;
+        this.pgBar.anchorOffsetY = this.pgBg.height/2;
+        this.pgBar.x = this.pgBg.x - this.pgBg.width/2 + 5;
+        this.pgBar.y = this.h / 2 + 3;
         this.addChild(this.pgBar);
 
         this.textField = new egret.TextField();

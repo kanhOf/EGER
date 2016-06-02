@@ -179,6 +179,7 @@ class GameOverPanel extends BasePanel{
 
     public onStartBtnTouchTap(e:egret.TouchEvent):void{
         Global.dispatchEvent(MainNotify.closeGameOverPanelNotify,null,false);
+        Global.dispatchEvent(MainNotify.openStartPanelNotify,null,false);
     }
 
 }

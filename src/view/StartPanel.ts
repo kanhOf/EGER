@@ -24,8 +24,8 @@ class StartPanel extends BasePanel{
 
         this.logoImg = new egret.Bitmap();
         this.logoImg.texture = this.assets.getTexture("logoImg");
-        this.logoImg.anchorX = 0.5;
-        this.logoImg.anchorY = 1;
+        this.logoImg.anchorOffsetX = this.logoImg.width/2;
+        this.logoImg.anchorOffsetY = this.logoImg.height/2;
         this.logoImg.x = this.w/2;
         this.logoImg.y = 60 + this.logoImg.height;
         this.addChild(this.logoImg);   
