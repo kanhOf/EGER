@@ -1,4 +1,5 @@
-#EGER
+#EGER 
+#已迁移到GitHub https://github.com/dily3825002/EgerPro
 
 ===================================
 
